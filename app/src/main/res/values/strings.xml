@@ -1,0 +1,170 @@
+<resources>
+    <string name="app_name">ESAN</string>
+
+
+
+
+
+
+    <!-- ACTIVITY_MAIN.XML -->
+    <string name="hintUsuario">. Usuario</string>
+    <string name="hintPassword">. Contraseña</string>
+    <string name="btAcceder">Acceder</string>
+
+    <!-- DIRECTORIO.XML -->
+    <string name="d1">Central telefonica</string>
+    <string name="d2">Admisión y Registro de Pregrado</string>
+    <string name="d3">Finanzas</string>
+    <string name="d4">Dimensión Internacional</string>
+    <string name="d5">Coordinación Académica de PAC</string>
+    <string name="d6">Servicios y Registros Académicos de Pregrado</string>
+    <string name="d7">Bienestar Estudiantil</string>
+    <string name="d8">Directorio</string>
+    <string name="d9">Mensajeria</string>
+    <string name="d10">Seguridad</string>
+    <string name="d11">Cobranzas</string>
+    <string name="d12">Cafeteria - Central</string>
+    <string name="d13">Cafeteria - Comedor D</string>
+    <string name="d14">Cafeteria - Monaditas</string>
+    <string name="d15">Cafeteria - Hijos de Fruta</string>
+    <string name="d16">Cafeteria - Deliska</string>
+    <string name="d17">Cafeteria - 338</string>
+    <string name="d18">Helpdesk</string>
+    <string name="d19">DPA</string>
+
+
+    <!-- LAY_CAFETERÍA.XML -->
+    <string name="rbEconomico">Económico</string>
+    <string name="rbEjecutivo">Ejecutivo</string>
+    <string name="rbDieta">Dieta</string>
+
+    <!-- LAY_EDUCACIONEJECUTIVA.XML -->
+    <string name="btPade">PADE</string>
+    <string name="btPae">PAE</string>
+    <string name="btPee">PEE</string>
+    <string name="btPeed">PEE DERECHO</string>
+    <string name="btDiplomas">DIPLOMAS</string>
+    <string name="btIdiomas">IDIOMAS</string>
+    <string name="btGestion">GESTIÓN PÚBLICA</string>
+
+    <!-- LAY_HORARIO.XML -->
+    <string name="tvHorario">HORARIO</string>
+
+    <!-- LAY_MOOC.XML -->
+    <string name="tvCursosMooc">Cursos MOOC</string>
+
+    <!-- LAY_NOOTAS.XML -->
+    <string name="tvCursos">Cursos</string>
+    <string name="tvEP">EP</string>
+    <string name="tvTA">TA</string>
+    <string name="tvEF">EF</string>
+    <string name="tvPG">PG</string>
+
+    <!-- LAY_POPUP.XML -->
+    <string name="tvPoptv2">Esto es un simple Popup</string>
+    <string name="btCerrar">Cerrar</string>
+    <string name="btLlamar">Llamar</string>
+    <string name="btPCerrar">Cerrar</string>
+
+
+    <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Cerrar sesión</string>
+    <string name="title_activity_prueba_tabbed">PruebaTabbed</string>
+
+    <string name="title_section1">Noticias</string>
+    <string name="title_section2">Horario</string>
+    <string name="title_section3">Notas</string>
+    <string name="title_section4">Calendario</string>
+    <string name="title_activity_activity_main_2">activity_main_2</string>
+    <string name="title_activity_noticias">noticiasActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example"> </string>
+    <string name="title_activity_main_activity2"> </string>
+
+    <string-array name="sections">
+        <item>"  Noticias"</item>
+        <item>"  Notas"</item>
+        <item>"  Calendario"</item>
+        <item>"  Cafeteria"</item>
+        <item>"  Mapas"</item>
+        <item>"  Directorio"</item>
+        <item>"  Biblioteca"</item>
+        <item>"  Impresiones"</item>
+        <item>"  Cursos Mooc"</item>
+        <item>"  Conexión Esan"</item>
+        <item>"  Educación\n  Ejecutiva"</item>
+        <item>"  Career"</item>
+        <item>"  Estacionamiento"</item>
+        <item>"  Maestrias"</item>
+
+    </string-array>
+
+    <string-array name="sections2">
+        <item>Noticias</item>
+        <item>Calendario</item>
+        <item>Cafeteria</item>
+        <item>Registroesta</item>
+
+    </string-array>
+
+
+    <string-array name="section_titles">
+        <item>Section T1</item>
+        <item>Section T2</item>
+        <item>Section T3</item>
+        <item>Section T4</item>
+        <item>Section T5</item>
+        <item>Section T6</item>
+        <item>Section T7</item>
+        <item>Section T8</item>
+        <item>Section T9</item>
+        <item>Section T10</item>
+        <item>Section T11</item>
+        <item>Section T12</item>
+        <item>Section T13</item>
+        <item>Section T14</item>
+
+
+
+    </string-array>
+
+    <string-array name="section_titles2">
+        <item>Section T1</item>
+        <item>Section T2</item>
+        <item>Section T3</item>
+        <item>Section T4</item>
+    </string-array>
+
+    <string-array name="sections_icons">
+        <item name="android:icon">@drawable/noticias</item>
+        <item name="android:icon">@drawable/notas</item>
+        <item name="android:icon">@drawable/cafeteria</item>
+        <item name="android:icon">@drawable/mapa</item>
+        <item name="android:icon">@drawable/directorio</item>
+        <item name="android:icon">@drawable/biblioteca</item>
+        <item name="android:icon">@drawable/impresiones</item>
+        <item name="android:icon">@drawable/cursosmoc</item>
+        <item name="android:icon">@drawable/conexionesan</item>
+        <item name="android:icon">@drawable/educacionejecutiva</item>
+        <item name="android:icon">@drawable/career</item>
+        <item name="android:icon">@drawable/estacionamiento</item>
+        <item name="android:icon">@drawable/educacionejecutiva</item>
+    </string-array>
+
+
+    <string-array name="sections_icons2">
+        <item name="android:icon">@drawable/noticias</item>
+        <item name="android:icon">@drawable/horario</item>
+        <item name="android:icon">@drawable/notas</item>
+        <item name="android:icon">@drawable/estacionamiento</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
