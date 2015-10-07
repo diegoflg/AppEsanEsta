@@ -100,64 +100,7 @@
 
     </string-array>
 
-    <string-array name="sections2">
-        <item>News</item>
-        <item>Calendar</item>
-        <item>Coffee shop</item>
-    </string-array>
 
-
-    <string-array name="section_titles">
-        <item>Section T1</item>
-        <item>Section T2</item>
-        <item>Section T3</item>
-        <item>Section T4</item>
-        <item>Section T5</item>
-        <item>Section T6</item>
-        <item>Section T7</item>
-        <item>Section T8</item>
-        <item>Section T9</item>
-        <item>Section T10</item>
-        <item>Section T11</item>
-        <item>Section T12</item>
-        <item>Section T14</item>
-        <item>Section T15</item>
-        <item>Section T16</item>
-        <item>Section T17</item>
-
-    </string-array>
-
-    <string-array name="section_titles2">
-        <item>Section T1</item>
-        <item>Section T2</item>
-        <item>Section T3</item>
-    </string-array>
-
-    <string-array name="sections_icons">
-        <item name="android:icon">@drawable/noticias</item>
-        <item name="android:icon">@drawable/notas</item>
-        <item name="android:icon">@drawable/calendario</item>
-        <item name="android:icon">@drawable/cafeteria</item>
-        <item name="android:icon">@drawable/mapa</item>
-        <item name="android:icon">@drawable/directorio</item>
-        <item name="android:icon">@drawable/biblioteca</item>
-        <item name="android:icon">@drawable/impresiones</item>
-        <item name="android:icon">@drawable/cursosmoc</item>
-        <item name="android:icon">@drawable/conexionesan</item>
-        <item name="android:icon">@drawable/educacionejecutiva</item>
-        <item name="android:icon">@drawable/career</item>
-        <item name="android:icon">@drawable/estacionamiento</item>
-        <item name="android:icon">@drawable/educacionejecutiva</item>
-
-    </string-array>
-
-
-    <string-array name="sections_icons2">
-        <item name="android:icon">@drawable/noticias</item>
-        <item name="android:icon">@drawable/calendario</item>
-        <item name="android:icon">@drawable/cafeteria</item>
-        <item name="android:icon">@drawable/estacionamiento</item>
-    </string-array>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
