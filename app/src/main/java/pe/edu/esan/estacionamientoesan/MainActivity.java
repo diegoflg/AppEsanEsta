@@ -1,5 +1,6 @@
 package pe.edu.esan.estacionamientoesan;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,13 +18,20 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.TypefaceSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import org.jsoup.Connection;
@@ -504,7 +512,9 @@ public class MainActivity extends ActionBarActivity {
             Datah.getInstance().setPass(et2.getText().toString());
 
             //Ejecuta la clase del mismo nombre
-            new logg().execute();
+
+            showPopup(MainActivity.this);
+
 
         }else{
             //Se crea y da valor a un mensaje corto en pantalla
@@ -731,6 +741,77 @@ public class MainActivity extends ActionBarActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+
+    private void showPopup(final Activity context) {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        MainActivity.this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        double width = displaymetrics.widthPixels;
+
+        Log.v("tamano",String.valueOf(height));
+        Log.v("tamano",String.valueOf(width));
+
+        double popupHeight = height*0.52;
+        double popupWidth = width*0.925;
+
+
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup3);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = layoutInflater.inflate(R.layout.popup3, viewGroup);
+
+        // Creating the PopupWindow
+        final PopupWindow popup = new PopupWindow(context);
+        popup.setContentView(layout);
+        popup.setWidth((int) Math.round(popupHeight));
+        popup.setHeight((int) Math.round(popupWidth));
+        popup.setFocusable(true);
+        popup.setOutsideTouchable(false);
+
+        // Displaying the popup at the specified location, + offsets.
+        popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+        // FUENTE PARA TEXTO EN POPUP Y BOTONES:
+        String font_pathPP = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TPP = Typeface.createFromAsset(MainActivity.this.getAssets(),font_pathPP);//llamanos a la CLASS TYPEFACE y la definimos
+        // con un CREATE desde ASSETS con la ruta STRING
+
+        // Getting a reference to Close button, and close the popup when clicked.
+        Button close = (Button) layout.findViewById(R.id.call3);
+        Button call = (Button) layout.findViewById(R.id.close3);
+        call.setTypeface(TPP);
+        close.setTypeface(TPP);
+
+
+        final TextView tv1 = (TextView) layout.findViewById(R.id.pop3tv1);
+        tv1.setTypeface(TPP);
+        tv1.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius ullamcorper bibendum. Suspendisse blandit sem non arcu consectetur, a tempor turpis finibus. Cras volutpat vel ligula id varius. Suspendisse eu tortor convallis, accumsan mi vitae, viverra tortor. Donec nec gravida libero. Proin fringilla porttitor ornare. Vivamus tempor ut orci quis aliquam. Nam blandit dictum urna. Phasellus quis sem finibus, lacinia sapien eu, vestibulum elit. Praesent mauris lorem, eleifend varius turpis ac, egestas gravida nulla. Cras quis malesuada tellus. Nam mollis nibh sit amet felis aliquet luctus. Cras ut leo nec turpis volutpat iaculis at id dui. Fusce viverra sed nunc sit amet mollis. Maecenas quis velit leo. Phasellus dui felis, tristique et leo vel, cursus elementum arcu.\n" +
+                "\n" +
+                "Aenean vitae libero viverra, ultrices magna eget, pulvinar leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada lorem id libero convallis, sed vestibulum risus interdum. Ut quis lobortis felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur in mauris ultrices, sodales sapien eget, tempus urna. Ut volutpat purus non tellus interdum, eget elementum sapien molestie. Quisque finibus dui eget purus ultrices, id dapibus lacus scelerisque. Pellentesque a porttitor nulla. Sed sit amet nunc in nulla accumsan lobortis. In velit est, cursus sit amet pharetra quis, maximus sed erat. Nulla sed magna turpis. Praesent vestibulum eros sed sollicitudin vehicula. Mauris eget aliquam dolor, non interdum orci. Vestibulum semper ornare efficitur. Sed sit amet pharetra massa.\n" +
+                "\n" +
+                "Maecenas commodo nisi id quam tincidunt, vitae auctor purus dignissim. Donec sem purus, hendrerit ac lacus sit amet, gravida ullamcorper tellus. Donec pharetra, quam vel porta pharetra, felis massa pulvinar nunc, nec iaculis ante tortor vel felis. Maecenas id venenatis lacus. Sed accumsan mattis nisl sit amet posuere. Nulla elementum eget diam ut consequat. Maecenas id nulla purus. Vivamus et diam massa. Sed molestie arcu neque, vitae tincidunt risus egestas quis. Cras nulla dolor, accumsan et magna at, aliquet efficitur mauris.\n" +
+                "\n" +
+                "Duis tempus, quam eget cursus rutrum, arcu leo elementum purus, a porttitor est odio sit amet nulla. Proin nisl risus, semper vitae sem sed, consequat semper turpis. Nunc vel ultricies lectus. Nunc justo dolor, interdum sed fringilla finibus, tempor in magna. Vestibulum eleifend, arcu ut volutpat convallis, enim mauris condimentum mauris, non semper orci metus quis erat. Vestibulum lacus quam, convallis vitae fringilla eget, tristique a turpis. Etiam eget cursus leo, ac cursus lorem. Quisque tellus ligula, semper at pulvinar in, porttitor in ligula. Ut pulvinar ipsum non aliquam lobortis. Donec at consequat orci. Pellentesque tempor imperdiet lacus, dignissim pellentesque libero efficitur non. Donec ut interdum nisl. Nulla ac hendrerit justo. Quisque volutpat, nibh et sagittis dapibus, odio metus sollicitudin sapien, non dapibus ex ligula vel ex.");
+
+
+
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new logg().execute();
+            }
+        });
+
+
     }
 
 
