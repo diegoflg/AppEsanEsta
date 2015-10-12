@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:id="@+id/popup3"
+    android:layout_height="fill_parent"
+    android:background="@drawable/customborder"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Condiciones"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv123"
+            android:textColor="#ffff"
+            android:textSize="15sp"/>
+
+            <ScrollView
+                android:layout_below="@+id/tv123"
+                android:layout_marginTop="5dp"
+                android:layout_width="fill_parent"
+
+                android:layout_height="280dp"
+                android:id="@+id/dss">
+
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pop3tv1"
+                    android:text="Area"
+                    android:textColor="#ffff" />
+
+
+            </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/dss"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/close3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aceptar" />
+
+            <Button
+                android:id="@+id/call3"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancelar" />
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

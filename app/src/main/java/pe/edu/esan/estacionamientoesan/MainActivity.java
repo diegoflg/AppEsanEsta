@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,6 +72,10 @@ public class MainActivity extends ActionBarActivity {
 
     //Entero que manda el tipo de usuario
     int tipo=1;
+
+
+
+
 
 
     @Override
@@ -138,6 +143,7 @@ public class MainActivity extends ActionBarActivity {
 
         //Se crea un Spinner o seleccionador de lista corta y se le da su valor como elemento del layout
         Spinner sp=(Spinner)findViewById(R.id.spinner);
+
 
         //Se crea un nuevo adaptador a partir de la clase SpinnerAdapter y se le da sus parametros
         SpinnerAdapter adapter=new SpinnerAdapter(this,
@@ -753,8 +759,9 @@ public class MainActivity extends ActionBarActivity {
         Log.v("tamano",String.valueOf(height));
         Log.v("tamano",String.valueOf(width));
 
-        double popupHeight = height*0.52;
-        double popupWidth = width*0.925;
+        double popupHeight = height*0.8;
+        double popupWidth = width*0.92;
+
 
 
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup3);
@@ -764,8 +771,8 @@ public class MainActivity extends ActionBarActivity {
         // Creating the PopupWindow
         final PopupWindow popup = new PopupWindow(context);
         popup.setContentView(layout);
-        popup.setWidth((int) Math.round(popupHeight));
-        popup.setHeight((int) Math.round(popupWidth));
+        popup.setWidth((int) Math.round(popupWidth));
+        popup.setHeight((int) Math.round(popupHeight));
         popup.setFocusable(true);
         popup.setOutsideTouchable(false);
 
