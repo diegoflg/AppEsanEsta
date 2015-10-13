@@ -28,7 +28,11 @@ import com.google.android.gms.location.LocationServices;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +68,8 @@ public class MainActivity2Activity extends ActionBarActivity implements
     //PARA FUENTE:
     TextView textViewestareg;
 
+    TextView textView3;
+
     //ELEMENTOS PERTENECIENTES AL SLIDING UP PANEL
 
     protected synchronized void buildGoogleApiClient() {
@@ -90,6 +96,8 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
         textViewestareg = (TextView) findViewById(R.id.textViewestareg);
         textViewestareg.setTypeface(TFE);
+
+        textView3= (TextView)findViewById(R.id.textView3);
 
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFL = Typeface.createFromAsset(this.getAssets(), font_pathL);
@@ -202,6 +210,8 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
                 }
                 new LoadAllProducts().execute();
+                new LoadTIME().execute();
+                new LoadTIME2().execute();
                 h.postDelayed(this, delay);
 
             }
@@ -311,5 +321,110 @@ public class MainActivity2Activity extends ActionBarActivity implements
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
+    private class LoadTIME extends AsyncTask<Void, Void, Void> {
+        //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
+        //Pagina web real: http://www.timeanddate.com/worldclock/fullscreen.html?n=131
+        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/fullscreen.html?n=131#
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            // Here you can do any UI operations like textview.setText("test");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            String url = "http://www.timeanddate.com/worldclock/fullscreen.html?n=131#";
+            Document doc = null;
+            try {
+                //TIEMPO CON HH:MM:SS
+                doc = Jsoup.connect(url).get();
+                Elements metaElem = doc.select("div[id=i_time]");
+                String name = metaElem.text();
+                Log.i("TIEMPO", "NAME : " + name);
+
+                /*
+                //Elements topicList = doc.select("h2.topic");
+                //Log.i("TIEMPO", "META: " + metaElem);
+                //Log.i("TIEMPO", "TOPICLIST : " + topicList);
+                Elements links = doc.select("a[href]"); // a with href
+                Element masthead = doc.select("div.masthead").first();
+                // div with class=masthead
+                Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
+                Log.i("TIEMPO", "AHREF: " + links);
+                Log.i("TIEMPO", "MASTHEAD: " + masthead);
+                Log.i("TIEMPO", "ResultLinks : " + resultLinks);
+                */
+
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Log.i("TIEMPO", "ERROR");
+            }
+            return null;
+        }
+    }
+
+
+    //SEGUNDA OPCION:
+    private class LoadTIME2 extends AsyncTask<Void, Void, Void> {
+        //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
+        //Pagina web real: http://www.timeanddate.com/worldclock/fullscreen.html?n=131
+        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/fullscreen.html?n=131#
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            // Here you can do any UI operations like textview.setText("test");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            String url = "http://www.timeanddate.com/worldclock/peru/lima";
+            Document doc = null;
+            try {
+                //TIEMPO HH:MM
+                doc = Jsoup.connect(url).get();
+                Elements metaElem = doc.select("span[id=fshrmin]");
+                String name = metaElem.text();
+
+
+                //Elements topicList = doc.select("h2.topic");
+                //Log.i("TIEMPO", "META: " + metaElem);
+                Log.i("TIEMPO", "span : " + name);
+
+                if(name.contains("14:")){
+                    Log.i("TIEMPO", "SI SE PUEDE BUSCAR IGUALDAD");
+                }else{
+                    Log.i("TIEMPO", "NO ES POSIBLE");
+                }
+                //Log.i("TIEMPO", "TOPICLIST : " + topicList);
+
+                /*
+                Elements links = doc.select("a[href]"); // a with href
+                Element masthead = doc.select("div.masthead").first();
+                // div with class=masthead
+                Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
+                Log.i("TIEMPO", "AHREF: " + links);
+                Log.i("TIEMPO", "MASTHEAD: " + masthead);
+                Log.i("TIEMPO", "ResultLinks : " + resultLinks);
+                */
+
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Log.i("TIEMPO", "ERROR");
+            }
+            return null;
+        }
+    }
+
+
+
 
 }
