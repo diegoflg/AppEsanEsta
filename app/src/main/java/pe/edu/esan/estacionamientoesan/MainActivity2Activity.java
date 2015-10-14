@@ -544,7 +544,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     btIr.setVisibility(View.VISIBLE);
 
                     sep4.setVisibility(View.VISIBLE);
-
                 }else {
                     /* Si fuera else if:
                     if(horac.contains("00:") || horac.contains("01:") || horac.contains("02:") ||
