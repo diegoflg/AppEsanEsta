@@ -63,7 +63,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
     double latitude;
     int contador = 0;
 
-    Button btEsan, btPolo, btAlonso, btir;
+    //Button btEsan, btPolo, btAlonso, btir;
 
     //PARA FUENTE:
     TextView textViewestareg;
@@ -71,6 +71,10 @@ public class MainActivity2Activity extends ActionBarActivity implements
     TextView textView3;
 
     //ELEMENTOS PERTENECIENTES AL SLIDING UP PANEL
+
+
+
+
 
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -97,20 +101,63 @@ public class MainActivity2Activity extends ActionBarActivity implements
         textViewestareg = (TextView) findViewById(R.id.textViewestareg);
         textViewestareg.setTypeface(TFE);
 
-        textView3= (TextView)findViewById(R.id.textView3);
 
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFL = Typeface.createFromAsset(this.getAssets(), font_pathL);
+        /*
         btEsan = (Button) findViewById(R.id.btEsan);
         btAlonso = (Button) findViewById(R.id.btAlonso);
         btPolo = (Button) findViewById(R.id.btPolo);
         btir = (Button) findViewById(R.id.btir);
+         */
+
         final MediaPlayer mp = MediaPlayer.create(this.getApplicationContext(), R.raw.hifi);
         final Handler h = new Handler();
         final int delay = 5000; //milliseconds
 
         final Handler hT = new Handler();
 
+        //Separador 1
+        View sep1 = (View)findViewById(R.id.sep1);
+        //Titulo Esan
+        TextView tvEsan = (TextView) findViewById(R.id.textView);
+        //Texto lugar esan
+        TextView tvLEsan = (TextView) findViewById(R.id.textView7);
+        //Boton Esan
+        final Button btEsan = (Button)findViewById(R.id.btEsan);
+
+
+        //Separador 2
+        View sep2 = (View)findViewById(R.id.sep2);
+        sep2.setVisibility(View.VISIBLE);
+        //Titulo Alonso de Molina
+        TextView tvAlonso = (TextView) findViewById(R.id.textView3);
+        tvAlonso.setVisibility(View.GONE);
+        //Texto lugar Alonso
+        TextView tvLAlonso= (TextView) findViewById(R.id.textView6);
+        tvLAlonso.setVisibility(View.GONE);
+        //Boton Alonso
+        final Button btAlonso = (Button)findViewById(R.id.btAlonso);
+        btAlonso.setVisibility(View.GONE);
+
+        //Separador 3
+        View sep3 = (View)findViewById(R.id.sep3);
+        sep3.setVisibility(View.GONE);
+        //Titulo Polo
+        TextView tvPolo = (TextView) findViewById(R.id.textView4);
+        tvPolo.setVisibility(View.GONE);
+        //Texto lugar  Polo
+        TextView tvLPolo = (TextView) findViewById(R.id.textView5);
+        tvLPolo.setVisibility(View.GONE);
+        //Boton Polo
+        final Button btPolo = (Button)findViewById(R.id.btPolo);
+        btPolo.setVisibility(View.GONE);
+        //Boton ir Polo
+        Button btIr = (Button)findViewById(R.id.btir);
+        btIr.setVisibility(View.GONE);
+        //Separador 4
+        View sep4 = (View)findViewById(R.id.sep4);
+        sep4.setVisibility(View.GONE);
 
         dialog.show();
         new LoadAllProducts().execute();
@@ -118,6 +165,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         hT.postDelayed(new Runnable() {
             @Override
             public void run() {
+                new LoadTIME2().execute();
                 if (dialog.isShowing()) {
                     dialog.dismiss();
                 }
@@ -210,15 +258,15 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
                 }
                 new LoadAllProducts().execute();
-                new LoadTIME().execute();
-                new LoadTIME2().execute();
+                //new LoadTIME().execute();
+
                 h.postDelayed(this, delay);
 
             }
         }, delay);
 
 
-        btir.setOnClickListener(new View.OnClickListener() {
+        btIr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -372,39 +420,89 @@ public class MainActivity2Activity extends ActionBarActivity implements
     //SEGUNDA OPCION:
     private class LoadTIME2 extends AsyncTask<Void, Void, Void> {
         //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
-        //Pagina web real: http://www.timeanddate.com/worldclock/fullscreen.html?n=131
-        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/fullscreen.html?n=131#
+        //Pagina web real: http://www.timeanddate.com/worldclock/peru/lima
+        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/peru/lima
+
+        //Separador 1
+        View sep1 = (View)findViewById(R.id.sep1);
+        //Titulo Esan
+        TextView tvEsan = (TextView) findViewById(R.id.textView);
+        //Texto lugar esan
+        TextView tvLEsan = (TextView) findViewById(R.id.textView7);
+        //Boton Esan
+        Button btEsan = (Button)findViewById(R.id.btEsan);
+
+
+        //Separador 2
+        View sep2 = (View)findViewById(R.id.sep2);
+        //Titulo Alonso de Molina
+        TextView tvAlonso = (TextView) findViewById(R.id.textView3);
+        //Texto lugar Alonso
+        TextView tvLAlonso= (TextView) findViewById(R.id.textView6);
+        //Boton Alonso
+        Button btAlonso = (Button)findViewById(R.id.btAlonso);
+
+        //Separador 3
+        View sep3 = (View)findViewById(R.id.sep3);
+        //Titulo Polo
+        TextView tvPolo = (TextView) findViewById(R.id.textView4);
+        //Texto lugar  Polo
+        TextView tvLPolo = (TextView) findViewById(R.id.textView5);
+        //Boton Polo
+        Button btPolo = (Button)findViewById(R.id.btPolo);
+        //Boton ir Polo
+        Button btIr = (Button)findViewById(R.id.btir);
+
+        //Separador 4
+        View sep4 = (View)findViewById(R.id.sep4);
+
+
+        String url = "http://www.timeanddate.com/worldclock/peru/lima";
+        Document doc = null;
+        String horac;
+        String diac;
+
         @Override
-        protected void onPostExecute(Void result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            // Here you can do any UI operations like textview.setText("test");
+        protected void onPreExecute() {
+            super.onPreExecute();
+            /*
+            sep2.setVisibility(View.GONE);
+            tvAlonso.setVisibility(View.GONE);
+            tvLAlonso.setVisibility(View.GONE);
+            btAlonso.setVisibility(View.GONE);
+
+            //SE VA EL POLO
+            sep3.setVisibility(View.GONE);
+            tvPolo.setVisibility(View.GONE);
+            tvLPolo.setVisibility(View.GONE);
+            btPolo.setVisibility(View.GONE);
+            btIr.setVisibility(View.GONE);
+
+            sep4.setVisibility(View.GONE);
+             */
         }
 
         @Override
         protected Void doInBackground(Void... params) {
             // TODO Auto-generated method stub
-            String url = "http://www.timeanddate.com/worldclock/peru/lima";
-            Document doc = null;
             try {
                 //TIEMPO HH:MM
                 doc = Jsoup.connect(url).get();
-                Elements metaElem = doc.select("span[id=fshrmin]");
-                String name = metaElem.text();
 
+                Elements hora = doc.select("span[id=fshrmin]");
+                horac = hora.text();
 
-                //Elements topicList = doc.select("h2.topic");
-                //Log.i("TIEMPO", "META: " + metaElem);
-                Log.i("TIEMPO", "span : " + name);
+                Elements dia = doc.select("span[id=ctdat]");
+                diac = dia.text();
 
-                if(name.contains("14:")){
-                    Log.i("TIEMPO", "SI SE PUEDE BUSCAR IGUALDAD");
-                }else{
-                    Log.i("TIEMPO", "NO ES POSIBLE");
-                }
-                //Log.i("TIEMPO", "TOPICLIST : " + topicList);
+                Log.i("TIEMPO", "Hora: " + horac);
+                Log.i("TIEMPO", "Dia : " + diac);
+
 
                 /*
+                Elements topicList = doc.select("h2.topic");
+                Log.i("TIEMPO", "META: " + metaElem);
+                Log.i("TIEMPO", "TOPICLIST : " + topicList);
                 Elements links = doc.select("a[href]"); // a with href
                 Element masthead = doc.select("div.masthead").first();
                 // div with class=masthead
@@ -422,9 +520,112 @@ public class MainActivity2Activity extends ActionBarActivity implements
             }
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            // Here you can do any UI operations like textview.setText("test");
+
+            if((diac.contains("Monday") || diac.contains("Tuesday") || diac.contains("Wednesday") || diac.contains("Thursday") || diac.contains("Friday"))){
+                if(horac.contains("18:") || horac.contains("19:") || horac.contains("20:")||
+                   horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
+
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.VISIBLE);
+                    tvLAlonso.setVisibility(View.VISIBLE);
+                    btAlonso.setVisibility(View.VISIBLE);
+
+                    //APARECE EL POLO
+                    sep3.setVisibility(View.VISIBLE);
+                    tvPolo.setVisibility(View.VISIBLE);
+                    tvLPolo.setVisibility(View.VISIBLE);
+                    btPolo.setVisibility(View.VISIBLE);
+                    btIr.setVisibility(View.VISIBLE);
+
+                    sep4.setVisibility(View.VISIBLE);
+
+                }else {
+                    /* Si fuera else if:
+                    if(horac.contains("00:") || horac.contains("01:") || horac.contains("02:") ||
+                         horac.contains("03:") || horac.contains("04:") || horac.contains("05:") ||
+                         horac.contains("06:") || horac.contains("07:") || horac.contains("08:") ||
+                         horac.contains("09:") || horac.contains("10:") || horac.contains("11:") ||
+                         horac.contains("12:") || horac.contains("13:") || horac.contains("14:") ||
+                         horac.contains("15:") || horac.contains("16:") || horac.contains("17:") )
+                     */
+                    //SE VA ALONSO
+                        tvAlonso.setVisibility(View.GONE);
+                        tvLAlonso.setVisibility(View.GONE);
+                        btAlonso.setVisibility(View.GONE);
+
+                    //SE VA EL POLO
+                        sep3.setVisibility(View.GONE);
+                        tvPolo.setVisibility(View.GONE);
+                        tvLPolo.setVisibility(View.GONE);
+                        btPolo.setVisibility(View.GONE);
+                        btIr.setVisibility(View.GONE);
+
+                        sep4.setVisibility(View.GONE);
+                }
+            } else if( diac.contains("Saturday")){
+                if( horac.contains("07:3")|| horac.contains("07:4")|| horac.contains("07:5")||
+                        horac.contains("08:") || horac.contains("09:") || horac.contains("10:") ||
+                        horac.contains("11:") || horac.contains("12:") || horac.contains("13:") ||
+                        horac.contains("14:") || horac.contains("15:") || horac.contains("16:") ||
+                        horac.contains("17:") || horac.contains("18:")){
+
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.VISIBLE);
+                    tvLAlonso.setVisibility(View.VISIBLE);
+                    btAlonso.setVisibility(View.VISIBLE);
+                    sep3.setVisibility(View.VISIBLE);
+                }else{
+                    //SE VA ALONSO
+                    tvAlonso.setVisibility(View.GONE);
+                    tvLAlonso.setVisibility(View.GONE);
+                    btAlonso.setVisibility(View.GONE);
+                    sep3.setVisibility(View.GONE);
+                }
+
+                if( horac.contains("06:3")|| horac.contains("06:4")|| horac.contains("06:5")||
+                        horac.contains("07:") || horac.contains("08:") || horac.contains("09:") ||
+                        horac.contains("10:") || horac.contains("11:") || horac.contains("12:") ||
+                        horac.contains("13:") || horac.contains("14:") || horac.contains("15:") ||
+                        horac.contains("16:") || horac.contains("17:") || horac.contains("18:")){
+
+                    //APARECE EL POLO
+                    tvPolo.setVisibility(View.VISIBLE);
+                    tvLPolo.setVisibility(View.VISIBLE);
+                    btPolo.setVisibility(View.VISIBLE);
+                    btIr.setVisibility(View.VISIBLE);
+                    sep4.setVisibility(View.VISIBLE);
+
+                }else{
+                    //SE VA EL POLO
+                    tvPolo.setVisibility(View.GONE);
+                    tvLPolo.setVisibility(View.GONE);
+                    btPolo.setVisibility(View.GONE);
+                    btIr.setVisibility(View.GONE);
+                    sep4.setVisibility(View.GONE);
+                }
+
+
+            } else if(diac.contains("Sunday")){
+                //SE VA ALONSO
+                tvAlonso.setVisibility(View.GONE);
+                tvLAlonso.setVisibility(View.GONE);
+                btAlonso.setVisibility(View.GONE);
+                //SE VA EL POLO
+                sep3.setVisibility(View.GONE);
+                tvPolo.setVisibility(View.GONE);
+                tvLPolo.setVisibility(View.GONE);
+                btPolo.setVisibility(View.GONE);
+                btIr.setVisibility(View.GONE);
+                sep4.setVisibility(View.GONE);
+            }
+
+
+        }
     }
-
-
-
-
 }
