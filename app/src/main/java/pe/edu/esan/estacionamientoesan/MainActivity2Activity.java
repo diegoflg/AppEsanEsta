@@ -580,6 +580,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     tvLAlonso.setVisibility(View.VISIBLE);
                     btAlonso.setVisibility(View.VISIBLE);
                     sep3.setVisibility(View.VISIBLE);
+
                 }else{
                     //SE VA ALONSO
                     tvAlonso.setVisibility(View.GONE);
