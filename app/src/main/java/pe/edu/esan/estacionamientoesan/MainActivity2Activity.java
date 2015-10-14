@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.location.Location;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -76,6 +77,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
 
+
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -93,6 +95,10 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         final ProgressDialog dialog = ProgressDialog.show(this, "", "Please wait, Loading Page...", true);
 
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
+
+        AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
 
         //FUENTE Y COLOR PARA TEXTVIEWS
         String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
@@ -111,7 +117,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         btir = (Button) findViewById(R.id.btir);
          */
 
-        final MediaPlayer mp = MediaPlayer.create(this.getApplicationContext(), R.raw.hifi);
+
         final Handler h = new Handler();
         final int delay = 5000; //milliseconds
 
