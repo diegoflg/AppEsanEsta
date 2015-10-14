@@ -575,17 +575,18 @@ public class MainActivity2Activity extends ActionBarActivity implements
                         horac.contains("17:") || horac.contains("18:")){
 
                     //APARECE ALONSO
+                    sep3.setVisibility(View.VISIBLE);
                     tvAlonso.setVisibility(View.VISIBLE);
                     tvLAlonso.setVisibility(View.VISIBLE);
                     btAlonso.setVisibility(View.VISIBLE);
-                    sep3.setVisibility(View.VISIBLE);
+
 
                 }else{
                     //SE VA ALONSO
+                    sep3.setVisibility(View.GONE);
                     tvAlonso.setVisibility(View.GONE);
                     tvLAlonso.setVisibility(View.GONE);
                     btAlonso.setVisibility(View.GONE);
-                    sep3.setVisibility(View.GONE);
                 }
 
                 if( horac.contains("06:3")|| horac.contains("06:4")|| horac.contains("06:5")||
