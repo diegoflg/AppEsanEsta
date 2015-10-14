@@ -519,7 +519,7 @@ public class MainActivity extends ActionBarActivity {
 
             //Ejecuta la clase del mismo nombre
 
-            showPopup(MainActivity.this);
+            showPopup(this);
 
 
         }else{
@@ -752,7 +752,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void showPopup(final Activity context) {
         DisplayMetrics displaymetrics = new DisplayMetrics();
-        MainActivity.this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
         double width = displaymetrics.widthPixels;
 
@@ -785,7 +785,9 @@ public class MainActivity extends ActionBarActivity {
         // con un CREATE desde ASSETS con la ruta STRING
 
         // Getting a reference to Close button, and close the popup when clicked.
+        //Buton de Cancelar
         Button close = (Button) layout.findViewById(R.id.call3);
+        //Boton Aceptar
         Button call = (Button) layout.findViewById(R.id.close3);
         call.setTypeface(TPP);
         close.setTypeface(TPP);
@@ -814,7 +816,9 @@ public class MainActivity extends ActionBarActivity {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                popup.dismiss();
                 new logg().execute();
+
             }
         });
 
