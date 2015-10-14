@@ -130,24 +130,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //Separador 2
         View sep2 = (View)findViewById(R.id.sep2);
         sep2.setVisibility(View.VISIBLE);
-        //Titulo Alonso de Molina
-        TextView tvAlonso = (TextView) findViewById(R.id.textView3);
-        tvAlonso.setVisibility(View.GONE);
-        //Texto lugar Alonso
-        TextView tvLAlonso= (TextView) findViewById(R.id.textView6);
-        tvLAlonso.setVisibility(View.GONE);
-        //Boton Alonso
-        final Button btAlonso = (Button)findViewById(R.id.btAlonso);
-        btAlonso.setVisibility(View.GONE);
-
-        //Separador 3
-        View sep3 = (View)findViewById(R.id.sep3);
-        sep3.setVisibility(View.GONE);
         //Titulo Polo
-        TextView tvPolo = (TextView) findViewById(R.id.textView4);
+        TextView tvPolo = (TextView) findViewById(R.id.textView3);
         tvPolo.setVisibility(View.GONE);
         //Texto lugar  Polo
-        TextView tvLPolo = (TextView) findViewById(R.id.textView5);
+        TextView tvLPolo = (TextView) findViewById(R.id.textView6);
         tvLPolo.setVisibility(View.GONE);
         //Boton Polo
         final Button btPolo = (Button)findViewById(R.id.btPolo);
@@ -155,6 +142,20 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //Boton ir Polo
         Button btIr = (Button)findViewById(R.id.btir);
         btIr.setVisibility(View.GONE);
+
+        //Separador 3
+        View sep3 = (View)findViewById(R.id.sep3);
+        sep3.setVisibility(View.GONE);
+        //Titulo Alonso de Molina
+        TextView tvAlonso = (TextView) findViewById(R.id.textView4);
+        tvAlonso.setVisibility(View.GONE);
+        //Texto lugar Alonso
+        TextView tvLAlonso= (TextView) findViewById(R.id.textView5);
+        tvLAlonso.setVisibility(View.GONE);
+        //Boton Alonso
+        final Button btAlonso = (Button)findViewById(R.id.btAlonso);
+        btAlonso.setVisibility(View.GONE);
+
         //Separador 4
         View sep4 = (View)findViewById(R.id.sep4);
         sep4.setVisibility(View.GONE);
@@ -435,23 +436,27 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         //Separador 2
         View sep2 = (View)findViewById(R.id.sep2);
-        //Titulo Alonso de Molina
-        TextView tvAlonso = (TextView) findViewById(R.id.textView3);
-        //Texto lugar Alonso
-        TextView tvLAlonso= (TextView) findViewById(R.id.textView6);
-        //Boton Alonso
-        Button btAlonso = (Button)findViewById(R.id.btAlonso);
-
-        //Separador 3
-        View sep3 = (View)findViewById(R.id.sep3);
         //Titulo Polo
-        TextView tvPolo = (TextView) findViewById(R.id.textView4);
+        TextView tvPolo = (TextView) findViewById(R.id.textView3);
         //Texto lugar  Polo
-        TextView tvLPolo = (TextView) findViewById(R.id.textView5);
+        TextView tvLPolo = (TextView) findViewById(R.id.textView6);
         //Boton Polo
         Button btPolo = (Button)findViewById(R.id.btPolo);
         //Boton ir Polo
         Button btIr = (Button)findViewById(R.id.btir);
+
+
+        //Separador 3
+        View sep3 = (View)findViewById(R.id.sep3);
+        //Titulo Alonso de Molina
+        TextView tvAlonso = (TextView) findViewById(R.id.textView4);
+        //Texto lugar Alonso
+        TextView tvLAlonso= (TextView) findViewById(R.id.textView5);
+        //Boton Alonso
+        Button btAlonso = (Button)findViewById(R.id.btAlonso);
+
+
+
 
         //Separador 4
         View sep4 = (View)findViewById(R.id.sep4);
@@ -531,19 +536,19 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 if(horac.contains("18:") || horac.contains("19:") || horac.contains("20:")||
                    horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
 
-                    //APARECE ALONSO
-                    tvAlonso.setVisibility(View.VISIBLE);
-                    tvLAlonso.setVisibility(View.VISIBLE);
-                    btAlonso.setVisibility(View.VISIBLE);
-
                     //APARECE EL POLO
-                    sep3.setVisibility(View.VISIBLE);
                     tvPolo.setVisibility(View.VISIBLE);
                     tvLPolo.setVisibility(View.VISIBLE);
                     btPolo.setVisibility(View.VISIBLE);
                     btIr.setVisibility(View.VISIBLE);
+                    sep3.setVisibility(View.VISIBLE);
 
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.VISIBLE);
+                    tvLAlonso.setVisibility(View.VISIBLE);
+                    btAlonso.setVisibility(View.VISIBLE);
                     sep4.setVisibility(View.VISIBLE);
+
                 }else {
                     /* Si fuera else if:
                     if(horac.contains("00:") || horac.contains("01:") || horac.contains("02:") ||
@@ -553,42 +558,21 @@ public class MainActivity2Activity extends ActionBarActivity implements
                          horac.contains("12:") || horac.contains("13:") || horac.contains("14:") ||
                          horac.contains("15:") || horac.contains("16:") || horac.contains("17:") )
                      */
-                    //SE VA ALONSO
-                        tvAlonso.setVisibility(View.GONE);
-                        tvLAlonso.setVisibility(View.GONE);
-                        btAlonso.setVisibility(View.GONE);
 
                     //SE VA EL POLO
-                        sep3.setVisibility(View.GONE);
                         tvPolo.setVisibility(View.GONE);
                         tvLPolo.setVisibility(View.GONE);
                         btPolo.setVisibility(View.GONE);
                         btIr.setVisibility(View.GONE);
+                        sep3.setVisibility(View.GONE);
 
-                        sep4.setVisibility(View.GONE);
-                }
-            } else if( diac.contains("Saturday")){
-                if( horac.contains("07:3")|| horac.contains("07:4")|| horac.contains("07:5")||
-                        horac.contains("08:") || horac.contains("09:") || horac.contains("10:") ||
-                        horac.contains("11:") || horac.contains("12:") || horac.contains("13:") ||
-                        horac.contains("14:") || horac.contains("15:") || horac.contains("16:") ||
-                        horac.contains("17:") || horac.contains("18:")){
-
-                    //APARECE ALONSO
-                    sep3.setVisibility(View.VISIBLE);
-                    tvAlonso.setVisibility(View.VISIBLE);
-                    tvLAlonso.setVisibility(View.VISIBLE);
-                    btAlonso.setVisibility(View.VISIBLE);
-
-
-                }else{
                     //SE VA ALONSO
-                    sep3.setVisibility(View.GONE);
                     tvAlonso.setVisibility(View.GONE);
                     tvLAlonso.setVisibility(View.GONE);
                     btAlonso.setVisibility(View.GONE);
+                    sep4.setVisibility(View.GONE);
                 }
-
+            } else if( diac.contains("Saturday")){
                 if( horac.contains("06:3")|| horac.contains("06:4")|| horac.contains("06:5")||
                         horac.contains("07:") || horac.contains("08:") || horac.contains("09:") ||
                         horac.contains("10:") || horac.contains("11:") || horac.contains("12:") ||
@@ -600,7 +584,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     tvLPolo.setVisibility(View.VISIBLE);
                     btPolo.setVisibility(View.VISIBLE);
                     btIr.setVisibility(View.VISIBLE);
-                    sep4.setVisibility(View.VISIBLE);
+                    sep3.setVisibility(View.VISIBLE);
 
                 }else{
                     //SE VA EL POLO
@@ -608,21 +592,44 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     tvLPolo.setVisibility(View.GONE);
                     btPolo.setVisibility(View.GONE);
                     btIr.setVisibility(View.GONE);
+                    sep3.setVisibility(View.GONE);
+                }
+
+
+                if( horac.contains("07:3")|| horac.contains("07:4")|| horac.contains("07:5")||
+                        horac.contains("08:") || horac.contains("09:") || horac.contains("10:") ||
+                        horac.contains("11:") || horac.contains("12:") || horac.contains("13:") ||
+                        horac.contains("14:") || horac.contains("15:") || horac.contains("16:") ||
+                        horac.contains("17:") || horac.contains("18:")){
+
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.VISIBLE);
+                    tvLAlonso.setVisibility(View.VISIBLE);
+                    btAlonso.setVisibility(View.VISIBLE);
+                    sep4.setVisibility(View.VISIBLE);
+
+
+                }else{
+                    //SE VA ALONSO
+                    tvAlonso.setVisibility(View.GONE);
+                    tvLAlonso.setVisibility(View.GONE);
+                    btAlonso.setVisibility(View.GONE);
                     sep4.setVisibility(View.GONE);
                 }
 
 
             } else if(diac.contains("Sunday")){
-                //SE VA ALONSO
-                tvAlonso.setVisibility(View.GONE);
-                tvLAlonso.setVisibility(View.GONE);
-                btAlonso.setVisibility(View.GONE);
                 //SE VA EL POLO
-                sep3.setVisibility(View.GONE);
                 tvPolo.setVisibility(View.GONE);
                 tvLPolo.setVisibility(View.GONE);
                 btPolo.setVisibility(View.GONE);
                 btIr.setVisibility(View.GONE);
+                sep3.setVisibility(View.GONE);
+
+                //SE VA ALONSO
+                tvAlonso.setVisibility(View.GONE);
+                tvLAlonso.setVisibility(View.GONE);
+                btAlonso.setVisibility(View.GONE);
                 sep4.setVisibility(View.GONE);
             }
 
