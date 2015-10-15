@@ -6,7 +6,7 @@
     >
 
 <RelativeLayout
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -53,18 +53,42 @@
         android:background="@drawable/edittext"
         android:inputType="textPassword"/>
 
+
+    <Space android:id="@+id/dummy"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_below="@id/et2"
+        android:layout_marginTop="30dp"/>
+
     <Button
         android:id="@+id/button"
         android:onClick="logstart"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/btAcceder"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/et2"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/mybutton"
         android:textColor="#FFFFFF"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_toLeftOf="@+id/dummy"
+        android:layout_alignTop="@+id/dummy"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="register"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Registrarse"
+        android:background="@drawable/mybutton"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/dummy"
+        android:layout_toEndOf="@+id/dummy"
+        android:layout_alignTop="@+id/dummy"
+         />
 
 </RelativeLayout>
 </ScrollView>
