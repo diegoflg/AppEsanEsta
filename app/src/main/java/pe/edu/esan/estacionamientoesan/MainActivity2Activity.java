@@ -255,6 +255,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     if(tvPolo.getVisibility()==View.VISIBLE){
                         Log.i("CAMBIO", "CAMBIO ALONSO SUENA");
 
+
                         if(estadoalonso.equals("verde")){
                             Log.i("COLOR CAMBIO", "ALONSO A VERDE");
                             mp.start();
