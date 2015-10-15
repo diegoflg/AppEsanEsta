@@ -97,8 +97,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
 
-        AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
 
         //FUENTE Y COLOR PARA TEXTVIEWS
         String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
@@ -233,32 +231,26 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 }
 
                 if (estado.equals(estado2)) {
+                    Log.i("CAMBIO", "NEGATIVO CAMBIO 1");
                 } else {
-                    if (Datah.getInstance().getMenu() == 1) {
-
-
-                        mp.start();
-                    }
+                    Log.i("CAMBIO", "CAMBIO 1 DENTRO DEL ELSE");
+                    mp.start();
                 }
 
 
                 if (estadoalonso.equals(estado22)) {
+                    Log.i("CAMBIO", "NEGATIVO CAMBIO 2");
                 } else {
-                    if (Datah.getInstance().getMenu() == 1) {
+                    Log.i("CAMBIO", "CAMBIO 2 DENTRO DEL ELSE");
+                    mp.start();
 
-
-                        //MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                        mp.start();
-                    }
                 }
 
                 if (estadopolo.equals(estado23)) {
+                    Log.i("CAMBIO", "NEGATIVO CAMBIO 3");
                 } else {
-                    if (Datah.getInstance().getMenu() == 1) {
-
-                        //MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                        mp.start();
-                    }
+                    Log.i("CAMBIO", "CAMBIO 3 DENTRO DEL ELSE");
+                    mp.start();
                 }
 
                 if (isNetworkAvailable() == false) {
