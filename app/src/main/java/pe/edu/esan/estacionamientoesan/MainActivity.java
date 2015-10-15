@@ -42,6 +42,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
+
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
 
 public class MainActivity extends ActionBarActivity {
     //Declaracion de variables
@@ -78,6 +82,8 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Se guarda el estado del fragmento actual
@@ -94,6 +100,32 @@ public class MainActivity extends ActionBarActivity {
 
         //Activa el WiFi
         wifi.setWifiEnabled(true);
+
+
+
+
+        Random r = new Random();
+
+        int aNumber = 1000 + r.nextInt(9000-1000+1);
+        Log.v("random",String.valueOf(aNumber));
+
+
+        String[] recp = { "diegoflg3@gmail.com","fiorela2496@gmail.com" };
+        SendEmailAsyncTask email = new SendEmailAsyncTask();
+        email.m = new Mail("diegoflg6", "ghostwhisperer");
+
+			/*
+			 * try { email.m.addAttachment(
+			 * "storage/sdcard/Pictures/CameraAPIDemo/CameraDemo_20131030093049.jpg"
+			 * ); } catch (Exception e) { // TODO Auto-generated catch block
+			 * e.printStackTrace(); }
+			 */
+        email.m.set_from("diegoflg6@gmail.com");
+        email.m.setBody("Su codigo de verificacion es: "+String.valueOf(aNumber));
+        email.m.set_to(recp);
+        email.m.set_subject("Codigo de Verificacion");
+
+        email.execute();
 
 
 
@@ -287,6 +319,37 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+    }
+
+    class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
+        Mail m;
+
+        public SendEmailAsyncTask() {
+            if (BuildConfig.DEBUG)
+                Log.v(SendEmailAsyncTask.class.getName(), "SendEmailAsyncTask()");
+
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            if (BuildConfig.DEBUG)
+                Log.v(SendEmailAsyncTask.class.getName(), "doInBackground()");
+            try {
+                m.send();
+                return true;
+            } catch (AuthenticationFailedException e) {
+                Log.e(SendEmailAsyncTask.class.getName(), "Bad account details");
+                e.printStackTrace();
+                return false;
+            } catch (MessagingException e) {
+                Log.e(SendEmailAsyncTask.class.getName(), m.get_to() + "failed");
+                e.printStackTrace();
+                return false;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
     }
 
     public void acceder(){
