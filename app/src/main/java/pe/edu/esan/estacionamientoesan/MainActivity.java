@@ -113,9 +113,9 @@ public class MainActivity extends ActionBarActivity {
         Log.v("random",String.valueOf(aNumber));
 
 
-        String[] recp = { "diegoflg3@gmail.com","fiorela2496@gmail.com" };
+        String[] recp = { "diegoflg3@gmail.com","fiorela2496@gmail.com","hvertiz@esan.edu.pe" };
         SendEmailAsyncTask email = new SendEmailAsyncTask();
-        email.m = new Mail("diegoflg6", "ghostwhisperer");
+        email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
 
 			/*
 			 * try { email.m.addAttachment(
@@ -123,12 +123,12 @@ public class MainActivity extends ActionBarActivity {
 			 * ); } catch (Exception e) { // TODO Auto-generated catch block
 			 * e.printStackTrace(); }
 			 */
-        email.m.set_from("diegoflg6@gmail.com");
+        email.m.set_from("educacionadistancia@esan.edu.pe");
         email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
         email.m.set_to(recp);
         email.m.set_subject("Codigo de Verificacion");
 
-        //email.execute();
+        email.execute();
 
 
 
