@@ -25,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -104,6 +105,8 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+
+
         Random r = new Random();
 
         int aNumber = 1000 + r.nextInt(9000-1000+1);
@@ -121,11 +124,11 @@ public class MainActivity extends ActionBarActivity {
 			 * e.printStackTrace(); }
 			 */
         email.m.set_from("diegoflg6@gmail.com");
-        email.m.setBody("Su codigo de verificacion es: "+String.valueOf(aNumber));
+        email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
         email.m.set_to(recp);
         email.m.set_subject("Codigo de Verificacion");
 
-        email.execute();
+        //email.execute();
 
 
 
@@ -570,6 +573,13 @@ public class MainActivity extends ActionBarActivity {
         //Intent i = new Intent(this,MainActivity2Activity.class);
         //AstartActivity(i);
 
+    }
+
+    public void register(View v){
+
+
+        Intent o = new Intent(getApplicationContext(), Formulario.class);
+        startActivity(o);
     }
 
 
