@@ -377,51 +377,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    private class LoadTIME extends AsyncTask<Void, Void, Void> {
-        //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
-        //Pagina web real: http://www.timeanddate.com/worldclock/fullscreen.html?n=131
-        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/fullscreen.html?n=131#
-        @Override
-        protected void onPostExecute(Void result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            // Here you can do any UI operations like textview.setText("test");
-        }
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            // TODO Auto-generated method stub
-            String url = "http://www.timeanddate.com/worldclock/fullscreen.html?n=131#";
-            Document doc = null;
-            try {
-                //TIEMPO CON HH:MM:SS
-                doc = Jsoup.connect(url).get();
-                Elements metaElem = doc.select("div[id=i_time]");
-                String name = metaElem.text();
-                Log.i("TIEMPO", "NAME : " + name);
-
-                /*
-                //Elements topicList = doc.select("h2.topic");
-                //Log.i("TIEMPO", "META: " + metaElem);
-                //Log.i("TIEMPO", "TOPICLIST : " + topicList);
-                Elements links = doc.select("a[href]"); // a with href
-                Element masthead = doc.select("div.masthead").first();
-                // div with class=masthead
-                Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
-                Log.i("TIEMPO", "AHREF: " + links);
-                Log.i("TIEMPO", "MASTHEAD: " + masthead);
-                Log.i("TIEMPO", "ResultLinks : " + resultLinks);
-                */
-
-
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                Log.i("TIEMPO", "ERROR");
-            }
-            return null;
-        }
-    }
 
 
     //SEGUNDA OPCION:
