@@ -1,6 +1,7 @@
 package pe.edu.esan.estacionamientoesan;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -161,6 +162,11 @@ public class Formulario extends ActionBarActivity {
         email.m.set_subject("Código de Verificación");
 
         //email.execute();
+
+
+        Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+        //finish();
+        startActivity(i);
     }
 
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
