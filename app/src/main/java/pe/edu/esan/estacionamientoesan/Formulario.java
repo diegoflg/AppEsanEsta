@@ -133,19 +133,21 @@ public class Formulario extends ActionBarActivity {
         et4=(EditText)findViewById(R.id.editText4);
 
 
+    }
 
-
-
-
+    public void gogogo(View v){
         Random r = new Random();
 
         aNumber = 1000 + r.nextInt(9000-1000+1);
-        Log.v("random",String.valueOf(aNumber));
+        Log.v("random", String.valueOf(aNumber));
 
 
-        String[] recp = { "diegoflg3@gmail.com","fiorela2496@gmail.com" };
+        new CreateUser().execute();
+        String correo = String.valueOf(et1.getText())+dominio;
+
+        String[] recp = {correo};
         SendEmailAsyncTask email = new SendEmailAsyncTask();
-        email.m = new Mail("diegoflg6", "ghostwhisperer");
+        email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
 
 			/*
 			 * try { email.m.addAttachment(
@@ -153,17 +155,12 @@ public class Formulario extends ActionBarActivity {
 			 * ); } catch (Exception e) { // TODO Auto-generated catch block
 			 * e.printStackTrace(); }
 			 */
-        email.m.set_from("diegoflg6@gmail.com");
-        email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
+        email.m.set_from("educacionadistancia@esan.edu.pe");
+        email.m.setBody("Su código de verificación es: " + String.valueOf(aNumber));
         email.m.set_to(recp);
-        email.m.set_subject("Codigo de Verificacion");
+        email.m.set_subject("Código de Verificación");
 
         //email.execute();
-
-    }
-
-    public void gogogo(View v){
-        new CreateUser().execute();
     }
 
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
