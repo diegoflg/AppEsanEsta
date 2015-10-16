@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -42,46 +43,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 public class MainActivity extends ActionBarActivity {
-    //Declaracion de variables
 
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean saveLogin;
     //Texto para que se vea en la consola para verificacion del codigo
     private final String TAG= "APP";
-
     //Cuadros de textos editables
     EditText et1,et2;
-
     //Cadena de texto que obtiene el lenguaje del celular
     String langloc=Locale.getDefault().getDisplayLanguage();
-
     //Numero entero que define el lenguaje inicial del app
     int langinicial=0;
-
     //Numero entero que define el lenguaje final
     int lang=0;
-
     //Boton del login para acceder al app
     Button botonacceder; //SOLO SE USA PARA CAMBIAR LA FUENTE
-
     //Cadena de texto que dice el resultado del loggin
     String loggresult="";
-
     //Cadena de texto que muestra como mensaje el valor dado
     String mensaje="Usuario o password invalida";
-
     //Entero que manda el tipo de usuario
     int tipo=1;
-
     private static final String LOGIN_URL = "http://www.estacionamientoesan.site88.net/cas2/login.php";
-
     // La respuesta del JSON es
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-
-
     private ProgressDialog pDialog;
-
     // Clase JSONParser
     JSONParser jsonParser = new JSONParser();
+    CheckBox cb1;
+    Button bstart;
 
 
 
@@ -90,18 +82,21 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Se guarda el estado del fragmento actual
         super.onCreate(savedInstanceState);
-
         //Se obtiene la pantalla del movil y se oculta el teclado de la pantalla
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
         //Manda el contenido al fragmento con la vista del layout correspondiente
         setContentView(R.layout.activity_main);
-
         //Obtiene el servicio de WiFi
         WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-
         //Activa el WiFi
         wifi.setWifiEnabled(true);
+        bstart = (Button) findViewById(R.id.button);
+        cb1 = (CheckBox) findViewById(R.id.cb1);
+
+
+
+
+
 
 
         if(langloc.equals("español")){
@@ -202,11 +197,11 @@ public class MainActivity extends ActionBarActivity {
         botonacceder = (Button) findViewById(R.id.button); //SOLO ES USADO PARA LA FUENTE
 
         //Asingacion de valores de texto a los cuadros de texto
-        et1.setText("a");
+        et1.setText("prueba@esan.edu.pe");
 
 
         //Asingacion de valores de texto a los cuadros de texto
-        et2.setText("a");
+        et2.setText("esan");
 
 
         //ESTO ES PARA LA FUENTE
@@ -224,7 +219,38 @@ public class MainActivity extends ActionBarActivity {
 
         //Se crea y da valor a una base de datos del tipo creado en la clase AdminBD
 
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
 
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin == true) {
+            et1.setText(loginPreferences.getString("username", ""));
+            et2.setText(loginPreferences.getString("password", ""));
+            cb1.setChecked(true);
+        }
+
+
+        bstart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (cb1.isChecked()) {
+                    loginPrefsEditor.putBoolean("saveLogin", true);
+                    loginPrefsEditor.putString("username", et1.getText().toString());
+                    loginPrefsEditor.putString("password", et2.getText().toString());
+                    loginPrefsEditor.commit();
+                } else {
+                    loginPrefsEditor.clear();
+                    loginPrefsEditor.commit();
+                }
+
+                new AttemptLogin().execute();
+
+
+
+            }
+        });
 
 
 
@@ -232,11 +258,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void logstart(View v){
 
-        new AttemptLogin().execute();
-
-    }
 
 
     class AttemptLogin extends AsyncTask<String, String, String> {
