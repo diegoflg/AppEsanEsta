@@ -420,6 +420,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         //Separador 1
 
+
         //Titulo Esan
         TextView tvEsan = (TextView) findViewById(R.id.textView);
         //Texto lugar esan
