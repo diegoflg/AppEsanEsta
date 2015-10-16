@@ -124,15 +124,10 @@ public class Formulario extends ActionBarActivity {
 
 
 
-
-
-
         et1=(EditText)findViewById(R.id.editText);
         et2=(EditText)findViewById(R.id.editText2);
         et3=(EditText)findViewById(R.id.editText3);
         et4=(EditText)findViewById(R.id.editText4);
-
-
     }
 
     public void gogogo(View v){
@@ -141,10 +136,44 @@ public class Formulario extends ActionBarActivity {
         aNumber = 1000 + r.nextInt(9000-1000+1);
         Log.v("random", String.valueOf(aNumber));
 
+        String usM = et1.getText().toString();
 
-        new CreateUser().execute();
+
+
+
+        if(dominio.equals("@ue.edu.pe")){
+            if(usM.length()==8){
+                try{
+                    int usMN = Integer.parseInt(usM);
+                    new CreateUser().execute();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(this, "El correo solo debe contener numeros", Toast.LENGTH_LONG).show();
+                }
+
+            }else{
+                Toast.makeText(this,"El correo ingresado es incorrecto", Toast.LENGTH_LONG).show();
+            }
+        }else if(dominio.equals("@esan.edu.pe")){
+            try{
+                int usMN = Integer.parseInt(usM);
+                String usMn = String.valueOf(usMN);
+                if(usMn.length()==7){
+                    new CreateUser().execute();
+                }else{
+                    Toast.makeText(this,"El correo solo debe contener 7 digitos", Toast.LENGTH_LONG).show();
+                }
+            }catch (Exception e){
+                new CreateUser().execute();
+            }
+
+
+        }
+
+
+
+
         String correo = String.valueOf(et1.getText())+dominio;
-
         String[] recp = {correo};
         SendEmailAsyncTask email = new SendEmailAsyncTask();
         email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
