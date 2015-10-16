@@ -18,6 +18,20 @@
     <string name="LugPolo">Av. El Polo cdra. 9</string>
 
 
+    <!-- LAY CORREO.XML -->
+    <string name="correo">Correo</string>
+    <string name="enviarCod">Enviar código</string>
+
+
+    <!-- LAY DATOS.XML -->
+    <string name="placa">"Placa: "</string>
+    <string name="telefono">"Teléfono: "</string>
+    <string name="contraseña">"Escriba una contraseña: "</string>
+    <string name="codigo">"Digite el código de verificación: "</string>
+    <string name="cbAcepta">"Acepto los términos y condiciones"</string>
+    <string name="aceptar">"Aceptar"</string>
+
+
     <!-- POPUP3.XML -->
     <string name="tvTC">Términos y Condiciones</string>
     <string name="btAcep">Aceptar</string>
