@@ -24,6 +24,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -80,10 +82,6 @@ public class MainActivity extends ActionBarActivity {
 
     // Clase JSONParser
     JSONParser jsonParser = new JSONParser();
-
-
-
-
 
 
 
@@ -238,7 +236,6 @@ public class MainActivity extends ActionBarActivity {
 
         new AttemptLogin().execute();
 
-
     }
 
 
@@ -321,5 +318,30 @@ public class MainActivity extends ActionBarActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        switch (id)
+        {
+            case R.id.salir:
+                this.finish();
+                return true;
+            default:return super.onOptionsItemSelected(item);
+
+        }
+        //noinspection SimplifiableIfStatement
+    }
 
 }

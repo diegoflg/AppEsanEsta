@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -70,11 +72,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
     TextView textViewestareg;
 
     TextView textView3;
-
-    //ELEMENTOS PERTENECIENTES AL SLIDING UP PANEL
-
-
-
 
 
 
@@ -362,9 +359,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         Toast.makeText(this, "Failed to connect...", Toast.LENGTH_SHORT).show();
-
     }
-
 
     class LoadAllProducts extends AsyncTask<String, String, String> {
 
@@ -409,10 +404,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-
-
-
-    //SEGUNDA OPCION:
     private class LoadTIME2 extends AsyncTask<Void, Void, Void> {
         //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
         //Pagina web real: http://www.timeanddate.com/worldclock/peru/lima
@@ -631,4 +622,31 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main_activity2,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        switch (id)
+        {
+            case R.id.cerrars:
+                this.finish();
+                return true;
+            default:return super.onOptionsItemSelected(item);
+
+        }
+        //noinspection SimplifiableIfStatement
+    }
+
 }
