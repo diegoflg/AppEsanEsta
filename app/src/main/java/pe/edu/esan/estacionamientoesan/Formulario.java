@@ -165,7 +165,11 @@ public class Formulario extends ActionBarActivity {
                     Toast.makeText(this,"El correo solo debe contener 7 digitos", Toast.LENGTH_LONG).show();
                 }
             }catch (Exception e){
+
+             //FALTA VALIDAR LOS SIGNOS
                 new CreateUser().execute();
+
+
             }
 
 
@@ -186,9 +190,9 @@ public class Formulario extends ActionBarActivity {
 			 * e.printStackTrace(); }
 			 */
         email.m.set_from("educacionadistancia@esan.edu.pe");
-        email.m.setBody("Su código de verificación es: " + String.valueOf(aNumber));
+        email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
         email.m.set_to(recp);
-        email.m.set_subject("Código de Verificación");
+        email.m.set_subject("Codigo de Verificacion");
 
         //email.execute();
 
