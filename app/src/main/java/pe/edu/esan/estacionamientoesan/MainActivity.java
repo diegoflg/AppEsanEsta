@@ -222,6 +222,7 @@ public class MainActivity extends ActionBarActivity {
         //Asingacion de valores de texto a los cuadros de texto
         et1.setText("a");
 
+
         //Asingacion de valores de texto a los cuadros de texto
         et2.setText("a");
 
