@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +48,7 @@ public class Formulario extends ActionBarActivity {
     private static final String TAG_NOMBRE = "correo";
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
+    String dominio="@esan.edu.pe";
 
     EditText et1,et2,et3,et4,et5,et6,et7;
     int aNumber;
@@ -72,6 +74,39 @@ public class Formulario extends ActionBarActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+                //Declaracion de numero entero que obtiene la posicion del item seleccionado
+                int index = arg0.getSelectedItemPosition();
+
+                //Se le da un valor al lenguaje
+                if(index==0){
+
+                    dominio="@esan.edu.pe";
+
+                }
+
+                if(index==1){
+
+                    dominio="@ue.edu.pe";
+
+                }
+
+                Log.v("dominio",dominio);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                //Metodo cuando nada es seleccionado
+            }
+        });
+
+
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         fechadia=date;
         Log.v("fecha",date);
@@ -182,7 +217,7 @@ public class Formulario extends ActionBarActivity {
             try {
                 // Building Parameters
                 List params = new ArrayList();
-                params.add(new BasicNameValuePair("correo", correo));
+                params.add(new BasicNameValuePair("correo", correo+dominio));
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("placa1", placa1));
                 params.add(new BasicNameValuePair("telefono", telefono));

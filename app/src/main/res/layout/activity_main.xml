@@ -53,6 +53,32 @@
         android:background="@drawable/edittext"
         android:inputType="textPassword"/>
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb1"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/et2"
+        android:layout_alignLeft="@+id/et2"
+        android:layout_alignStart="@+id/et2"
+        android:layout_marginLeft="-8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recuérdame"
+        android:id="@+id/textView12"
+        android:layout_alignBaseline="@+id/cb1"
+        android:layout_alignBottom="@+id/cb1"
+        android:layout_toRightOf="@+id/cb1"
+        android:layout_toEndOf="@+id/cb1"
+        />
+
+
+
+
+
 
     <Space android:id="@+id/dummy"
         android:layout_width="0dp"
@@ -61,7 +87,7 @@
         android:layout_marginRight="15dp"
         android:layout_centerHorizontal="true"
         android:visibility="invisible"
-        android:layout_below="@id/et2"
+        android:layout_below="@id/cb1"
         android:layout_marginTop="30dp"/>
 
     <Button
