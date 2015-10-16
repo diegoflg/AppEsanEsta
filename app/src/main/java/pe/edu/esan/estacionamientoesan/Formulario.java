@@ -27,6 +27,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -107,9 +108,23 @@ public class Formulario extends ActionBarActivity {
         });
 
 
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        //String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        Calendar diaI = Calendar.getInstance();
+        SimpleDateFormat form = new SimpleDateFormat("dd:MM:yyyy");
+        String date = form.format(diaI.getTime());
+
         fechadia=date;
-        Log.v("fecha",date);
+        Log.v("fecha", "I: "+date);
+
+
+        //Date diaF = new Date(diaI.getTimeInMillis() + 604800000L); //7*24*60*60*1000
+        String f2 = form.format(new Date(diaI.getTimeInMillis() + 604800000L));
+        Log.i("fecha", "F: " + f2);
+
+
+
+
 
 
         et1=(EditText)findViewById(R.id.editText);
