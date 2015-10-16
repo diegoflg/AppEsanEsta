@@ -102,8 +102,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
         Typeface TFE = Typeface.createFromAsset(this.getAssets(), font_pathE);
         //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-        textViewestareg = (TextView) findViewById(R.id.textViewestareg);
-        textViewestareg.setTypeface(TFE);
+
 
 
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
@@ -122,7 +121,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         final Handler hT = new Handler();
 
         //Separador 1
-        View sep1 = (View)findViewById(R.id.sep1);
+
         //Titulo Esan
         TextView tvEsan = (TextView) findViewById(R.id.textView);
         //Texto lugar esan
@@ -420,7 +419,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/peru/lima
 
         //Separador 1
-        View sep1 = (View)findViewById(R.id.sep1);
+
         //Titulo Esan
         TextView tvEsan = (TextView) findViewById(R.id.textView);
         //Texto lugar esan
