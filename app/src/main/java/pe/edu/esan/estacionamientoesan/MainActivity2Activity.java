@@ -97,8 +97,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
 
-        AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
 
         //FUENTE Y COLOR PARA TEXTVIEWS
         String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
@@ -137,7 +135,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         View sep2 = (View)findViewById(R.id.sep2);
         sep2.setVisibility(View.VISIBLE);
         //Titulo Polo
-        TextView tvPolo = (TextView) findViewById(R.id.textView3);
+        final TextView tvPolo = (TextView) findViewById(R.id.textView3);
         tvPolo.setVisibility(View.GONE);
         //Texto lugar  Polo
         TextView tvLPolo = (TextView) findViewById(R.id.textView6);
@@ -233,31 +231,66 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 }
 
                 if (estado.equals(estado2)) {
+                    Log.i("CAMBIO", "ESAN NO CAMBIA");
                 } else {
-                    if (Datah.getInstance().getMenu() == 1) {
+                    Log.i("CAMBIO", "ESAN CAMBIA");
 
-
+                    if(estado.equals("verde")){
+                        Log.i("COLOR CAMBIO", "ESAN A VERDE");
+                        mp.start();
+                    }else if(estado.equals("rojo")){
+                        Log.i("COLOR CAMBIO", "ESAN A ROJO");
+                        mp.start();
+                    }else if(estado.equals("amarillo")){
+                        Log.i("COLOR CAMBIO", "ESAN A AMARILLO");
                         mp.start();
                     }
+
                 }
 
 
                 if (estadoalonso.equals(estado22)) {
+                    Log.i("CAMBIO", "ALONSO NO CAMBIA");
                 } else {
-                    if (Datah.getInstance().getMenu() == 1) {
+                    if(tvPolo.getVisibility()==View.VISIBLE){
+                        Log.i("CAMBIO", "CAMBIO ALONSO SUENA");
 
 
-                        //MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                        mp.start();
+                        if(estadoalonso.equals("verde")){
+                            Log.i("COLOR CAMBIO", "ALONSO A VERDE");
+                            mp.start();
+                        }else if(estadoalonso.equals("rojo")){
+                            Log.i("COLOR CAMBIO", "ALONSO A ROJO");
+                            mp.start();
+                        }else if(estadoalonso.equals("amarillo")){
+                            Log.i("COLOR CAMBIO", "ALONSO A AMARILLO");
+                            mp.start();
+                        }
+
+                    }else{
+                        Log.i("CAMBIO", "CAMBIO ALONSO SIN SONIDO");
                     }
                 }
 
                 if (estadopolo.equals(estado23)) {
+                    Log.i("CAMBIO", "POLO NO CAMBIA");
                 } else {
-                    if (Datah.getInstance().getMenu() == 1) {
+                    if(tvPolo.getVisibility()==View.VISIBLE){
+                         Log.i("CAMBIO", "CAMBIO POLO SUENA");
 
-                        //MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                        mp.start();
+                        if(estadopolo.equals("verde")){
+                            Log.i("COLOR CAMBIO", "POLO A VERDE");
+                            mp.start();
+                        }else if(estadopolo.equals("rojo")){
+                            Log.i("COLOR CAMBIO", "POLO A ROJO");
+                            mp.start();
+                        }else if(estadopolo.equals("amarillo")){
+                            Log.i("COLOR CAMBIO", "POLO A AMARILLO");
+                            mp.start();
+                        }
+
+                    }else{
+                        Log.i("CAMBIO", "CAMBIO POLO SIN SONIDO");
                     }
                 }
 
