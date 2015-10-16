@@ -14,14 +14,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="ESAN"
+            android:text="@string/ESAN"
             android:id="@+id/textView"
-        android:textSize="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp" />
+            android:textSize="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_marginEnd="26dp"
             android:layout_toEndOf="@+id/textView7"
             android:layout_toRightOf="@+id/textView7" />
-             />
+
 
     <View
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Alonso de la Molina"
+            android:text="@string/Alonso"
             android:id="@+id/textView4"
             android:layout_below="@+id/sep3"
             android:layout_alignLeft="@+id/textView3"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="El Polo"
+            android:text="@string/Polo"
             android:id="@+id/textView3"
             android:layout_marginTop="30dp"
             android:layout_below="@+id/sep2"
@@ -112,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Av. El Polo cdra. 9"
+        android:text="@string/LugPolo"
         android:id="@+id/textView6"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Av. Alonso de Molina 1520 "
+        android:text="@string/LugAlonso"
         android:id="@+id/textView5"
         android:layout_below="@+id/textView4"
         android:layout_alignLeft="@+id/textView4"
@@ -135,7 +135,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Av. Alonso de Molina 1652 "
+        android:text="@string/LugESAN"
         android:id="@+id/textView7"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"

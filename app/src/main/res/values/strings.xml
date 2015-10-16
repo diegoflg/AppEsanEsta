@@ -2,28 +2,37 @@
     <string name="app_name">ESAN</string>
 
     <!-- ACTIVITY_MAIN.XML -->
-    <string name="hintUsuario">. Usuario</string>
-    <string name="hintPassword">. Contraseña</string>
+    <string name="hintUsuario">" Usuario"</string>
+    <string name="hintPassword">" Contraseña"</string>
+    <string name="cbRecuerdame">Recuérdame</string>
     <string name="btAcceder">Acceder</string>
+    <string name="btRegistrarse">Registrarse</string>
 
 
-    <!-- LAY_POPUP.XML -->
-    <string name="tvPoptv2">Esto es un simple Popup</string>
-    <string name="btCerrar">Cerrar</string>
-    <string name="btLlamar">Llamar</string>
-    <string name="btPCerrar">Cerrar</string>
+    <!-- LAY_ESTACIONAMIENTO.XML -->
+    <string name="ESAN">ESAN</string>
+    <string name="LugESAN">Av. Alonso de Molina 1652</string>
+    <string name="Alonso">Alonso de la Molina</string>
+    <string name="LugAlonso">Av. Alonso de Molina 1520 </string>
+    <string name="Polo">El Polo</string>
+    <string name="LugPolo">Av. El Polo cdra. 9</string>
 
 
+    <!-- POPUP3.XML -->
+    <string name="tvTC">Términos y Condiciones</string>
+    <string name="btAcep">Aceptar</string>
+    <string name="btCan">Cancelar</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_formulario">Formulario</string>
 
-    <string name="hello_world">Hello world!</string>
+    <!-- MENÚS DE SALIDA-->
     <string name="menu_salir">Salir</string>
     <string name="menu_cerrar">Cerrar sesión</string>
     <string name="menu_regresar">Regresar</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_world">Hello world!</string>
+
 
     <string-array name="correos">
         <item>"@esan.edu.pe"</item>

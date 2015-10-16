@@ -67,16 +67,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recuérdame"
+        android:text="@string/cbRecuerdame"
         android:id="@+id/textView12"
         android:layout_alignBaseline="@+id/cb1"
         android:layout_alignBottom="@+id/cb1"
         android:layout_toRightOf="@+id/cb1"
         android:layout_toEndOf="@+id/cb1"
         />
-
-
-
 
 
 
@@ -107,7 +104,7 @@
         android:onClick="register"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
+        android:text="@string/btRegistrarse"
         android:background="@drawable/mybutton"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
