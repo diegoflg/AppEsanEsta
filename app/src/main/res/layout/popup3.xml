@@ -15,7 +15,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Condiciones"
+            android:text="@string/tvTC"
             android:layout_centerHorizontal="true"
             android:id="@+id/tv123"
             android:textColor="#ffff"
@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/pop3tv1"
-                    android:text="Area"
+                    android:text="Terminos y condiciones de uso"
                     android:textColor="#ffff" />
 
 
@@ -55,7 +55,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Aceptar" />
+                android:text="@string/btAcep" />
 
             <Button
                 android:id="@+id/call3"
@@ -63,7 +63,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancelar" />
+                android:text="@string/btCan" />
         </LinearLayout>
 
 
