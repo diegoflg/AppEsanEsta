@@ -2,6 +2,7 @@ package pe.edu.esan.estacionamientoesan;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,8 +14,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,6 +37,9 @@ public class Correo extends ActionBarActivity {
     int aNumber;
     String fechadia="";
 
+    TextView tvCorreo;
+    CheckBox cbTyC;
+    Button btEnviar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +89,19 @@ public class Correo extends ActionBarActivity {
         //Date diaF = new Date(diaI.getTimeInMillis() + 604800000L); //7*24*60*60*1000
         String f2 = form.format(new Date(diaI.getTimeInMillis() + 604800000L));
         Log.i("fecha", "F: " + f2);
+
+        //Esto es solo para determinar el tipo de fuente
+        tvCorreo = (TextView)findViewById(R.id.tvCorreo);
+        cbTyC = (CheckBox)findViewById(R.id.cbTyC);
+        btEnviar = (Button)findViewById(R.id.btEnviar);
+        Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/HelveticaNeue-Light.ttf");
+        tvCorreo.setTypeface(font);
+
+        etmail.setTypeface(font);
+        cbTyC.setTypeface(font);
+        btEnviar.setTypeface(font);
+
+
     }
 
     public void enviaCodigo(View v){

@@ -2,40 +2,62 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/tvCorreo"
         android:text="@string/correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#C90039"
+        android:padding="12dp"/>
 
     <EditText
         android:id="@+id/etmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/btEnviar"
-        android:layout_below="@id/tvCorreo"
-        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
+        android:layout_marginStart="10dp"
+        android:singleLine="true"
+        android:cursorVisible="true"
+        android:textColorHint="#C90039"
+        android:layout_below="@+id/tvCorreo"
+        android:ems="8"/>
 
     <Spinner
         android:id="@+id/spinnermail"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/etmail"
-        android:layout_alignLeft="@+id/btEnviar"
-        android:layout_alignStart="@+id/etmail"
-        />
+        android:layout_below="@+id/tvCorreo"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@+id/etmail"
+        android:layout_toEndOf="@id/etmail"/>
 
+
+    <CheckBox
+        android:id="@+id/cbTyC"
+        android:text="@string/cbAcepta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:onClick="verCondiciones"
+        android:layout_above="@+id/btEnviar"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:padding="5dp"/>
 
     <Button
         android:id="@+id/btEnviar"
@@ -44,8 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:textColor="#FFFFFF"
+        android:background="#C90039"
         android:onClick="enviaCodigo"
-        android:layout_margin="10dp" />
+        android:layout_margin="20dp" />
 
 </RelativeLayout>
 

@@ -19,8 +19,9 @@
 
 
     <!-- LAY CORREO.XML -->
-    <string name="correo">Correo</string>
-    <string name="enviarCod">Enviar código</string>
+    <string name="correo">Ingrese su correo</string>
+    <string name="cbAcepta">"Acepto los términos y condiciones"</string>
+    <string name="enviarCod">Enviar \n código</string>
 
 
     <!-- LAY DATOS.XML -->
@@ -28,7 +29,6 @@
     <string name="telefono">"Teléfono: "</string>
     <string name="contraseña">"Escriba una contraseña: "</string>
     <string name="codigo">"Digite el código de verificación: "</string>
-    <string name="cbAcepta">"Acepto los términos y condiciones"</string>
     <string name="aceptar">"Aceptar"</string>
 
 
