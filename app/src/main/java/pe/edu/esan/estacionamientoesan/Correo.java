@@ -102,10 +102,10 @@ public class Correo extends ActionBarActivity {
         tvCorreo = (TextView) findViewById(R.id.tvCorreo);
         textCB = (TextView) findViewById(R.id.textCB);
         btEnviar = (Button) findViewById(R.id.btEnviar);
-
+        Typeface fontBold = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/HelveticaNeue-Bold.ttf");
         Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/HelveticaNeue-Light.ttf");
 
-        tvCorreo.setTypeface(font);
+        tvCorreo.setTypeface(fontBold);
         etmail.setTypeface(font);
         btEnviar.setTypeface(font);
         textCB.setTypeface(font);
@@ -148,7 +148,7 @@ public class Correo extends ActionBarActivity {
 
         // FUENTE PARA TEXTO EN POPUP Y BOTONES:
         String font_pathPP = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
-        Typeface TPP = Typeface.createFromAsset(getAssets(),font_pathPP);//llamanos a la CLASS TYPEFACE y la definimos
+        Typeface TPP = Typeface.createFromAsset(getAssets(), font_pathPP);//llamanos a la CLASS TYPEFACE y la definimos
         // con un CREATE desde ASSETS con la ruta STRING
 
         // Getting a reference to Close button, and close the popup when clicked.

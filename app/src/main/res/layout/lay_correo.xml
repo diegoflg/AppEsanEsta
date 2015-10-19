@@ -33,7 +33,9 @@
         android:cursorVisible="true"
         android:textColorHint="#C90039"
         android:layout_below="@+id/tvCorreo"
-        android:ems="8"/>
+        android:background="@drawable/edittexts"
+        android:ems="8"
+         />
 
     <Spinner
         android:id="@+id/spinnermail"
