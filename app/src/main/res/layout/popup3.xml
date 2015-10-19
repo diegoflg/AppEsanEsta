@@ -12,33 +12,30 @@
         android:layout_height="fill_parent">
 
         <TextView
+            android:id="@+id/tvTCTit"
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tvTC"
             android:layout_centerHorizontal="true"
-            android:id="@+id/tv123"
             android:textColor="#ffff"
             android:textSize="15sp"/>
 
             <ScrollView
-                android:layout_below="@+id/tv123"
+                android:id="@+id/dss"
+                android:layout_below="@+id/tvTCTit"
                 android:layout_marginTop="5dp"
                 android:layout_width="fill_parent"
-
-                android:layout_height="280dp"
-                android:id="@+id/dss">
+                android:layout_height="280dp">
 
 
                 <TextView
+                    android:id="@+id/tvTCT"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pop3tv1"
                     android:text="Terminos y condiciones de uso"
                     android:textColor="#ffff" />
-
-
             </ScrollView>
 
         <LinearLayout
@@ -49,7 +46,7 @@
             android:layout_centerHorizontal="true">
 
             <Button
-                android:id="@+id/close3"
+                android:id="@+id/aceptar"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
@@ -58,7 +55,7 @@
                 android:text="@string/btAcep" />
 
             <Button
-                android:id="@+id/call3"
+                android:id="@+id/cancelar"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"

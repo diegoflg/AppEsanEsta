@@ -83,10 +83,8 @@
 
     <CheckBox
         android:id="@+id/cbTyC"
-        android:text="@string/cbAcepta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="verCondiciones"
         android:layout_below="@+id/etCodigo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp" />

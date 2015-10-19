@@ -20,8 +20,14 @@
 
     <!-- LAY CORREO.XML -->
     <string name="correo">Ingrese su correo</string>
-    <string name="cbAcepta">"Acepto los términos y condiciones"</string>
+    <string name="textoCB">"Acepto los términos y condiciones de uso"</string>
     <string name="enviarCod">Enviar \n código</string>
+    <!-- CORREO.JAVA -->
+    <string name="terminos">"He aquí los terminos y condiciones del uso de esta aplicacion"</string>
+    <string name="solonum">El correo solo debe contener numeros</string>
+    <string name="incorrecto">El correo ingresado es incorrecto</string>
+    <string name="solosiete">El correo solo debe contener 7 digitos</string>
+    <string name="debeAceptarTC">Debe aceptar los terminos y condiciones</string>
 
 
     <!-- LAY DATOS.XML -->

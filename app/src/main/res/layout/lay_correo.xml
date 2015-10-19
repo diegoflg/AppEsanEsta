@@ -46,18 +46,29 @@
         android:layout_toEndOf="@id/etmail"/>
 
 
-    <CheckBox
-        android:id="@+id/cbTyC"
-        android:text="@string/cbAcepta"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:onClick="verCondiciones"
-        android:layout_above="@+id/btEnviar"
-        android:layout_margin="10dp"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:padding="5dp"/>
+        android:layout_above="@+id/btEnviar"
+        android:padding="8dp">
+
+        <CheckBox
+            android:id="@+id/cbTyC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/textCB"
+            android:textSize="17sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textoCB" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btEnviar"
