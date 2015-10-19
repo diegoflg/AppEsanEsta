@@ -261,9 +261,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void register(View v){
-
-
-        Intent o = new Intent(getApplicationContext(), Formulario.class);
+        Intent o = new Intent(getApplicationContext(), Correo.class);
         startActivity(o);
     }
 
