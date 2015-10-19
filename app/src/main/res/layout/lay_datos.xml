@@ -4,87 +4,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+   <TextView
+            android:id="@+id/tvPlaca"
+            android:text="@string/placa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+       android:layout_marginTop="30dp"
+       android:layout_marginLeft="30dp"
+       android:textSize="18sp"
+       />
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <EditText
+        android:id="@+id/etPlaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPlaca"
+        android:layout_alignLeft="@+id/tvPlaca"
+        android:layout_alignStart="@+id/tvPlaca"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tvContraseña"
+        android:text="@string/contraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPlaca"
+        android:layout_alignLeft="@+id/etPlaca"
+        android:layout_alignStart="@+id/etPlaca"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/etContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvContraseña"
+        android:layout_alignLeft="@+id/tvContraseña"
+        android:layout_alignStart="@+id/tvContraseña"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tvTelefono"
+        android:text="@string/telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etContraseña"
+        android:layout_alignLeft="@+id/etContraseña"
+        android:layout_alignStart="@+id/etContraseña"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/etTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTelefono"
+        android:layout_alignLeft="@+id/tvTelefono"
+        android:layout_alignStart="@+id/tvTelefono"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tvCodigo"
+        android:text="@string/codigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTelefono"
+        android:layout_alignLeft="@+id/etTelefono"
+        android:layout_alignStart="@+id/etTelefono"
+        android:textSize="18sp"/>
 
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+    <EditText
+        android:id="@+id/etCodigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCodigo"
+        android:layout_alignLeft="@+id/tvCodigo"
+        android:layout_alignStart="@+id/tvCodigo"
+        android:textSize="18sp"/>
 
-            <TextView
-                android:id="@+id/tvPlaca"
-                android:text="@string/placa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+    <CheckBox
+        android:id="@+id/cbTyC"
+        android:text="@string/cbAcepta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="verCondiciones"
+        android:layout_below="@+id/etCodigo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
 
-
-            <EditText
-                android:id="@+id/etPlaca"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvPlaca"/>
-
-
-            <TextView
-                android:id="@+id/tvTelefono"
-                android:text="@string/telefono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
-            <EditText
-                android:id="@+id/etTelefono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tvContraseña"
-                android:text="@string/contraseña"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Button
+        android:id="@+id/aceptar"
+        android:text="@string/aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="aceptar"
+        android:layout_below="@+id/cbTyC"
+        android:layout_alignRight="@+id/tvContraseña"
+        android:layout_alignEnd="@+id/tvContraseña"
+        android:layout_marginTop="34dp" />
 
 
-            <EditText
-                android:id="@+id/etContraseña"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
 
-            <TextView
-                android:id="@+id/tvCodigo"
-                android:text="@string/codigo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
-            <EditText
-                android:id="@+id/etCodigo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
-            <CheckBox
-                android:id="@+id/cbTyC"
-                android:text="@string/cbAcepta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="verCondiciones"/>
 
-            <Button
-                android:id="@+id/aceptar"
-                android:text="@string/aceptar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="aceptar"/>
 
-        </RelativeLayout>
 
-    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </RelativeLayout>

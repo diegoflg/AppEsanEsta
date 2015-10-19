@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="Login"
+            android:label="Estacionamiento ESAN"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,11 +32,23 @@
         </activity>
         <activity
             android:name=".Formulario"
-            android:label="Registro" >
+            android:label="Registro"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Olvido"
-            android:label="@string/title_activity_olvido" >
+            android:label="@string/title_activity_olvido"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Correo"
+            android:label="Correo"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Datos"
+            android:label="Datos"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
