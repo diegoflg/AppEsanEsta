@@ -145,7 +145,7 @@ public class Correo extends ActionBarActivity {
         email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
         email.m.set_to(recp);
         email.m.set_subject("Codigo de Verificacion");
-        email.execute();
+        //email.execute();
 
         //Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
         //startActivity(i);
