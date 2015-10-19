@@ -347,6 +347,7 @@ public class Correo extends ActionBarActivity {
                                 email.m.set_to(recp);
                                 email.m.set_subject("Codigo de Verificacion");
                                 email.execute();
+                                finish();
 
                             }catch (Exception e){
                                 e.printStackTrace();
@@ -379,6 +380,7 @@ public class Correo extends ActionBarActivity {
                         email.m.set_to(recp);
                         email.m.set_subject("Codigo de Verificacion");
                         email.execute();
+                        finish();
 
 
 
@@ -400,7 +402,7 @@ public class Correo extends ActionBarActivity {
 
 
 
-            finish();
+
         }
     }
 
