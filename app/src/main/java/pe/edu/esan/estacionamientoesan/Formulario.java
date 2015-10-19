@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -68,6 +69,7 @@ public class Formulario extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner2);
@@ -196,7 +198,7 @@ public class Formulario extends ActionBarActivity {
         email.m.set_to(recp);
         email.m.set_subject("Codigo de Verificacion");
 
-        //email.execute();
+        email.execute();
 
 
         Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);

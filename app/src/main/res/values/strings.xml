@@ -39,4 +39,9 @@
         <item>"@ue.edu.pe"</item>
 
     </string-array>
+    <string name="title_activity_olvido">Olvido</string>
+    <string name="action_settings">Settings</string>
+
+
+
 </resources>

@@ -34,6 +34,10 @@
             android:name=".Formulario"
             android:label="Registro" >
         </activity>
+        <activity
+            android:name=".Olvido"
+            android:label="@string/title_activity_olvido" >
+        </activity>
     </application>
 
 </manifest>

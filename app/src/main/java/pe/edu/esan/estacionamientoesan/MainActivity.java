@@ -17,6 +17,7 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.TypefaceSpan;
@@ -34,6 +35,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import org.apache.http.message.BasicNameValuePair;
@@ -52,11 +54,7 @@ public class MainActivity extends ActionBarActivity {
     //Cuadros de textos editables
     EditText et1,et2;
     //Cadena de texto que obtiene el lenguaje del celular
-    String langloc=Locale.getDefault().getDisplayLanguage();
-    //Numero entero que define el lenguaje inicial del app
-    int langinicial=0;
-    //Numero entero que define el lenguaje final
-    int lang=0;
+
     //Boton del login para acceder al app
     Button botonacceder; //SOLO SE USA PARA CAMBIAR LA FUENTE
     //Cadena de texto que dice el resultado del loggin
@@ -74,6 +72,7 @@ public class MainActivity extends ActionBarActivity {
     JSONParser jsonParser = new JSONParser();
     CheckBox cb1;
     Button bstart;
+    TextView heol;
 
 
 
@@ -92,85 +91,10 @@ public class MainActivity extends ActionBarActivity {
         wifi.setWifiEnabled(true);
         bstart = (Button) findViewById(R.id.button);
         cb1 = (CheckBox) findViewById(R.id.cb1);
+        heol=(TextView)findViewById(R.id.tvhe);
 
+        heol.setText(Html.fromHtml("<u>He olvidado mi contraseña</u>"));
 
-
-
-
-
-
-        if(langloc.equals("español")){
-            //Da valor al entero determinado para el lenguaje inicial
-            langinicial=0;
-
-        }
-        if(langloc.equals("English")){
-            //Da valor al entero determinado para el lenguaje inicial
-            langinicial=1;
-
-        }
-        if(langloc.equals("français")){
-            //Da valor al entero determinado para el lenguaje inicial
-            langinicial=2;
-
-        }
-
-        //Se crea una lista de datos
-        ArrayList<ItemData> list=new ArrayList<>();
-
-        //Dependiendo del lenguaje inicial se veran los casos
-        switch(langinicial){
-            case 0:
-                //Si el lenguaje inicial es Español el texto de la lista dira
-                list.add(new ItemData("Español",R.drawable.es));
-                list.add(new ItemData("Ingles",R.drawable.um));
-                list.add(new ItemData("Frances",R.drawable.fr));
-                break;
-            case 1:
-                //Si el lenguaje inicial es Ingles el texto de la lista dira
-                list.add(new ItemData("Spanish",R.drawable.es));
-                list.add(new ItemData("English",R.drawable.um));
-                list.add(new ItemData("French",R.drawable.fr));
-                break;
-            case 2:
-                //Si el lenguaje inicial es Frances el texto de la lista dira
-                list.add(new ItemData("Espagnol",R.drawable.es));
-                list.add(new ItemData("Anglais",R.drawable.um));
-                list.add(new ItemData("Français",R.drawable.fr));
-                break;
-        }
-
-
-        //Se crea un Spinner o seleccionador de lista corta y se le da su valor como elemento del layout
-        Spinner sp=(Spinner)findViewById(R.id.spinner);
-
-
-        //Se crea un nuevo adaptador a partir de la clase SpinnerAdapter y se le da sus parametros
-        SpinnerAdapter adapter=new SpinnerAdapter(this,
-                R.layout.spinerlayout,R.id.txt,list);
-
-        //Se le asigna un adaptador al spinner
-        sp.setAdapter(adapter);
-
-
-        //Cuando el Spinner es clickeado
-        sp.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-                //Declaracion de numero entero que obtiene la posicion del item seleccionado
-                int index = arg0.getSelectedItemPosition();
-
-                //Se le da un valor al lenguaje
-                lang = index;
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                //Metodo cuando nada es seleccionado
-            }
-        });
 
         //Declaracion de variable
         SpannableString s = new SpannableString("ESAN");
@@ -251,6 +175,18 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+
+        heol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent u = new Intent(getApplicationContext(), Olvido.class);
+                //finish();
+                startActivity(u);
+
+            }
+        });
+
 
 
 
