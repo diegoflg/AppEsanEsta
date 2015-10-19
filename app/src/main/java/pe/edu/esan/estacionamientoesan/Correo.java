@@ -221,6 +221,12 @@ public class Correo extends ActionBarActivity {
                     if(usMn.length()==7){
 
                         Intent i = new Intent(getApplicationContext(), Datos.class);
+                        Bundle b = new Bundle();
+                        b.putString("email", usM);
+                        b.putString("codigo", String.valueOf(aNumber));
+                        b.putString("fecha", fechadia);
+                        i.putExtras(b);
+
                         startActivity(i);
 
                     }else{
@@ -229,8 +235,7 @@ public class Correo extends ActionBarActivity {
                 }catch (Exception e){
 
                     //FALTA VALIDAR LOS SIGNOS
-                    Intent i = new Intent(getApplicationContext(), Datos.class);
-                    startActivity(i);
+
                 }
             }
 

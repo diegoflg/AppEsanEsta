@@ -68,6 +68,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="30dp"
+        style="@style/Base.V7.Theme.AppCompat.Light"
         />
 
     <TextView
