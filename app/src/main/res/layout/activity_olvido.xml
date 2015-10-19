@@ -1,0 +1,88 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:id="@+id/et2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint=" Correo"
+            android:layout_centerHorizontal="true"
+            android:width="250dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext"
+            android:layout_below="@+id/textView2" />
+
+
+        <Space android:id="@+id/dummy"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/et2" />
+
+        <Button
+            android:id="@+id/button"
+            android:onClick="logstart"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="enviar"
+            android:background="@drawable/mybutton"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+
+            android:layout_toRightOf="@+id/dummy"
+            android:layout_toEndOf="@+id/dummy"
+            android:layout_alignTop="@+id/dummy"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            android:onClick="register"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="atras"
+            android:background="@drawable/mybutton"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+
+
+            android:layout_toLeftOf="@+id/dummy"
+            android:layout_alignTop="@+id/dummy"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Se enviara la contraseña al correo ingresado:"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/iv1"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+</ScrollView>
+
+
