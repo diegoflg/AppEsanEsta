@@ -21,7 +21,31 @@
         android:layout_below="@+id/tvPlaca"
         android:layout_alignLeft="@+id/tvPlaca"
         android:layout_alignStart="@+id/tvPlaca"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:maxLength="3"
+        android:ems="3"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/textView13"
+        android:textSize="40sp"
+        android:layout_alignBottom="@+id/etPlaca"
+        android:layout_toRightOf="@+id/etPlaca"
+        android:layout_toEndOf="@+id/etPlaca"
+        />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_below="@+id/tvPlaca"
+        android:layout_toRightOf="@+id/textView13"
+        android:layout_toEndOf="@+id/textView13"
+        android:maxLength="3"
+        android:ems="3"/>
+
 
     <TextView
         android:id="@+id/tvContraseña"
@@ -40,7 +64,11 @@
         android:layout_below="@+id/tvContraseña"
         android:layout_alignLeft="@+id/tvContraseña"
         android:layout_alignStart="@+id/tvContraseña"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"
+        />
 
     <TextView
         android:id="@+id/tvTelefono"
@@ -50,7 +78,8 @@
         android:layout_below="@+id/etContraseña"
         android:layout_alignLeft="@+id/etContraseña"
         android:layout_alignStart="@+id/etContraseña"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/etTelefono"
@@ -59,7 +88,10 @@
         android:layout_below="@+id/tvTelefono"
         android:layout_alignLeft="@+id/tvTelefono"
         android:layout_alignStart="@+id/tvTelefono"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:ems="9"
+        android:maxLength="9"
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/tvCodigo"
@@ -79,15 +111,12 @@
         android:layout_below="@+id/tvCodigo"
         android:layout_alignLeft="@+id/tvCodigo"
         android:layout_alignStart="@+id/tvCodigo"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:maxLength="4"
+        android:ems="4"
+        android:inputType="number"/>
 
-    <CheckBox
-        android:id="@+id/cbTyC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etCodigo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp" />
+
 
     <Button
         android:id="@+id/aceptar"
@@ -95,29 +124,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="aceptar"
-        android:layout_below="@+id/cbTyC"
+        android:layout_below="@+id/etCodigo"
         android:layout_alignRight="@+id/tvContraseña"
         android:layout_alignEnd="@+id/tvContraseña"
         android:layout_marginTop="34dp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

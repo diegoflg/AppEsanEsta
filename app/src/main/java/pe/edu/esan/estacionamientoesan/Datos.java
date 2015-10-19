@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,8 +40,12 @@ public class Datos extends ActionBarActivity {
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
     String dominio = "@esan.edu.pe";
+    String mensaje="";
+    String correo="";
+    String fecha="";
+    String codigo="";
 
-    EditText etPlaca, etTelefono, etContrasena, etCodigo;
+    EditText etPlaca,etPlaca2, etTelefono, etContrasena, etCodigo;
     CheckBox cbTyC;
 
 
@@ -47,17 +53,81 @@ public class Datos extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lay_datos);
+        etPlaca = (EditText) findViewById(R.id.etPlaca);
+        etPlaca2 = (EditText) findViewById(R.id.editText5);
+        etTelefono = (EditText) findViewById(R.id.etTelefono);
+        etContrasena = (EditText) findViewById(R.id.etContraseña);
+        etCodigo = (EditText) findViewById(R.id.etCodigo);
 
-        etPlaca = (EditText) findViewById(R.id.editText);
-        etTelefono = (EditText) findViewById(R.id.editText2);
-        etContrasena = (EditText) findViewById(R.id.editText3);
-        etCodigo = (EditText) findViewById(R.id.editText4);
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+       // correo = b.getString("email");
+        //fecha = b.getString("fecha");
+        codigo = b.getString("codigo");
+        Log.v("qwertycodigo",codigo);
+
+        etPlaca.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                {
+                    etPlaca2.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+
     }
 
     public void aceptar(View v) {
-        new CreateUser().execute();
-        Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
-        startActivity(i);
+        mensaje="";
+
+      // new CreateUser().execute();
+
+        if(etPlaca.length()!=3 || etPlaca2.length()!=3){
+            mensaje=mensaje+"-La placa ingresada no es correcta"+ "\n";
+
+        }
+        if(etTelefono.length()!=7 && etTelefono.length()!=9){
+            mensaje=mensaje+"-El telefono ingresado no es correcto"+ "\n";
+
+        }
+        if(etContrasena.length()==0){
+            mensaje=mensaje+"-Ingrese una contraseña"+ "\n";
+
+        }
+
+        if(!etCodigo.getText().toString().equals(codigo)){
+            mensaje=mensaje+"-El codigo ingresado es incorrecto"+ "\n";
+
+        }
+
+        Log.v("qwerty",mensaje);
+
+
+       // Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+        //startActivity(i);
     }
 
 
@@ -79,11 +149,6 @@ public class Datos extends ActionBarActivity {
             // TODO Auto-generated method stub
             // Check for success tag
             int success;
-            Intent i = getIntent();
-            Bundle b = i.getExtras();
-            String correo = b.getString("email");
-            String fecha = b.getString("fecha");
-            String codigo = b.getString("codigo");
 
             String password = String.valueOf(etContrasena.getText());
             String placa1 = String.valueOf(etPlaca.getText());
