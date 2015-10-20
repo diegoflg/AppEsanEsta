@@ -61,6 +61,14 @@
     </string-array>
     <string name="title_activity_olvido">Olvido</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_info">Info</string>
+
+    <string name="info">
+\n1.    Traslado de playa a ESAN: A partir de las 4:30 pm, se pondrá a disposición de los alumnos servicios de transporte sucesivo (contratados por la Universidad, sin costo para el alumno) que los trasladarán desde la playa de estacionamiento hasta el campus.
+\n
+\n2.    Traslado de ESAN a playa: En horas de : 7:30, 8:30 pm, 9:30 pm y 10:30 pm, para el retorno al estacionamiento de Los Portales, también se pondrán a disposición de los alumnos servicios de transporte sucesivo, los cuales estarán ubicados en la playa de estacionamiento 1 (costado izquierdo del ingreso vehicular a la universidad).
+\n
+\n3.    Para acceder a este servicio es requisito indispensable mostrar su carnet universitario, carnet de la universidad ESAN u otro documento que los identifique como tal al ingresar a la playa de estacionamiento de Los Portales (capacidad limitada - 155 estacionamientos)</string>
 
 
 

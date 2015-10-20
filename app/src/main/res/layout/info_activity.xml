@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scv"
+            android:layout_above="@+id/button2"
+            >
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logo"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/info"
+                    android:id="@+id/textView2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/iv1"/>
+
+
+            </RelativeLayout>
+
+
+
+
+
+        </ScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="register"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="atras"
+        android:background="@drawable/mybutton"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"/>
+
+
+</RelativeLayout>
+
+

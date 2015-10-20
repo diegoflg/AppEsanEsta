@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pe.edu.esan.estacionamientoesan.MainActivity2Activity">
 
+    <item android:id="@+id/info"
+        android:title="Informacion" />
+
+    <item android:id="@+id/actu"
+        android:title="Perfil" />
+
     <item android:id="@+id/cerrars"
         android:title="@string/menu_cerrar" />
 </menu>
