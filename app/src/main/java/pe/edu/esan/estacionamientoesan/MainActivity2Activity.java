@@ -73,7 +73,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
     TextView textView3;
 
-
+    String correo;
 
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -100,8 +100,10 @@ public class MainActivity2Activity extends ActionBarActivity implements
         Typeface TFE = Typeface.createFromAsset(this.getAssets(), font_pathE);
         //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
-
-
+        Intent p = getIntent();
+        Bundle b = p.getExtras();
+        correo = b.getString("email");
+        Log.i("CORREO",correo);
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFL = Typeface.createFromAsset(this.getAssets(), font_pathL);
         /*
@@ -689,6 +691,9 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
             case R.id.perfil:
                 Intent p = new Intent(getApplicationContext(), Perfil.class);
+                Bundle b = new Bundle();
+                b.putString("correo", correo);
+                p.putExtras(b);
                 startActivity(p);
                 return true;
 

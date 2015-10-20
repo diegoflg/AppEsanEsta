@@ -59,6 +59,15 @@
         android:layout_toEndOf="@id/etmail"/>
 
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logoue"
+        android:layout_below="@+id/spinnermail"
+        android:layout_margin="3dp"
+        android:layout_centerHorizontal="true"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

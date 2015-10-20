@@ -239,6 +239,9 @@ public class MainActivity extends ActionBarActivity {
 
 
                     Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+                    Bundle b = new Bundle();
+                    b.putString("email", username);
+                    i.putExtras(b);
                     //finish();
                     startActivity(i);
                     return json.getString(TAG_MESSAGE);

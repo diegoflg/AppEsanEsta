@@ -110,15 +110,51 @@
             android:ems="3"/>
 
 
+        <EditText
+            android:id="@+id/etPlaca3"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etPlaca2"
+            android:layout_alignLeft="@+id/etPlaca2"
+            android:layout_alignStart="@+id/etPlaca2"
+            android:textSize="18sp"
+            android:maxLength="3"
+            android:ems="3"/>
+
+        <TextView
+            android:id="@+id/tvGuion3"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="40sp"
+            android:layout_alignBottom="@+id/etPlaca3"
+            android:layout_toRightOf="@+id/etPlaca3"
+            android:layout_toEndOf="@+id/etPlaca3" />
+
+        <EditText
+            android:id="@+id/etPlacaC3"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_below="@+id/etPlaca2"
+            android:layout_toRightOf="@+id/tvGuion2"
+            android:layout_toEndOf="@+id/tvGuion2"
+            android:maxLength="3"
+            android:ems="3"/>
+
+
         <TextView
             android:id="@+id/tvContraseña"
             android:text="@string/Ncontraseña"
             android:textColor="#C90039"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etPlaca2"
-            android:layout_alignLeft="@+id/etPlaca"
-            android:layout_alignStart="@+id/etPlaca"
+            android:layout_below="@+id/etPlaca3"
+            android:layout_alignLeft="@+id/etPlaca3"
+            android:layout_alignStart="@+id/etPlaca3"
             android:layout_marginTop="20dp"
             android:textSize="18sp"/>
 
@@ -134,6 +170,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             style="@style/Base.V7.Theme.AppCompat.Light"
             />
 
@@ -147,8 +184,7 @@
             android:layout_alignLeft="@+id/etContraseña"
             android:layout_alignStart="@+id/etContraseña"
             android:layout_marginTop="20dp"
-            android:textSize="18sp"
-            android:inputType="number"/>
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etTelefono"
