@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
+        android:layout_marginBottom="10dp"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -177,9 +178,10 @@
             android:textColor="#FFFFFF"
             android:onClick="btActualizar"
             android:background="@drawable/mybutton"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp" />
+            android:layout_below="@+id/etTelefono"
+            android:layout_toRightOf="@+id/etPlaca2"
+            android:layout_toEndOf="@+id/etPlaca2"
+            android:layout_marginTop="40dp" />
     </RelativeLayout>
 
 </ScrollView>
