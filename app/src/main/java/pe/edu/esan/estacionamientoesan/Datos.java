@@ -157,6 +157,7 @@ public class Datos extends ActionBarActivity {
         if(!etCodigo.getText().toString().equals(codigo)){
             mensaje=mensaje+"-El codigo ingresado es incorrecto"+ "\n";
 
+
         }
 
         Log.v("qwerty",mensaje);
