@@ -67,10 +67,10 @@
         />
 
     <TextView
+        android:id="@+id/tvhe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="He olvidado mi contraseña"
-        android:id="@+id/tvhe"
+        android:text="@string/tvOlvido"
         android:layout_below="@+id/cb1"
         android:layout_alignLeft="@+id/et2"
         android:layout_alignStart="@+id/et2"

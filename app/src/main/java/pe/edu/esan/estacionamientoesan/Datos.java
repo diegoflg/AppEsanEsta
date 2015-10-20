@@ -2,6 +2,7 @@ package pe.edu.esan.estacionamientoesan;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,8 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -49,6 +52,11 @@ public class Datos extends ActionBarActivity {
     CheckBox cbTyC;
 
 
+    //Para fuentes
+    TextView tvPlaca, textView13, tvContrasena, tvTelefono, tvCodigo;
+    Button aceptar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,13 +75,13 @@ public class Datos extends ActionBarActivity {
         correo = b.getString("email");
         fecha = b.getString("fecha");
         codigo = b.getString("codigo");
-        Log.v("qwertycodigo",codigo);
+        Log.v("qwertycodigo", codigo);
 
         etPlaca.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
                 {
 
                 }
@@ -83,7 +91,7 @@ public class Datos extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
                 {
                     etPlaca2.requestFocus();
                 }
@@ -92,7 +100,7 @@ public class Datos extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
                 {
 
                 }
@@ -100,7 +108,26 @@ public class Datos extends ActionBarActivity {
             }
         });
 
-
+        //Fuentes:
+        Typeface fontTit = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Bold.ttf" );
+        Typeface fontTex = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Light.ttf" );
+        tvPlaca = (TextView)findViewById(R.id.tvPlaca);
+        tvPlaca.setTypeface(fontTit);
+        etPlaca.setTypeface(fontTex);
+        textView13 = (TextView)findViewById(R.id.textView13);
+        textView13.setTypeface(fontTit);
+        etPlaca2.setTypeface(fontTex);
+        tvContrasena =(TextView)findViewById(R.id.tvContraseña);
+        tvContrasena.setTypeface(fontTit);
+        etContrasena.setTypeface(fontTex);
+        tvTelefono= (TextView)findViewById(R.id.tvTelefono);
+        tvTelefono.setTypeface(fontTit);
+        etTelefono.setTypeface(fontTex);
+        tvCodigo= (TextView)findViewById(R.id.tvCodigo);
+        tvCodigo.setTypeface(fontTit);
+        etCodigo.setTypeface(fontTex);
+        aceptar =(Button)findViewById(R.id.aceptar);
+        aceptar.setTypeface(fontTit);
     }
 
     public void aceptar(View v) {
