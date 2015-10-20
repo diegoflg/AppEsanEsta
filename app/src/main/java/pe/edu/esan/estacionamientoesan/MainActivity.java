@@ -151,6 +151,9 @@ public class MainActivity extends ActionBarActivity {
             et1.setText(loginPreferences.getString("username", ""));
             et2.setText(loginPreferences.getString("password", ""));
             cb1.setChecked(true);
+            Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+            //finish();
+            startActivity(i);
         }
 
 
@@ -291,14 +294,10 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
         switch (id)
         {
-            case R.id.cerrars:
+            case R.id.salir:
                 this.finish();
                 return true;
 
-            case R.id.info:
-                Intent u = new Intent(getApplicationContext(), Info.class);
-                startActivity(u);
-                return true;
             default:return super.onOptionsItemSelected(item);
 
         }
