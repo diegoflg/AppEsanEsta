@@ -648,8 +648,13 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 Intent u = new Intent(getApplicationContext(), Info.class);
                 startActivity(u);
                 return true;
-            default:return super.onOptionsItemSelected(item);
 
+            case R.id.perfil:
+                Intent p = new Intent(getApplicationContext(), Perfil.class);
+                startActivity(p);
+                return true;
+
+            default:return super.onOptionsItemSelected(item);
         }
         //noinspection SimplifiableIfStatement
     }

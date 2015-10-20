@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scvi"
+    android:background="#FFFFFF"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <TextView
+            android:id="@+id/tvPerfil"
+            android:text="@string/tvPerfil"
+            android:textColor="#C90039"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp"
+            android:layout_margin="10dp"
+            android:padding="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tvPlaca"
+            android:text="@string/Nplaca"
+            android:textColor="#C90039"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPerfil"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etPlaca"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPlaca"
+            android:layout_alignLeft="@+id/tvPlaca"
+            android:layout_alignStart="@+id/tvPlaca"
+            android:textSize="18sp"
+            android:maxLength="3"
+            android:ems="3"/>
+        <TextView
+            android:id="@+id/tvGuion"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="40sp"
+            android:layout_alignBottom="@+id/etPlaca"
+            android:layout_toRightOf="@+id/etPlaca"
+            android:layout_toEndOf="@+id/etPlaca"
+            />
+
+        <EditText
+            android:id="@+id/etPlacaC"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_below="@+id/tvPlaca"
+            android:layout_toRightOf="@+id/tvGuion"
+            android:layout_toEndOf="@+id/tvGuion"
+            android:maxLength="3"
+            android:ems="3"/>
+
+        <EditText
+            android:id="@+id/etPlaca2"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etPlaca"
+            android:layout_alignLeft="@+id/etPlaca"
+            android:layout_alignStart="@+id/etPlaca"
+            android:textSize="18sp"
+            android:maxLength="3"
+            android:ems="3"/>
+
+        <TextView
+            android:id="@+id/tvGuion2"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="40sp"
+            android:layout_alignBottom="@+id/etPlaca2"
+            android:layout_toRightOf="@+id/etPlaca2"
+            android:layout_toEndOf="@+id/etPlaca2" />
+
+        <EditText
+            android:id="@+id/etPlacaC2"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_below="@+id/etPlaca"
+            android:layout_toRightOf="@+id/tvGuion2"
+            android:layout_toEndOf="@+id/tvGuion2"
+            android:maxLength="3"
+            android:ems="3"/>
+
+
+        <TextView
+            android:id="@+id/tvContraseña"
+            android:text="@string/Ncontraseña"
+            android:textColor="#C90039"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etPlaca2"
+            android:layout_alignLeft="@+id/etPlaca"
+            android:layout_alignStart="@+id/etPlaca"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/etContraseña"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvContraseña"
+            android:layout_alignLeft="@+id/tvContraseña"
+            android:layout_alignStart="@+id/tvContraseña"
+            android:textSize="18sp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="30dp"
+            style="@style/Base.V7.Theme.AppCompat.Light"
+            />
+
+        <TextView
+            android:id="@+id/tvTelefono"
+            android:text="@string/Ntelefono"
+            android:textColor="#C90039"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etContraseña"
+            android:layout_alignLeft="@+id/etContraseña"
+            android:layout_alignStart="@+id/etContraseña"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/etTelefono"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTelefono"
+            android:layout_alignLeft="@+id/tvTelefono"
+            android:layout_alignStart="@+id/tvTelefono"
+            android:textSize="18sp"
+            android:ems="9"
+            android:maxLength="9"
+            android:inputType="number"/>
+
+        <Space android:id="@+id/dummy"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:visibility="invisible"
+            android:layout_below="@id/etTelefono"
+            android:layout_marginTop="50dp"/>
+
+        <Button
+            android:id="@+id/actualizar"
+            android:text="@string/actualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:onClick="btActualizar"
+            android:background="@drawable/mybutton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp" />
+    </RelativeLayout>
+
+</ScrollView>
+

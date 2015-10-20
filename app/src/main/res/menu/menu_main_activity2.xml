@@ -4,10 +4,10 @@
     tools:context="pe.edu.esan.estacionamientoesan.MainActivity2Activity">
 
     <item android:id="@+id/info"
-        android:title="Informacion" />
+        android:title="@string/informacion" />
 
-    <item android:id="@+id/actu"
-        android:title="Perfil" />
+    <item android:id="@+id/perfil"
+        android:title="@string/perfil" />
 
     <item android:id="@+id/cerrars"
         android:title="@string/menu_cerrar" />

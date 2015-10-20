@@ -54,6 +54,10 @@
             android:name=".Info"
             android:label="@string/title_activity_info" >
         </activity>
+        <activity
+            android:name=".Perfil"
+            android:label="Perfil" >
+        </activity>
     </application>
 
 </manifest>
