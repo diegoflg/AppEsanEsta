@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
@@ -39,7 +40,6 @@ public class Datos extends ActionBarActivity {
     private static final String TAG_NOMBRE = "correo";
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
-    String dominio = "@esan.edu.pe";
     String mensaje="";
     String correo="";
     String fecha="";
@@ -59,10 +59,13 @@ public class Datos extends ActionBarActivity {
         etContrasena = (EditText) findViewById(R.id.etContraseña);
         etCodigo = (EditText) findViewById(R.id.etCodigo);
 
+        etPlaca.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        etPlaca2.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+
         Intent i = getIntent();
         Bundle b = i.getExtras();
-       // correo = b.getString("email");
-        //fecha = b.getString("fecha");
+        correo = b.getString("email");
+        fecha = b.getString("fecha");
         codigo = b.getString("codigo");
         Log.v("qwertycodigo",codigo);
 
@@ -125,6 +128,11 @@ public class Datos extends ActionBarActivity {
 
         Log.v("qwerty",mensaje);
 
+        if(mensaje.equals("")){
+            new CreateUser().execute();
+
+        }
+
 
        // Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
         //startActivity(i);
@@ -151,14 +159,14 @@ public class Datos extends ActionBarActivity {
             int success;
 
             String password = String.valueOf(etContrasena.getText());
-            String placa1 = String.valueOf(etPlaca.getText());
+            String placa1 = String.valueOf(etPlaca.getText())+String.valueOf(etPlaca2.getText());
             String telefono = String.valueOf(etTelefono.getText());
 
             String estado = "false";
             try {
                 // Building Parameters
                 List params = new ArrayList();
-                params.add(new BasicNameValuePair("correo", correo + dominio));
+                params.add(new BasicNameValuePair("correo", correo));
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("placa1", placa1));
                 params.add(new BasicNameValuePair("telefono", telefono));
@@ -198,9 +206,7 @@ public class Datos extends ActionBarActivity {
 
             // dismiss the dialog once product deleted
             pDialog.dismiss();
-            if (file_url != null) {
-                Toast.makeText(Datos.this, file_url, Toast.LENGTH_LONG).show();
-            }
+            finish();
         }
     }
 

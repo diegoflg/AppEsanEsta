@@ -82,7 +82,6 @@
         android:layout_alignParentBottom="true"
         android:textColor="#FFFFFF"
         android:background="#C90039"
-        android:onClick="enviaCodigo"
         android:layout_margin="20dp" />
 
 </RelativeLayout>

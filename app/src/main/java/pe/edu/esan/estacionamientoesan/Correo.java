@@ -1,6 +1,7 @@
 package pe.edu.esan.estacionamientoesan;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -25,9 +26,17 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
@@ -42,10 +51,16 @@ public class Correo extends ActionBarActivity {
     EditText etmail;
     int aNumber;
     String fechadia="";
-
     TextView tvCorreo, textCB;
     Button btEnviar;
     CheckBox cbTyC;
+    JSONArray products = null;
+    JSONParser jsonParser = new JSONParser();
+    private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_fechas.php";
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_PRODUCTS = "registros";
+    private static final String TAG_NOMBRE = "correo";
+    int success=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +131,15 @@ public class Correo extends ActionBarActivity {
                 showPopup(Correo.this);
             }
         });
+
+        btEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new CreateUser3().execute();
+            }
+        });
+
     }
 
     private void showPopup(final Activity context) {
@@ -182,89 +206,7 @@ public class Correo extends ActionBarActivity {
 
     }
 
-    public void enviaCodigo(View v){
-        if(cbTyC.isChecked()){
-            Random r = new Random();
 
-            aNumber = 1000 + r.nextInt(9000-1000+1);
-            Log.v("random", String.valueOf(aNumber));
-
-            String usM = etmail.getText().toString();
-
-            if(dominio.equals("@ue.edu.pe")){
-                if(usM.length()==8){
-                    try{
-                        int usMN = Integer.parseInt(usM);
-
-                        Intent i = new Intent(getApplicationContext(), Datos.class);
-
-                        Bundle b = new Bundle();
-                        b.putString("email", usM);
-                        b.putString("codigo", String.valueOf(aNumber));
-                        b.putString("fecha", fechadia);
-                        i.putExtras(b);
-
-                        startActivity(i);
-
-                    }catch (Exception e){
-                        e.printStackTrace();
-                        Toast.makeText(this,R.string.solonum, Toast.LENGTH_LONG).show();
-                    }
-
-                }else{
-                    Toast.makeText(this,R.string.incorrecto, Toast.LENGTH_LONG).show();
-                }
-            }else if(dominio.equals("@esan.edu.pe")){
-                try{
-                    int usMN = Integer.parseInt(usM);
-                    String usMn = String.valueOf(usMN);
-                    if(usMn.length()==7){
-
-                        Intent i = new Intent(getApplicationContext(), Datos.class);
-                        Bundle b = new Bundle();
-                        b.putString("email", usM);
-                        b.putString("codigo", String.valueOf(aNumber));
-                        b.putString("fecha", fechadia);
-                        i.putExtras(b);
-
-                        startActivity(i);
-
-                    }else{
-                        Toast.makeText(this,R.string.solosiete, Toast.LENGTH_LONG).show();
-                    }
-                }catch (Exception e){
-
-                    //FALTA VALIDAR LOS SIGNOS
-
-                }
-            }
-
-
-            String correo = String.valueOf(etmail.getText())+dominio;
-            String[] recp = {correo};
-            SendEmailAsyncTask email = new SendEmailAsyncTask();
-            email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
-            email.m.set_from("educacionadistancia@esan.edu.pe");
-            email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
-            email.m.set_to(recp);
-            email.m.set_subject("Codigo de Verificacion");
-            email.execute();
-        }else{
-            Toast.makeText(this,R.string.debeAceptarTC , Toast.LENGTH_LONG).show();
-        }
-
-        String correo = String.valueOf(etmail.getText())+dominio;
-        String[] recp = {correo};
-        SendEmailAsyncTask email = new SendEmailAsyncTask();
-        email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
-        email.m.set_from("educacionadistancia@esan.edu.pe");
-        email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
-        email.m.set_to(recp);
-        email.m.set_subject("Codigo de Verificacion");
-        //email.execute();
-
-
-    }
 
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
         Mail m;
@@ -326,6 +268,142 @@ public class Correo extends ActionBarActivity {
 
         }
         //noinspection SimplifiableIfStatement
+    }
+
+    class CreateUser3 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
+
+
+        @Override
+        protected void onPreExecute() {
+            //Metodo antes de ser ejecutada la accion
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+            //Metodo que se hace en segundo plano
+
+            // TODO Auto-generated method stub
+            // Check for success tag
+
+            String username3 = etmail.getText().toString()+dominio;
+            try {
+                // Building Parameters
+                List params = new ArrayList();
+                params.add(new BasicNameValuePair("correo", username3));
+                //Posting user data to script
+                JSONObject json = jsonParser.makeHttpRequest(
+                        url_all_empresas, "POST", params);
+
+                // full json response
+                Log.d("Registering attempt", json.toString());
+
+                // json success element
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+
+        }
+
+        protected void onPostExecute(String file_url) {
+
+            if(success==0){
+
+
+
+                if(cbTyC.isChecked()){
+                    Random r = new Random();
+
+                    aNumber = 1000 + r.nextInt(9000-1000+1);
+                    Log.v("random", String.valueOf(aNumber));
+
+                    String usM = etmail.getText().toString();
+
+                    if(dominio.equals("@ue.edu.pe")){
+                        if(usM.length()==8){
+                            try{
+                                int usMN = Integer.parseInt(usM);
+
+                                Intent i = new Intent(getApplicationContext(), Datos.class);
+
+                                Bundle b = new Bundle();
+                                b.putString("email", usM+dominio);
+                                b.putString("codigo", String.valueOf(aNumber));
+                                b.putString("fecha", fechadia);
+                                i.putExtras(b);
+                                startActivity(i);
+
+                                String correo = String.valueOf(etmail.getText())+dominio;
+                                String[] recp = {correo};
+                                SendEmailAsyncTask email = new SendEmailAsyncTask();
+                                email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
+                                email.m.set_from("educacionadistancia@esan.edu.pe");
+                                email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
+                                email.m.set_to(recp);
+                                email.m.set_subject("Codigo de Verificacion");
+                                email.execute();
+                                finish();
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Toast.makeText(Correo.this,R.string.solonum, Toast.LENGTH_LONG).show();
+                            }
+
+                        }else{
+                            Toast.makeText(Correo.this,R.string.incorrecto, Toast.LENGTH_LONG).show();
+                        }
+
+
+                    }else if(dominio.equals("@esan.edu.pe")){
+
+
+                        Intent i = new Intent(getApplicationContext(), Datos.class);
+
+                        Bundle b = new Bundle();
+                        b.putString("email", usM+dominio);
+                        b.putString("codigo", String.valueOf(aNumber));
+                        b.putString("fecha", fechadia);
+                        i.putExtras(b);
+                        startActivity(i);
+
+                        String correo = String.valueOf(etmail.getText())+dominio;
+                        String[] recp = {correo};
+                        SendEmailAsyncTask email = new SendEmailAsyncTask();
+                        email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
+                        email.m.set_from("educacionadistancia@esan.edu.pe");
+                        email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
+                        email.m.set_to(recp);
+                        email.m.set_subject("Codigo de Verificacion");
+                        email.execute();
+                        finish();
+
+
+
+                    }
+
+
+
+
+                }else{
+                    Toast.makeText(Correo.this,R.string.debeAceptarTC , Toast.LENGTH_LONG).show();
+                }
+
+            }else{
+                Toast.makeText(Correo.this,"El correo ya existe" , Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+
+
+
+        }
     }
 
 
