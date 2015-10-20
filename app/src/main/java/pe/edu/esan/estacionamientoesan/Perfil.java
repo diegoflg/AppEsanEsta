@@ -112,6 +112,10 @@ public class Perfil extends ActionBarActivity {
          * Getting product details in background thread
          */
         protected String doInBackground(String... args) {
+            //http://www.estacionamientoesan.site88.net/esconnect/get_registros.php           edatos de estudiantes
+            //http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php        datos dd semaforo
+            //http://www.estacionamientoesan.site88.net/cas/registroactu.php                  actualizacion por internet
+
             List params = new ArrayList();
             JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "GET", params);
             int success;
