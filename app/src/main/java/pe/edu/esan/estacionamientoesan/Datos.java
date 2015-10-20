@@ -111,7 +111,7 @@ public class Datos extends ActionBarActivity {
         });
 
         //Fuentes:
-        Typeface fontTit = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Bold.ttf" );
+        Typeface fontTit = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Roman.ttf" );
         Typeface fontTex = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Light.ttf" );
         tvPlaca = (TextView)findViewById(R.id.tvPlaca);
         tvPlaca.setTypeface(fontTit);
