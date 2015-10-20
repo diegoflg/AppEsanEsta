@@ -61,8 +61,10 @@ public class Datos extends ActionBarActivity {
         etContrasena = (EditText) findViewById(R.id.etContraseña);
         etCodigo = (EditText) findViewById(R.id.etCodigo);
 
-        etPlaca.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-        etPlaca2.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        etPlaca.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
+        etPlaca2.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
+
+
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
@@ -71,7 +73,40 @@ public class Datos extends ActionBarActivity {
         codigo = b.getString("codigo");
         Log.v("qwertycodigo",codigo);
 
+
+
         etPlaca.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
+                {
+                    etPlaca2.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+        etPlaca2.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -85,16 +120,16 @@ public class Datos extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                if(etPlaca2.getText().toString().length()==3)     //size as per your requirement
                 {
-                    etPlaca2.requestFocus();
+                    etContrasena.requestFocus();
                 }
 
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                if(etPlaca2.getText().toString().length()==3)     //size as per your requirement
                 {
 
                 }
