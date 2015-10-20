@@ -291,8 +291,13 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
         switch (id)
         {
-            case R.id.salir:
+            case R.id.cerrars:
                 this.finish();
+                return true;
+
+            case R.id.info:
+                Intent u = new Intent(getApplicationContext(), Info.class);
+                startActivity(u);
                 return true;
             default:return super.onOptionsItemSelected(item);
 

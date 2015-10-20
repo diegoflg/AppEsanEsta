@@ -643,6 +643,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
             case R.id.cerrars:
                 this.finish();
                 return true;
+
+            case R.id.info:
+                Intent u = new Intent(getApplicationContext(), Info.class);
+                startActivity(u);
+                return true;
             default:return super.onOptionsItemSelected(item);
 
         }
