@@ -24,7 +24,7 @@
     <EditText
         android:id="@+id/etmail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:textSize="18sp"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCorreo"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="17dp"
         android:layout_toRightOf="@+id/etmail"
         android:layout_toEndOf="@id/etmail"/>
 
@@ -66,6 +66,7 @@
         <TextView
             android:id="@+id/textCB"
             android:textSize="17sp"
+            android:textColor="#ff828282"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textoCB" />
