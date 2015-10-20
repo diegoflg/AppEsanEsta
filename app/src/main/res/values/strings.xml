@@ -5,6 +5,7 @@
     <string name="hintUsuario">" Usuario"</string>
     <string name="hintPassword">" Contraseña"</string>
     <string name="cbRecuerdame">Recuérdame</string>
+    <string name="tvOlvido">He olvidado mi contraseña</string>
     <string name="btAcceder">Acceder</string>
     <string name="btRegistrarse">Registrarse</string>
 
@@ -20,10 +21,19 @@
 
     <!-- LAY CORREO.XML -->
     <string name="correo">Ingrese su correo</string>
+    <string name="nota">"*Su correo será usado con el fin de validar la cuenta"</string>
     <string name="textoCB">"Acepto los términos y condiciones de uso"</string>
     <string name="enviarCod">Enviar \n código</string>
     <!-- CORREO.JAVA -->
-    <string name="terminos">"He aquí los terminos y condiciones del uso de esta aplicacion"</string>
+    <string name="terminos">"Lorem ipsum dolor sit amet, et per viris iriure alienum. Cum soluta facilisi neglegentur et, iisque oporteat mediocrem ad quo. Tempor ornatus ut eum, hinc atomorum ocurreret has cu, pri ludus lucilius sapientem an. Eleifend expetendis eam in.
+
+Nec labore delenit minimum in, euismod platonem argumentum at ius. Pro laudem pertinacia in, qui ei vidit scribentur. Quo ut viderer aperiri. Id mazim albucius sit, tractatos adipiscing duo no, id option definiebas usu. Mel nisl dissentiunt ut, ad illum viris deseruisse qui.
+
+Sed munere mediocrem pertinacia ex, veniam commodo tacimates duo eu. Ei eum commodo tibique, eam ex atqui vulputate. Everti alienum mei ex. Vix in aperiam delicata accusamus, laoreet abhorreant ne nec, ad vel tempor verear.
+
+Facer movet voluptaria ad qui, mea exerci apeirian facilisi ex. Quot dissentias cum ex. Sea id consul qualisque accusamus, eu iriure tractatos accommodare nec, solet voluptua rationibus ad vis. Inani delicata disputando his ei, id viris aperiam sea, ei ius eros numquam. Congue quodsi in sea, sed te animal tibique. Sed no facete aliquando intellegebat, ei sed erant dicit philosophia, eum ne aeterno fuisset adipisci. Quem oblique ad nam, ei mea novum volutpat.
+
+Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theophrastus no, quis aperiri et eos. An pri mundi praesent maiestatis. Voluptaria moderatius te sit."</string>
     <string name="solonum">El correo solo debe contener numeros</string>
     <string name="incorrecto">El correo ingresado es incorrecto</string>
     <string name="solosiete">El correo solo debe contener 7 digitos</string>

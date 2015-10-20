@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="@string/tvTC"
             android:layout_centerHorizontal="true"
-            android:textColor="#ffff"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"/>
 
             <ScrollView
@@ -28,14 +28,12 @@
                 android:layout_width="fill_parent"
                 android:layout_height="280dp">
 
-
                 <TextView
                     android:id="@+id/tvTCT"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Terminos y condiciones de uso"
-                    android:textColor="#ffff" />
+                    android:textColor="#FFFFFF" />
             </ScrollView>
 
         <LinearLayout

@@ -34,8 +34,19 @@
         android:textColorHint="#C90039"
         android:layout_below="@+id/tvCorreo"
         android:background="@drawable/edittexts"
-        android:ems="8"
-         />
+        android:ems="8" />
+
+    <TextView
+        android:id="@+id/nota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etmail"
+        android:textColor="#ff828282"
+        android:layout_alignLeft="@id/etmail"
+        android:layout_alignStart="@id/etmail"
+        android:layout_alignEnd="@id/etmail"
+        android:layout_margin="3dp"
+        android:padding="1dp"/>
 
     <Spinner
         android:id="@+id/spinnermail"
@@ -58,9 +69,10 @@
 
         <CheckBox
             android:id="@+id/cbTyC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_margin="10dp"
+            android:buttonTint="#C90039"
             android:padding="3dp"/>
 
         <TextView

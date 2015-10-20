@@ -51,7 +51,7 @@ public class Correo extends ActionBarActivity {
     EditText etmail;
     int aNumber;
     String fechadia="";
-    TextView tvCorreo, textCB;
+    TextView tvCorreo, textCB, nota;
     Button btEnviar;
     CheckBox cbTyC;
     JSONArray products = null;
@@ -113,6 +113,8 @@ public class Correo extends ActionBarActivity {
 
 
         cbTyC = (CheckBox)findViewById(R.id.cbTyC);
+        nota = (TextView)findViewById(R.id.nota);
+        nota.setText(R.string.nota);
         //Esto es solo para determinar el tipo de fuente
         tvCorreo = (TextView) findViewById(R.id.tvCorreo);
         textCB = (TextView) findViewById(R.id.textCB);
@@ -122,8 +124,10 @@ public class Correo extends ActionBarActivity {
 
         tvCorreo.setTypeface(fontBold);
         etmail.setTypeface(font);
-        btEnviar.setTypeface(font);
+        nota.setTypeface(font);
         textCB.setTypeface(font);
+        btEnviar.setTypeface(font);
+
 
         textCB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,13 +175,16 @@ public class Correo extends ActionBarActivity {
         popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
         // FUENTE PARA TEXTO EN POPUP Y BOTONES:
-        String font_pathPP = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
-        Typeface TPP = Typeface.createFromAsset(getAssets(), font_pathPP);//llamanos a la CLASS TYPEFACE y la definimos
+        Typeface TVT = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Bold.ttf" );//llamanos a la CLASS TYPEFACE y la definimos
+        Typeface TPP = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Light.ttf" );//llamanos a la CLASS TYPEFACE y la definimos
+
         // con un CREATE desde ASSETS con la ruta STRING
 
         // Getting a reference to Close button, and close the popup when clicked.
+        TextView tvTCTit = (TextView)layout.findViewById(R.id.tvTCTit);
         Button aceptar = (Button) layout.findViewById(R.id.aceptar);
         Button cancelar = (Button) layout.findViewById(R.id.cancelar);
+        tvTCTit.setTypeface(TVT);
         cancelar.setTypeface(TPP);
         aceptar.setTypeface(TPP);
 
