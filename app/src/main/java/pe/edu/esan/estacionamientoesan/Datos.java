@@ -130,6 +130,38 @@ public class Datos extends ActionBarActivity {
         etCodigo.setTypeface(fontTex);
         aceptar =(Button)findViewById(R.id.aceptar);
         aceptar.setTypeface(fontTit);
+        etPlaca2.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(etPlaca.getText().toString().length()==3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if(etPlaca2.getText().toString().length()==3)     //size as per your requirement
+                {
+                    etContrasena.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(etPlaca2.getText().toString().length()==3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+
     }
 
     public void aceptar(View v) {
