@@ -26,7 +26,10 @@
                 android:layout_below="@+id/tvTCTit"
                 android:layout_marginTop="5dp"
                 android:layout_width="fill_parent"
-                android:layout_height="280dp">
+                android:layout_height="fill_parent"
+                android:layout_above="@+id/lin"
+
+                >
 
                 <TextView
                     android:id="@+id/tvTCT"
@@ -37,10 +40,11 @@
             </ScrollView>
 
         <LinearLayout
+            android:id="@+id/lin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@id/dss"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true">
 
             <Button

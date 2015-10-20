@@ -161,7 +161,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         sep4.setVisibility(View.GONE);
 
         dialog.show();
-        new LoadAllProducts().execute();
+        new LoadAllProductsIni().execute();
 
         hT.postDelayed(new Runnable() {
             @Override
@@ -382,6 +382,44 @@ public class MainActivity2Activity extends ActionBarActivity implements
                         estado2=estado;
                         estado22=estadoalonso;
                         estado23=estadopolo;
+                        estado=c.getString(TAG_NOMBRE);
+                        estadoalonso=c.getString(TAG_NOMBRE2);
+                        estadopolo=c.getString(TAG_NOMBRE3);
+
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        protected void onPostExecute(String file_url) {
+
+        }
+    }
+
+
+    class LoadAllProductsIni extends AsyncTask<String, String, String> {
+
+        /**
+         * Antes de empezar el background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+        }
+
+        protected String doInBackground(String... args) {
+            List params = new ArrayList();
+            JSONObject json = jParser.makeHttpRequest(url_all_empresas, "GET", params);
+            try {
+                int success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    products = json.getJSONArray(TAG_PRODUCTS);
+                    for (int i = 0; i < products.length(); i++) {
+                        JSONObject c = products.getJSONObject(i);
+                        estado2=c.getString(TAG_NOMBRE);
+                        estado22=c.getString(TAG_NOMBRE2);
+                        estado23=c.getString(TAG_NOMBRE3);
                         estado=c.getString(TAG_NOMBRE);
                         estadoalonso=c.getString(TAG_NOMBRE2);
                         estadopolo=c.getString(TAG_NOMBRE3);
