@@ -679,12 +679,20 @@ public class MainActivity2Activity extends ActionBarActivity implements
         switch (id)
         {
             case R.id.cerrars:
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                Bundle b = new Bundle();
+                b.putString("log", "no");
+                i.putExtras(b);
+                startActivity(i);
+                //finish();
+
                 this.finish();
+
                 return true;
 
             case R.id.info:
-                Intent u = new Intent(getApplicationContext(), Info.class);
-                startActivity(u);
+                Intent j = new Intent(getApplicationContext(), Info.class);
+                startActivity(j);
                 return true;
 
             case R.id.perfil:

@@ -49,6 +49,7 @@ public class MainActivity extends ActionBarActivity {
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean saveLogin;
+    private Boolean saveEntro;
     //Texto para que se vea en la consola para verificacion del codigo
     private final String TAG= "APP";
     //Cuadros de textos editables
@@ -73,6 +74,7 @@ public class MainActivity extends ActionBarActivity {
     CheckBox cb1;
     Button bstart;
     TextView heol;
+    String logestado="";
 
 
 
@@ -94,6 +96,22 @@ public class MainActivity extends ActionBarActivity {
         heol=(TextView)findViewById(R.id.tvhe);
 
         heol.setText(Html.fromHtml("<u>He olvidado mi contraseña</u>"));
+
+
+        try{
+            Intent i = getIntent();
+            Bundle b = i.getExtras();
+            logestado = b.getString("log");
+        }catch (Exception e){
+
+        }
+
+        Log.v("qqqq",logestado);
+
+
+
+
+
 
 
         //Declaracion de variable
@@ -146,31 +164,48 @@ public class MainActivity extends ActionBarActivity {
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
 
+
         saveLogin = loginPreferences.getBoolean("saveLogin", false);
+
+        saveEntro = loginPreferences.getBoolean("entro", false);
+
+
         if (saveLogin == true) {
             et1.setText(loginPreferences.getString("username", ""));
             et2.setText(loginPreferences.getString("password", ""));
             cb1.setChecked(true);
-            Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
-            //finish();
-            startActivity(i);
+
         }
+
+        if(logestado.equals("no")){
+            loginPrefsEditor.putString("logged", logestado);
+            loginPrefsEditor.commit();
+        }
+
+
+        if (saveEntro == true) {
+            if(loginPreferences.getString("logged", "").equals("yes")){
+
+                Intent u = new Intent(getApplicationContext(), MainActivity2Activity.class);
+                finish();
+                startActivity(u);
+
+
+            }
+
+        }
+
+
+        Log.v("rthj", loginPreferences.getString("logged", ""));
+
+
+
+
 
 
         bstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                if (cb1.isChecked()) {
-                    loginPrefsEditor.putBoolean("saveLogin", true);
-                    loginPrefsEditor.putString("username", et1.getText().toString());
-                    loginPrefsEditor.putString("password", et2.getText().toString());
-                    loginPrefsEditor.commit();
-                } else {
-                    loginPrefsEditor.clear();
-                    loginPrefsEditor.commit();
-                }
 
                 new AttemptLogin().execute();
 
@@ -238,8 +273,23 @@ public class MainActivity extends ActionBarActivity {
                     // save user data
 
 
+                    if (cb1.isChecked()) {
+                        loginPrefsEditor.putBoolean("saveLogin", true);
+                        loginPrefsEditor.putBoolean("entro", true);
+                        loginPrefsEditor.putString("username", et1.getText().toString());
+                        loginPrefsEditor.putString("password", et2.getText().toString());
+                        loginPrefsEditor.putString("logged", "yes");
+                        loginPrefsEditor.commit();
+                    } else {
+                        loginPrefsEditor.clear();
+                        loginPrefsEditor.putBoolean("entro", true);
+                        loginPrefsEditor.putString("logged", "yes");
+                        loginPrefsEditor.commit();
+                    }
+
+
                     Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
-                    //finish();
+                    finish();
                     startActivity(i);
                     return json.getString(TAG_MESSAGE);
                 } else {
@@ -303,5 +353,6 @@ public class MainActivity extends ActionBarActivity {
         }
         //noinspection SimplifiableIfStatement
     }
+
 
 }
