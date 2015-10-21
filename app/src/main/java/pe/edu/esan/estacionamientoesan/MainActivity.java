@@ -76,6 +76,8 @@ public class MainActivity extends ActionBarActivity {
     TextView heol;
     String logestado="";
 
+    String correo="";
+
 
 
 
@@ -171,6 +173,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         if (saveLogin == true) {
+            correo=loginPreferences.getString("correo", "");
             et1.setText(loginPreferences.getString("username", ""));
             et2.setText(loginPreferences.getString("password", ""));
             cb1.setChecked(true);
@@ -185,10 +188,16 @@ public class MainActivity extends ActionBarActivity {
 
         if (saveEntro == true) {
             if(loginPreferences.getString("logged", "").equals("yes")){
+                correo=loginPreferences.getString("correo", "");
 
-                Intent u = new Intent(getApplicationContext(), MainActivity2Activity.class);
+                Log.v("correoenviado",correo);
+
+                Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+                Bundle o=new Bundle();
+                o.putString("correo",correo);
+                i.putExtras(o);
                 finish();
-                startActivity(u);
+                startActivity(i);
 
 
             }
@@ -278,17 +287,22 @@ public class MainActivity extends ActionBarActivity {
                         loginPrefsEditor.putBoolean("entro", true);
                         loginPrefsEditor.putString("username", et1.getText().toString());
                         loginPrefsEditor.putString("password", et2.getText().toString());
+                        loginPrefsEditor.putString("correo", et1.getText().toString());
                         loginPrefsEditor.putString("logged", "yes");
                         loginPrefsEditor.commit();
                     } else {
                         loginPrefsEditor.clear();
                         loginPrefsEditor.putBoolean("entro", true);
+                        loginPrefsEditor.putString("correo", et1.getText().toString());
                         loginPrefsEditor.putString("logged", "yes");
                         loginPrefsEditor.commit();
                     }
 
 
                     Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+                    Bundle o=new Bundle();
+                    o.putString("correo", et1.getText().toString());
+                    i.putExtras(o);
                     finish();
                     startActivity(i);
                     return json.getString(TAG_MESSAGE);

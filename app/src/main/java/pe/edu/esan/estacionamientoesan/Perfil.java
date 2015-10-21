@@ -87,13 +87,13 @@ public class Perfil extends ActionBarActivity {
         etContraseña.setTypeface(fuente);
         etTelefono.setTypeface(fuente);
 
-        try{
+
             Intent p = getIntent();
             Bundle b = p.getExtras();
             correo = b.getString("correo");
-        }catch (Exception e){
 
-        }
+        Log.v("CORREORECIBIDO", correo);
+
 
 
 

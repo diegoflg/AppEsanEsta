@@ -94,6 +94,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
 
+        Intent p = getIntent();
+        Bundle b = p.getExtras();
+        correo = b.getString("correo");
+        Log.i("CORREO",correo);
+
 
         //FUENTE Y COLOR PARA TEXTVIEWS
         String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
