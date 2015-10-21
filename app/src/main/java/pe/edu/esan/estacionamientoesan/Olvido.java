@@ -33,7 +33,7 @@ public class Olvido extends ActionBarActivity {
     private TextView tv1;
     private ProgressDialog pDialog;
     int success=3;
-    private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_fechas.php";
+    private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/esconnect/get_fechas.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "registros";
     private static final String TAG_NOMBRE = "password";

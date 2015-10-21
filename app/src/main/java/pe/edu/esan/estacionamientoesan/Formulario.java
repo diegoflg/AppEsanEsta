@@ -45,7 +45,7 @@ public class Formulario extends ActionBarActivity {
 
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
-    private static final String REGISTER_URL = "http://www.estacionamientoesan.site88.net/cas2/registroesan.php";
+    private static final String REGISTER_URL = "http://www.estacionamientoesan.net76.net/cas2/registroesan.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     private ProgressDialog pDialog;

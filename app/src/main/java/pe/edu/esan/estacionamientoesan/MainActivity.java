@@ -63,7 +63,7 @@ public class MainActivity extends ActionBarActivity {
     String mensaje="Usuario o password invalida";
     //Entero que manda el tipo de usuario
     int tipo=1;
-    private static final String LOGIN_URL = "http://www.estacionamientoesan.site88.net/cas2/login.php";
+    private static final String LOGIN_URL = "http://www.estacionamientoesan.net76.net/cas2/login.php";
     // La respuesta del JSON es
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -73,7 +73,6 @@ public class MainActivity extends ActionBarActivity {
     CheckBox cb1;
     Button bstart;
     TextView heol;
-
 
 
 
