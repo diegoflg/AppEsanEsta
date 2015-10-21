@@ -56,7 +56,7 @@ public class Correo extends ActionBarActivity {
     CheckBox cbTyC;
     JSONArray products = null;
     JSONParser jsonParser = new JSONParser();
-    private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/esconnect/get_fechas.php";
+    private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_fechas.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "registros";
     private static final String TAG_NOMBRE = "correo";

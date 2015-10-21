@@ -28,12 +28,12 @@ import java.util.List;
  * Created by educacionadistancia on 20/10/2015.
  */
 public class Perfil extends ActionBarActivity {
-    private static final String LOGIN_URL = "http://www.estacionamientoesan.site88.net/esconnect/get_registros.php";
+    private static final String LOGIN_URL = "http://www.estacionamientoesan.net76.net/essconnect/get_registros.php";
 
 
     JSONParser jsonParser = new JSONParser();
 
-    private static final String REGISTER_URL2 = "http://www.estacionamientoesan.site88.net/cas/registroactu.php";
+    private static final String REGISTER_URL2 = "http://www.estacionamientoesan.net76.net/cas/registroactu.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
@@ -87,10 +87,15 @@ public class Perfil extends ActionBarActivity {
         etContraseña.setTypeface(fuente);
         etTelefono.setTypeface(fuente);
 
-        Intent p = getIntent();
-        Bundle b = p.getExtras();
-        correo = b.getString("correo");
-        Log.i("CORREO", correo);
+        try{
+            Intent p = getIntent();
+            Bundle b = p.getExtras();
+            correo = b.getString("correo");
+        }catch (Exception e){
+
+        }
+
+
 
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +106,17 @@ public class Perfil extends ActionBarActivity {
 
                 // new CreateUser().execute();
 
-                if (etPlaca.length() != 3 || etPlaca2.length() != 3) {
+                if (etPlaca.length() != 3 || etPlacaC.length() != 3) {
+                    mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                }
+
+                if (etPlaca2.length() != 3 || etPlacaC2.length() != 3) {
+                    mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                }
+
+                if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
                     mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
 
                 }

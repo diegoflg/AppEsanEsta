@@ -43,7 +43,7 @@ import java.util.List;
 public class MainActivity2Activity extends ActionBarActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/esconnect/get_all_empresas.php";
+    private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_all_empresas.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "users";
     private static final String TAG_NOMBRE = "username";
@@ -73,7 +73,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
     TextView textView3;
 
-    String correo;
+    String correo="";
 
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -100,10 +100,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
         Typeface TFE = Typeface.createFromAsset(this.getAssets(), font_pathE);
         //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
-        Intent p = getIntent();
-        Bundle b = p.getExtras();
-        correo = b.getString("email");
-        Log.i("CORREO",correo);
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFL = Typeface.createFromAsset(this.getAssets(), font_pathL);
         /*
