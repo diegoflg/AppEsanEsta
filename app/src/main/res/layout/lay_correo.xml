@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@drawable/campus">
 
     <TextView
         android:id="@+id/tvCorreo"
@@ -59,15 +59,6 @@
         android:layout_toEndOf="@id/etmail"/>
 
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,14 +71,19 @@
             android:id="@+id/cbTyC"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="3dp"
             android:buttonTint="#C90039"
-            android:padding="3dp"/>
+            android:padding="1dp"/>
 
         <TextView
             android:id="@+id/textCB"
-            android:textSize="17sp"
-            android:textColor="#ff828282"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textoCB" />
@@ -103,7 +99,8 @@
         android:layout_alignParentBottom="true"
         android:textColor="#FFFFFF"
         android:background="#C90039"
-        android:layout_margin="20dp" />
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>
 
