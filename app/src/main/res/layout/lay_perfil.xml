@@ -212,7 +212,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            android:onClick="btActualizar"
             android:background="@drawable/mybutton"
             android:layout_below="@+id/etTelefono"
             android:layout_toRightOf="@+id/etPlaca2"

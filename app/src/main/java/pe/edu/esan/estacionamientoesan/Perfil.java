@@ -1,15 +1,19 @@
 package pe.edu.esan.estacionamientoesan;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -25,23 +29,22 @@ import java.util.List;
  */
 public class Perfil extends ActionBarActivity {
     private static final String LOGIN_URL = "http://www.estacionamientoesan.site88.net/esconnect/get_registros.php";
+
+
     JSONParser jsonParser = new JSONParser();
-    private ProgressDialog pDialog;
+
+    private static final String REGISTER_URL2 = "http://www.estacionamientoesan.site88.net/cas/registroactu.php";
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_PRODUCTS = "Registro";
-    private static final String TAG_CORREO = "correo";
-    private static final String TAG_PLACA= "placa1";
-    private static final String TAG_PLACA2 = "placa2";
-    private static final String TAG_PLACA3 = "placa3";
-    private static final String TAG_TELEFONO = "telefono";
-    private static final String TAG_CONTRASENA = "password";
-    private static final String url_update = "http://www.estacionamientoesan.site88.net/cas/registroactu.php";
+    private static final String TAG_MESSAGE = "message";
+
 
     TextView tvPerfil, tvPlaca, tvGuion, tvGuion2, tvGuion3 , tvContraseña, tvTelefono;
     EditText etPlaca, etPlacaC, etPlaca2, etPlacaC2,etPlaca3, etPlacaC3, etContraseña, etTelefono;
     Button actualizar;
+    private ProgressDialog pDialog;
 
     String correo;
+    String mensaje="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,143 +91,131 @@ public class Perfil extends ActionBarActivity {
         Bundle b = p.getExtras();
         correo = b.getString("correo");
         Log.i("CORREO", correo);
-        new GetUserDetails().execute();
+
+        actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                mensaje = "";
+
+                // new CreateUser().execute();
+
+                if (etPlaca.length() != 3 || etPlaca2.length() != 3) {
+                    mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                }
+                if (etTelefono.length() != 7 && etTelefono.length() != 9) {
+                    mensaje = mensaje + "-El telefono ingresado no es correcto" + "\n";
+
+                }
+                if (etContraseña.length() == 0) {
+                    mensaje = mensaje + "-Ingrese una contraseña" + "\n";
+
+                }
+
+
+                Log.v("qwerty", mensaje);
+
+                if (mensaje.equals("")) {
+                    new CreateUser2().execute();
+
+                } else {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Perfil.this);
+                    builder.setMessage(mensaje)
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //do things
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+
+                }
+
+
+            }
+        });
+
     }
 
+    class CreateUser2 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
 
-    class GetUserDetails extends AsyncTask<String, String, String> {
 
-        /**
-         * http://makersofandroid.blogspot.pe/2014/03/connecting-android-with-mysqlremote.html
-         * Before starting background thread Show Progress Dialog
-         */
         @Override
         protected void onPreExecute() {
+            //Metodo antes de ser ejecutada la accion
+
+
             super.onPreExecute();
             pDialog = new ProgressDialog(Perfil.this);
-            pDialog.setMessage("Cargando datos. Por favor espere...");
+            pDialog.setMessage("Creating User...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
+
         }
 
-        /**
-         * Getting product details in background thread
-         */
+        @Override
         protected String doInBackground(String... args) {
-            //http://www.estacionamientoesan.site88.net/esconnect/get_registros.php           edatos de estudiantes
-            //http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php        datos dd semaforo
-            //http://www.estacionamientoesan.site88.net/cas/registroactu.php                  actualizacion por internet
+            //Metodo que se hace en segundo plano
 
-            List params = new ArrayList();
-            JSONObject json = jsonParser.makeHttpRequest(LOGIN_URL, "GET", params);
+            // TODO Auto-generated method stub
+            // Check for success tag
             int success;
             try {
+                // Building Parameters
+                List params = new ArrayList();
+                params.add(new BasicNameValuePair("correo", correo));
+                params.add(new BasicNameValuePair("placa1", etPlaca.getText().toString()+etPlacaC.getText().toString()));
+                params.add(new BasicNameValuePair("placa2", etPlaca2.getText().toString()+etPlacaC2.getText().toString()));
+                params.add(new BasicNameValuePair("placa3", etPlaca3.getText().toString()+etPlacaC3.getText().toString()));
+                params.add(new BasicNameValuePair("password", etContraseña.getText().toString()));
+                params.add(new BasicNameValuePair("telefono", etTelefono.getText().toString()));
+
+
+                Log.d("request!", "starting");
+
+                //Posting user data to script
+                JSONObject json = jsonParser.makeHttpRequest(
+                        REGISTER_URL2, "POST", params);
+
+                // full json response
+                Log.d("Registering attempt", json.toString());
+
+                // json success element
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
-                    // successfully received product details
-                    JSONArray productObj = json.getJSONArray(TAG_PRODUCTS); // JSON Array
+                    Log.v("actualizacion correcta", json.toString());
+                    return json.getString(TAG_MESSAGE);
+                }else{
+                    Log.d("Registering Failure!", json.getString(TAG_MESSAGE));
+                    return json.getString(TAG_MESSAGE);
 
-                    for (int i = 0; i < productObj.length(); i++) {
-                        JSONObject c = productObj.getJSONObject(i);
-                        String gmail = c.getString(TAG_CORREO);
-
-
-                    }
-
-                    /*
-                    for (int i = 0; i < productObj.length(); i++) {
-                        JSONObject c = productObj.getJSONObject(i);
-                        Log.i("FUNCIONA", "OBJETO: "+c);
-                        String Correos =c.getString(TAG_CORREO);
-                        Log.i("FUNCIONA", "CORREO: "+Correos);
-                    }
-                     */
-
-                } else {
-                    // product with pid not found
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             return null;
+
         }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         * *
-         */
         protected void onPostExecute(String file_url) {
-            // dismiss the dialog once got all details
+            //Metodo que se hace terminada la ejecucion de la accion
+
+            // dismiss the dialog once product deleted
             pDialog.dismiss();
-        }
-    }
-
-
-    class SaveProductDetails extends AsyncTask<String, String, String> {
-
-        /**
-         * Before starting background thread Show Progress Dialog
-         */
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(Perfil.this);
-            pDialog.setMessage("Saving product ...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
-        }
-
-        /**
-         * Saving product
-         */
-        protected String doInBackground(String... args) {
-
-            // getting updated data from EditTexts
-            String telefono = etTelefono.getText().toString();
-            String contraseña = etContraseña.getText().toString();
-
-
-            // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair(TAG_PRODUCTS, correo));
-            params.add(new BasicNameValuePair(TAG_TELEFONO, telefono));
-            params.add(new BasicNameValuePair(TAG_CONTRASENA, contraseña));
-
-
-            // sending modified data through http request
-            // Notice that update product url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_update, "POST", params);
-
-            // check json success tag
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-
-                if (success == 1) {
-                    // successfully updated
-                    Intent i = getIntent();
-                    // send result code 100 to notify about product update
-                    setResult(100, i);
-                    finish();
-                } else {
-                    // failed to update product
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if (file_url != null){
+                Toast.makeText(Perfil.this, file_url, Toast.LENGTH_LONG).show();
             }
 
-            return null;
-        }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         * *
-         */
-        protected void onPostExecute(String file_url) {
-            // dismiss the dialog once product uupdated
-            pDialog.dismiss();
+
         }
     }
+
 }

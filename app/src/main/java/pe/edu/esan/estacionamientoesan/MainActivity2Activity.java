@@ -699,9 +699,9 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
             case R.id.perfil:
                 Intent p = new Intent(getApplicationContext(), Perfil.class);
-                Bundle b = new Bundle();
-                b.putString("correo", correo);
-                p.putExtras(b);
+                Bundle k = new Bundle();
+                k.putString("correo", correo);
+                p.putExtras(k);
                 startActivity(p);
                 return true;
 
