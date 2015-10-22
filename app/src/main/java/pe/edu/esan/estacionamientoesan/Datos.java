@@ -69,8 +69,8 @@ public class Datos extends ActionBarActivity {
         etContrasena = (EditText) findViewById(R.id.etContraseña);
         etCodigo = (EditText) findViewById(R.id.etCodigo);
 
-        etPlaca.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-        etPlaca2.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        etPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
+        etPlaca2.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
 
         Intent i = getIntent();
         Bundle b = i.getExtras();

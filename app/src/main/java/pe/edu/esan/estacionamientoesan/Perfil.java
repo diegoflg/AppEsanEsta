@@ -8,7 +8,9 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -100,15 +102,208 @@ public class Perfil extends ActionBarActivity {
         etContraseña.setTypeface(fuente);
         etTelefono.setTypeface(fuente);
 
-        etPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
-        etPlaca2.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
-        etPlacaC.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-        etPlacaC2.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-        etPlaca3.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
-        etPlacaC3.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        etPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
+        etPlacaC.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
+        etPlaca2.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
+        etPlacaC2.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
+        etPlaca3.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
+        etPlacaC3.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
 
 
-            Intent p = getIntent();
+
+        etPlaca.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
+                {
+                    etPlacaC.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+        etPlacaC.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etPlacaC.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (etPlacaC.getText().toString().length() == 3)     //size as per your requirement
+                {
+                    etPlaca2.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (etPlacaC.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+        etPlaca2.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etPlaca2.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (etPlaca2.getText().toString().length() == 3)     //size as per your requirement
+                {
+                    etPlacaC2.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (etPlaca2.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+        etPlacaC2.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etPlacaC2.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (etPlacaC2.getText().toString().length() == 3)     //size as per your requirement
+                {
+                    etPlaca3.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (etPlacaC2.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+        etPlaca3.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etPlaca3.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (etPlaca3.getText().toString().length() == 3)     //size as per your requirement
+                {
+                    etPlacaC3.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (etPlaca3.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+        etPlacaC3.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etPlacaC3.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (etPlacaC3.getText().toString().length() == 3)     //size as per your requirement
+                {
+                    etContraseña.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (etPlacaC3.getText().toString().length() == 3)     //size as per your requirement
+                {
+
+                }
+
+            }
+        });
+
+
+
+
+
+
+
+        Intent p = getIntent();
             Bundle b = p.getExtras();
             correo = b.getString("correo");
 
