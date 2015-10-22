@@ -31,11 +31,6 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".Formulario"
-            android:label="Registro"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name=".Olvido"
             android:label="@string/title_activity_olvido"
             android:screenOrientation="portrait" >
