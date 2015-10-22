@@ -111,6 +111,26 @@ public class MainActivity extends ActionBarActivity {
         Log.v("qqqq",logestado);
 
 
+        cb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (cb1.isChecked()) {
+                    loginPrefsEditor.putBoolean("saveLogin", true);
+                    loginPrefsEditor.putString("username", et1.getText().toString());
+                    loginPrefsEditor.putString("password", et2.getText().toString());
+                    loginPrefsEditor.putString("correo", et1.getText().toString());
+                    loginPrefsEditor.commit();
+                } else {
+                    loginPrefsEditor.putBoolean("saveLogin", false);
+                    loginPrefsEditor.commit();
+                }
+
+
+            }
+        });
+
+
 
 
 
@@ -281,21 +301,11 @@ public class MainActivity extends ActionBarActivity {
                     // save user data
 
 
-                    if (cb1.isChecked()) {
-                        loginPrefsEditor.putBoolean("saveLogin", true);
-                        loginPrefsEditor.putBoolean("entro", true);
-                        loginPrefsEditor.putString("username", et1.getText().toString());
-                        loginPrefsEditor.putString("password", et2.getText().toString());
-                        loginPrefsEditor.putString("correo", et1.getText().toString());
-                        loginPrefsEditor.putString("logged", "yes");
-                        loginPrefsEditor.commit();
-                    } else {
-                        loginPrefsEditor.clear();
                         loginPrefsEditor.putBoolean("entro", true);
                         loginPrefsEditor.putString("correo", et1.getText().toString());
                         loginPrefsEditor.putString("logged", "yes");
                         loginPrefsEditor.commit();
-                    }
+
 
 
                     Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
