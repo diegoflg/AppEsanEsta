@@ -84,7 +84,7 @@ public class Olvido extends ActionBarActivity {
             pDialog = new ProgressDialog(Olvido.this);
             pDialog.setMessage("Enviando Correo...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
             pDialog.show();
 
 

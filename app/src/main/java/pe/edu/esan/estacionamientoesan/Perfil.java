@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -99,6 +100,13 @@ public class Perfil extends ActionBarActivity {
         etContraseña.setTypeface(fuente);
         etTelefono.setTypeface(fuente);
 
+        etPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        etPlaca2.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        etPlacaC.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        etPlacaC2.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        etPlaca3.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        etPlacaC3.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+
 
             Intent p = getIntent();
             Bundle b = p.getExtras();
@@ -119,20 +127,45 @@ public class Perfil extends ActionBarActivity {
 
                 // new CreateUser().execute();
 
-                if (etPlaca.length() != 3 || etPlacaC.length() != 3) {
-                    mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+                if(etPlaca.length()==0 && etPlacaC.length()==0 && etPlaca2.length()==0 && etPlacaC2.length()==0 && etPlaca3.length()==0 && etPlacaC3.length()==0 )
+                {
+                    mensaje = mensaje + "-Debe tener por lo menos 1 placa" + "\n";
+                }else{
+
+                    if(etPlaca.length()!=0 && etPlacaC.length()!=0){
+                        if (etPlaca.length() != 3 || etPlacaC.length() != 3) {
+                            mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                        }
+
+
+                    }
+
+                    if(etPlaca2.length()!=0 && etPlacaC2.length()!=0){
+
+                        if (etPlaca2.length() != 3 || etPlacaC2.length() != 3) {
+                            mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                        }
+
+                    }
+
+
+                    if(etPlaca3.length()!=0 && etPlacaC3.length()!=0){
+                        if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
+                            mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                        }
+
+
+                    }
+
 
                 }
 
-                if (etPlaca2.length() != 3 || etPlacaC2.length() != 3) {
-                    mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
 
-                }
 
-                if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
-                    mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
 
-                }
                 if (etTelefono.length() != 7 && etTelefono.length() != 9) {
                     mensaje = mensaje + "-El telefono ingresado no es correcto" + "\n";
 
@@ -217,24 +250,26 @@ public class Perfil extends ActionBarActivity {
                         products = json.getJSONArray(TAG_PRODUCTS);
                         for (int i = 0; i < products.length(); i++) {
                             JSONObject c = products.getJSONObject(i);
-                            Log.d("asdasd", c.getString(TAG_Placa));
-                            Log.d("asdasd", c.getString(TAG_Placa2));
-                            Log.d("asdasd", c.getString(TAG_Contra));
-                            Log.d("asdasd", c.getString(TAG_Placa3));
-                            Log.d("asdasd", c.getString(TAG_Telf));
 
-                            Log.d("subsub", c.getString(TAG_Placa).substring(0, 3));
-                            Log.d("subsub", c.getString(TAG_Placa).substring(3,6));
                             //etPlaca2.setText(c.getString(TAG_Placa2));
                             //etPlaca3.setText(c.getString(TAG_Placa3));
                             varContra=c.getString(TAG_Contra);
                             varTelf=c.getString(TAG_Telf);
-                            varPlaca11=c.getString(TAG_Placa).substring(0, 3);
-                            varPlaca12=c.getString(TAG_Placa).substring(3, 6);
-                            varPlaca21=c.getString(TAG_Placa2).substring(0,3);
-                            varPlaca22=c.getString(TAG_Placa2).substring(3,6);
-                            varPlaca31=c.getString(TAG_Placa3).substring(0,3);
-                            varPlaca32=c.getString(TAG_Placa3).substring(3,6);
+
+                            try{
+                                varPlaca11=c.getString(TAG_Placa).substring(0, 3);
+                                varPlaca12=c.getString(TAG_Placa).substring(3, 6);
+                                varPlaca21=c.getString(TAG_Placa2).substring(0,3);
+                                varPlaca22=c.getString(TAG_Placa2).substring(3,6);
+                                varPlaca31=c.getString(TAG_Placa3).substring(0,3);
+                                varPlaca32=c.getString(TAG_Placa3).substring(3,6);
+
+                            }catch (Exception e){
+
+                            }
+
+
+
 
 
                         }

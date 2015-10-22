@@ -48,6 +48,7 @@ import javax.mail.MessagingException;
 
 public class Correo extends ActionBarActivity {
     String dominio="@esan.edu.pe";
+    private ProgressDialog pDialog;
     EditText etmail;
     int aNumber;
     String fechadia="";
@@ -284,6 +285,12 @@ public class Correo extends ActionBarActivity {
         protected void onPreExecute() {
             //Metodo antes de ser ejecutada la accion
             super.onPreExecute();
+
+            pDialog = new ProgressDialog(Correo.this);
+            pDialog.setMessage("Enviando Correo...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
         }
 
         @Override
@@ -318,6 +325,8 @@ public class Correo extends ActionBarActivity {
         }
 
         protected void onPostExecute(String file_url) {
+
+            pDialog.dismiss();
 
             if(success==0){
 
