@@ -79,13 +79,16 @@ public class MainActivity extends ActionBarActivity {
         WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         //Activa el WiFi
         wifi.setWifiEnabled(true);
+        //Se le asigna el id a la variable segun el layout
         bstart = (Button) findViewById(R.id.button);
+        //Se le asigna el id a la variable segun el layout
         cb1 = (CheckBox) findViewById(R.id.cb1);
+        //Se le asigna el id a la variable segun el layout
         heol=(TextView)findViewById(R.id.tvhe);
-
+        //Se le da una cadena de texto al cuadro de texto
         heol.setText(Html.fromHtml("<u>He olvidado mi contraseña</u>"));
 
-
+        //Se da un intento de obtencion de variables del main
         try{
             Intent i = getIntent();
             Bundle b = i.getExtras();
@@ -94,13 +97,11 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
-        Log.v("qqqq",logestado);
-
-
+        //Metodo que se activa cuando se da click al checkbox
         cb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Si el checkbox es chequeado
                 if (cb1.isChecked()) {
                     loginPrefsEditor.putBoolean("saveLogin", true);
                     loginPrefsEditor.putString("username", et1.getText().toString());
@@ -108,20 +109,12 @@ public class MainActivity extends ActionBarActivity {
                     loginPrefsEditor.putString("correo", et1.getText().toString());
                     loginPrefsEditor.commit();
                 } else {
+                    //Caso contrario
                     loginPrefsEditor.putBoolean("saveLogin", false);
                     loginPrefsEditor.commit();
                 }
-
-
             }
         });
-
-
-
-
-
-
-
 
 
         //Declaracion de variable
@@ -166,7 +159,6 @@ public class MainActivity extends ActionBarActivity {
         //Se le asigna una fuente al texto del boton
         botonacceder.setTypeface(TF);
 
-        //Se crea y da valor a una base de datos del tipo creado en la clase AdminBD
 
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
@@ -195,57 +187,37 @@ public class MainActivity extends ActionBarActivity {
             if(loginPreferences.getString("logged", "").equals("yes")){
                 correo=loginPreferences.getString("correo", "");
 
-                Log.v("correoenviado",correo);
-
+                //Intento de cambio de actividad y de paso de valores
                 Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
                 Bundle o=new Bundle();
                 o.putString("correo",correo);
                 i.putExtras(o);
                 finish();
                 startActivity(i);
-
-
             }
-
         }
 
 
-        Log.v("rthj", loginPreferences.getString("logged", ""));
-
-
-
-
-
-
+        //Cuando el boton es presionado se ejecuta la clase
         bstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 new AttemptLogin().execute();
-
-
-
             }
         });
 
+
+        //Cuando el texto es seleccionado se abre la actividad de Olvido
         heol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent u = new Intent(getApplicationContext(), Olvido.class);
                 //finish();
                 startActivity(u);
 
             }
         });
-
-
-
-
-
     }
-
-
 
 
 
@@ -253,19 +225,30 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected void onPreExecute() {
+            //Metodo que ocurre antes de ejecutar la accion
             super.onPreExecute();
+            //Se da valor al dialogo de progreso y se da el contexto
             pDialog = new ProgressDialog(MainActivity.this);
+            //Se le asigna el mensaje
             pDialog.setMessage("Attempting login...");
+            //Se da indeterminado falso
             pDialog.setIndeterminate(false);
+            //Se da valor falso al cancelable
             pDialog.setCancelable(false);
+            //Se muestra el dialogo de progreso
             pDialog.show();
         }
 
         @Override
         protected String doInBackground(String... args) {
+            //Metodo que ocurre en segundo plano
+            //Declaracion de variables
             int success;
+            //Cadenas de texto que son obtenidas a traves de lo que es ingresado por el usuario en los campos de usuario y contraseña
             String username = et1.getText().toString();
             String password = et2.getText().toString();
+
+            //Se intenta
             try {
                 // Building Parameters
                 List params = new ArrayList();
@@ -314,6 +297,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String file_url) {
+            //Metodo que se da al terminar la ejecucion
+
             // dismiss the dialog once product deleted
             pDialog.dismiss();
             if (file_url != null) {
@@ -323,6 +308,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void register(View v){
+        //Metodo que se da al dar click al boton registrar
+        //Se intenta ir a la actividad de Correo para ingresar datos de registro
         Intent o = new Intent(getApplicationContext(), Correo.class);
         startActivity(o);
     }
@@ -353,7 +340,9 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
         switch (id)
         {
+            //Si se da a la opcion Salir en el menu de la actividad
             case R.id.salir:
+                //Se termina la actividad
                 this.finish();
                 return true;
 

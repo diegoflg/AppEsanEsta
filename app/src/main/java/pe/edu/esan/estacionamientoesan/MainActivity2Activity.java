@@ -41,39 +41,47 @@ import java.util.List;
 
 public class MainActivity2Activity extends ActionBarActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    /*Declaracion de variables generales a usar en la actividad*/
 
+    //Se crea una cadena de texto privada... : (sus valores son dados de esa manera ya que asi estan definidos tambien en la base de datos y sus php)
+    //cuyo valor es la URL del php
     private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_all_empresas.php";
+    //cuyo valor es success
     private static final String TAG_SUCCESS = "success";
+    //cuyo valor es users
     private static final String TAG_PRODUCTS = "users";
+    //cuyo valor es username
     private static final String TAG_NOMBRE = "username";
+    //cuyo valor es username2
     private static final String TAG_NOMBRE2 = "username2";
+    //cuyo valor es username3
     private static final String TAG_NOMBRE3 = "username3";
-    private ImageView sema1e, sema2e, sema3e;
+
+    //Se crean cadenas de texto para los estados de cada semaforo
     private String estado = "waa";
     private String estadoalonso = "waa";
     private String estadopolo = "waa";
+    //Se crea una variable de tipo JSONArray con valor inicial nulo
     JSONArray products = null;
+    //Se crea una nueva variable del tipo JSONParser(clase)
     JSONParser jParser = new JSONParser();
-    TextView tvlibres, titulo, tit1, tit2;
+    //Se crea cadenas de texto para los nuevos estados de cada semaforo
     String estado2;
     String estado22;
     String estado23;
+    //Se crea una cadena de texto privada
     private String tt;
+    //Se crea una variable para GoogleApiClient
     GoogleApiClient mGoogleApiClient;
+    //Se crea una variable de locacion
     Location mLastLocation;
+    //Se crean numeros reales para longitud y latidud
     double longitude;
     double latitude;
-    int contador = 0;
-
-    //Button btEsan, btPolo, btAlonso, btir;
-
-    //PARA FUENTE:
-    TextView textViewestareg;
-
-    TextView textView3;
-
+    //Se crea una cadena para el correo con valor inicial nulo
     String correo="";
 
+    //Constructor que sirve para el API de Google
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -86,39 +94,30 @@ public class MainActivity2Activity extends ActionBarActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Se le asigna el layout a la actividad
         setContentView(R.layout.lay_estacionamiento);
 
-
+        //Se crea y da valores a un dialogo de progreso
         final ProgressDialog dialog = ProgressDialog.show(this, "", "Please wait, Loading Page...", true);
 
+        //Se crea y da valor a un reproductor de sonido
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
 
+        //Se hace un intent para obtener los datos de la otra actividad
         Intent p = getIntent();
         Bundle b = p.getExtras();
         correo = b.getString("correo");
-        Log.i("CORREO",correo);
 
-
-        //FUENTE Y COLOR PARA TEXTVIEWS
-        String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
-        Typeface TFE = Typeface.createFromAsset(this.getAssets(), font_pathE);
-        //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-
-        String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
-        Typeface TFL = Typeface.createFromAsset(this.getAssets(), font_pathL);
-        /*
-        btEsan = (Button) findViewById(R.id.btEsan);
-        btAlonso = (Button) findViewById(R.id.btAlonso);
-        btPolo = (Button) findViewById(R.id.btPolo);
-        btir = (Button) findViewById(R.id.btir);
-         */
-
-
+        //Se crea una variable handler nueva
         final Handler h = new Handler();
+        //Se crea y da valor a un numero para que sea el tiempo del handle en milisegundos
         final int delay = 5000; //milliseconds
-
+        //Se crea una variable handle nueva
         final Handler hT = new Handler();
 
+
+        /*SE CREAN VARIABLES Y SE LES ASIGNA SU ID CORRESPONDIENTE DEL LAYOUT Y SE LES INICIA UNA VISIBILIDAD(VISIBLES O GONE(NO APARECEN EN LO ABSOLUTO))*/
         //Separador 1
 
         //Titulo Esan
@@ -161,10 +160,15 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //Separador 4
         View sep4 = (View)findViewById(R.id.sep4);
         sep4.setVisibility(View.GONE);
+        /*FIN DE CREACION DE VARIABLES Y ASIGNACION DE ID's JUNTO A SU VISIBILIDAD*/
 
+        //Se muestra el dialogo de progreso
         dialog.show();
+        //Se ejecuta la accion dada en el metodo con el mismo nombre
         new LoadAllProductsIni().execute();
 
+        //Handler que ocurre despues de 5 segundos(delay): Verifica si se esta mostrando el dialogo de progreso y si es correcto, desaparece
+        //caso contrario no hace nada
         hT.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -176,12 +180,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
         }, delay);
 
 
+        //Handler que ocurre cada 5 segundos(delay):
+            //1. Se verifica los estados para asignar una imagen a los botones
+            //2. Se verifica el cambio de estado para que entonces se reproduzca el sonido
         h.postDelayed(new Runnable() {
             public void run() {
-                Log.v("tipo", "timer");
-                Log.v("es", estado);
-                Log.v("es2", estadoalonso);
-
                 if (estado.equals("rojo")) {
                     btEsan.setBackgroundResource(R.drawable.brojo);
 
@@ -229,18 +232,12 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 }
 
                 if (estado.equals(estado2)) {
-                    Log.i("CAMBIO", "ESAN NO CAMBIA");
                 } else {
-                    Log.i("CAMBIO", "ESAN CAMBIA");
-
                     if(estado.equals("verde")){
-                        Log.i("COLOR CAMBIO", "ESAN A VERDE");
                         mp.start();
                     }else if(estado.equals("rojo")){
-                        Log.i("COLOR CAMBIO", "ESAN A ROJO");
                         mp.start();
                     }else if(estado.equals("amarillo")){
-                        Log.i("COLOR CAMBIO", "ESAN A AMARILLO");
                         mp.start();
                     }
 
@@ -248,62 +245,52 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                 if (estadoalonso.equals(estado22)) {
-                    Log.i("CAMBIO", "ALONSO NO CAMBIA");
                 } else {
                     if(tvPolo.getVisibility()==View.VISIBLE){
-                        Log.i("CAMBIO", "CAMBIO ALONSO SUENA");
-
-
                         if(estadoalonso.equals("verde")){
-                            Log.i("COLOR CAMBIO", "ALONSO A VERDE");
                             mp.start();
                         }else if(estadoalonso.equals("rojo")){
-                            Log.i("COLOR CAMBIO", "ALONSO A ROJO");
                             mp.start();
                         }else if(estadoalonso.equals("amarillo")){
-                            Log.i("COLOR CAMBIO", "ALONSO A AMARILLO");
                             mp.start();
                         }
 
                     }else{
-                        Log.i("CAMBIO", "CAMBIO ALONSO SIN SONIDO");
+
                     }
                 }
 
                 if (estadopolo.equals(estado23)) {
-                    Log.i("CAMBIO", "POLO NO CAMBIA");
                 } else {
                     if(tvPolo.getVisibility()==View.VISIBLE){
-                         Log.i("CAMBIO", "CAMBIO POLO SUENA");
-
                         if(estadopolo.equals("verde")){
-                            Log.i("COLOR CAMBIO", "POLO A VERDE");
                             mp.start();
                         }else if(estadopolo.equals("rojo")){
-                            Log.i("COLOR CAMBIO", "POLO A ROJO");
                             mp.start();
                         }else if(estadopolo.equals("amarillo")){
-                            Log.i("COLOR CAMBIO", "POLO A AMARILLO");
                             mp.start();
                         }
 
                     }else{
-                        Log.i("CAMBIO", "CAMBIO POLO SIN SONIDO");
                     }
                 }
 
                 if (isNetworkAvailable() == false) {
 
                 }
+
+                //Se ejecuta la accion del mismo nombre
                 new LoadAllProducts().execute();
                 //new LoadTIME().execute();
 
+                //Se sigue haciendo el handler cada 5 segundos
                 h.postDelayed(this, delay);
 
             }
         }, delay);
 
 
+        //Metodo que se activa cuando se da click al boton ir
         btIr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -314,29 +301,27 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 //  bundle.putString("lugar","polo");
                 //  fragment.setArguments(bundle);
                 // fragmentManager.beginTransaction().add(R.id.container, fragment, "Map1").commit();
-                Log.v("detect", "sepudo");
 
+                //Se les da valores reales a las variables
                 latitude = -12.098581;
                 longitude = -76.970599;
-
+                //Se llama al metodo
                 buildGoogleApiClient();
 
+                //Verifica la existencia del cliente API de Google
                 if (mGoogleApiClient != null) {
                     mGoogleApiClient.connect();
                 } else {
                     Toast.makeText(MainActivity2Activity.this, "Not connected...", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
-
-
     }
 
 
     @Override
     public void onConnected(Bundle bundle) {
+        //Muestra el mapa segun la posicion del usuario y traza la ruta hacia los datos dados
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
 
@@ -354,14 +339,18 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
     @Override
     public void onConnectionSuspended(int i) {
+        //Metodo que muestra un mensaje en pantalla cuando la conexion ha sido suspendida
         Toast.makeText(this, "Connection suspended...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
+        //Metodo que muestra un mensaje en pantalla cuando la conexion ha fallado
         Toast.makeText(this, "Failed to connect...", Toast.LENGTH_SHORT).show();
     }
 
+
+    //Clase que ocurre en segundo plano que obtiene los datos de cada semaforo
     class LoadAllProducts extends AsyncTask<String, String, String> {
 
         /**
@@ -395,11 +384,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
             return null;
         }
         protected void onPostExecute(String file_url) {
-
+        //Metodo despues de terminar la accion
         }
     }
 
-
+    //Carga de los datos del semaforo
     class LoadAllProductsIni extends AsyncTask<String, String, String> {
 
         /**
@@ -436,12 +425,14 @@ public class MainActivity2Activity extends ActionBarActivity implements
         }
     }
 
+    //Metodo que verifica si hay conexion a internet
     private boolean isNetworkAvailable() {
         ConnectivityManager cm = (ConnectivityManager) MainActivity2Activity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    //Metodo de segundo plano que obtiene la hora a traves de una pagina web de las zonas horarias mundiales
     private class LoadTIME2 extends AsyncTask<Void, Void, Void> {
         //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
         //Pagina web real: http://www.timeanddate.com/worldclock/peru/lima
@@ -485,14 +476,17 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //Separador 4
         View sep4 = (View)findViewById(R.id.sep4);
 
-
+        //Se crea una cadena de texto cuyo valor es la URL de la pagina web
         String url = "http://www.timeanddate.com/worldclock/peru/lima";
+        //Se crea una variable de tipo Documento y se le da como valor inicial nulo
         Document doc = null;
+        //Se crean dos cadenas de texto para la hora y el dia
         String horac;
         String diac;
 
         @Override
         protected void onPreExecute() {
+            //Metodo antes de ejecutar la accion
             super.onPreExecute();
             /*
             sep2.setVisibility(View.GONE);
@@ -513,20 +507,23 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         @Override
         protected Void doInBackground(Void... params) {
+            //Metodo que ocurre en segundo plano
             // TODO Auto-generated method stub
+
+            //Intenta
             try {
+                // obtener el documento de la pagina conectandose con el Jsoup
                 //TIEMPO HH:MM
                 doc = Jsoup.connect(url).get();
-
+                //Se crea un elemento llamado hora cuyo valor sera el dato(hora y minutos) dentro del parametro dado
                 Elements hora = doc.select("span[id=fshrmin]");
+                //Se le da valor a la cadena de texto convirtiendo el dato encontrado a texto
                 horac = hora.text();
 
+                //Se crea un elemento cuyo valor sera el dato (fecha en ingles) dentro del parametro dado
                 Elements dia = doc.select("span[id=ctdat]");
+                //Se le da valor a la cadena de texto convirtiendo el dato encontrado a texto
                 diac = dia.text();
-
-                Log.i("TIEMPO", "Hora: " + horac);
-                Log.i("TIEMPO", "Dia : " + diac);
-
 
                 /*
                 Elements topicList = doc.select("h2.topic");
@@ -552,14 +549,18 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         @Override
         protected void onPostExecute(Void result) {
+            //Metodo que ocurre despues de terminada la accion
             // TODO Auto-generated method stub
             super.onPostExecute(result);
             // Here you can do any UI operations like textview.setText("test");
 
+            //Se verifica que el texto contenga los valores dado en parametros:
+                //(Si contiene Lunes, Martes, Miercoles, Jueves o Viernes)
             if((diac.contains("Monday") || diac.contains("Tuesday") || diac.contains("Wednesday") || diac.contains("Thursday") || diac.contains("Friday"))){
+                //Si la hora contiene 18, 19, 20, 21, 22 o 23 (se le pone dos puntos para que coja la hora y no lo confunda con los minutos)
                 if(horac.contains("18:") || horac.contains("19:") || horac.contains("20:")||
                    horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
-
+                //-----> Entonces:
                     //APARECE EL POLO
                     tvPolo.setVisibility(View.VISIBLE);
                     tvLPolo.setVisibility(View.VISIBLE);
@@ -582,7 +583,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                          horac.contains("12:") || horac.contains("13:") || horac.contains("14:") ||
                          horac.contains("15:") || horac.contains("16:") || horac.contains("17:") )
                      */
-
+                //---->Caso contrario de no contener esas horas
                     //SE VA EL POLO
                         tvPolo.setVisibility(View.GONE);
                         tvLPolo.setVisibility(View.GONE);
@@ -597,11 +598,13 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     sep4.setVisibility(View.GONE);
                 }
             } else if( diac.contains("Saturday")){
+                //Caso contrario de que el dia sea Sabado:
                 if( horac.contains("06:3")|| horac.contains("06:4")|| horac.contains("06:5")||
                         horac.contains("07:") || horac.contains("08:") || horac.contains("09:") ||
                         horac.contains("10:") || horac.contains("11:") || horac.contains("12:") ||
                         horac.contains("13:") || horac.contains("14:") || horac.contains("15:") ||
                         horac.contains("16:") || horac.contains("17:") || horac.contains("18:")){
+                    //Si la hora es de 6:30 AM hasta las 18:59 PM entonces:
 
                     //APARECE EL POLO
                     tvPolo.setVisibility(View.VISIBLE);
@@ -611,6 +614,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     sep3.setVisibility(View.VISIBLE);
 
                 }else{
+                    //Si no es esa hora el dia sabado entonces:
                     //SE VA EL POLO
                     tvPolo.setVisibility(View.GONE);
                     tvLPolo.setVisibility(View.GONE);
@@ -625,6 +629,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                         horac.contains("11:") || horac.contains("12:") || horac.contains("13:") ||
                         horac.contains("14:") || horac.contains("15:") || horac.contains("16:") ||
                         horac.contains("17:") || horac.contains("18:")){
+                    //Si la hora es desde 7:30 am hasta las 18:59 PM entonces:
 
                     //APARECE ALONSO
                     tvAlonso.setVisibility(View.VISIBLE);
@@ -634,6 +639,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                 }else{
+                    //Caso que no sea esas horas del dia sabado:
                     //SE VA ALONSO
                     tvAlonso.setVisibility(View.GONE);
                     tvLAlonso.setVisibility(View.GONE);
@@ -643,6 +649,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
             } else if(diac.contains("Sunday")){
+                //Si el dia es Domingo:
                 //SE VA EL POLO
                 tvPolo.setVisibility(View.GONE);
                 tvLPolo.setVisibility(View.GONE);
@@ -656,8 +663,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 btAlonso.setVisibility(View.GONE);
                 sep4.setVisibility(View.GONE);
             }
-
-
         }
     }
 
@@ -678,28 +683,43 @@ public class MainActivity2Activity extends ActionBarActivity implements
         int id = item.getItemId();
         switch (id)
         {
+            //Cuando se de click a la opcion Cerrar del menu:
             case R.id.cerrars:
+                //Se crea un intento de cambio de actividad de la actual a la principal
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                //Se crea un paquete de datos
                 Bundle b = new Bundle();
+                //Se mete un dato en el paquete
                 b.putString("log", "no");
+                //Se manda en el intento el paquete
                 i.putExtras(b);
+                //Se inicia el intento
                 startActivity(i);
                 //finish();
-
+                //Se termina esta actividad
                 this.finish();
 
                 return true;
 
+            //Cuando se de click a la opcion Informacion del menu:
             case R.id.info:
+                //Se crea un intento de cambio de actividad de esta a Informacion
                 Intent j = new Intent(getApplicationContext(), Info.class);
+                //Se inicia el intento
                 startActivity(j);
                 return true;
 
+            //Cuando se de click a la opcion Mi perfil del menu:
             case R.id.perfil:
+                //Se crea un intetno de cambio de actividad de esta a Perfil
                 Intent p = new Intent(getApplicationContext(), Perfil.class);
+                //Se crea un paquete de datos
                 Bundle k = new Bundle();
+                //Se mete un valor en el paquete
                 k.putString("correo", correo);
+                //Se manda el paquete al intento
                 p.putExtras(k);
+                //Se inicia el intento o cambio de actividad
                 startActivity(p);
                 return true;
 

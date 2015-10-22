@@ -19,6 +19,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class Mail extends javax.mail.Authenticator {
+	//CLASE QUE PERMITE EL ENVIO DE MENSAJES A TRAVES DE GMAIL
 	private String _user;
 	private String _pass;
 

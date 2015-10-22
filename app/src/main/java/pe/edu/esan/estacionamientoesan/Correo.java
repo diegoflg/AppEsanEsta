@@ -26,12 +26,9 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,28 +44,42 @@ import javax.mail.MessagingException;
 
 
 public class Correo extends ActionBarActivity {
+    /*Declaracion de variables generales de la actividad*/
+
+    //Cadena de texto con valor inicial
     String dominio="@esan.edu.pe";
+    //Dialogo de progreso privado (solo existe en esta actividad)
     private ProgressDialog pDialog;
+    //Cuadro de texto editable(donde el usuario entra el valor de su correo electronico)
     EditText etmail;
+    //Entero(para generar el numero random de 4 digitos)
     int aNumber;
+    //Fecha actual en la que se registra el usuario
     String fechadia="";
+    //Cuadros de texto no editables
     TextView tvCorreo, textCB, nota;
+    //Boton enviar
     Button btEnviar;
+    //Checkbox de terminos y condiciones
     CheckBox cbTyC;
-    JSONArray products = null;
+    //Creacion de variable de tipo JSON
     JSONParser jsonParser = new JSONParser();
+    //Cadena de texto cuyo valor asignado es el url del php
     private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_fechas.php";
+    //Cadena de texto que verifica si ha sido correcto el login
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_PRODUCTS = "registros";
-    private static final String TAG_NOMBRE = "correo";
+    //Numero entero con valor inicial 3
     int success=3;
+    /*Fin de declaración de variables generales */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Se le asigna la vista de layout correspondiente
         setContentView(R.layout.lay_correo);
 
-
+        //Se crea un spinner y se le da el valor correspondiente al layout
         Spinner spinnermail = (Spinner) findViewById(R.id.spinnermail);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.correos, android.R.layout.simple_spinner_item);
@@ -77,20 +88,19 @@ public class Correo extends ActionBarActivity {
         // Apply the adapter to the spinner
         spinnermail.setAdapter(adapter);
 
-
+        //Metodo que se activa cuando se da click al spinner dependiendo del valor
         spinnermail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 //Declaracion de numero entero que obtiene la posicion del item seleccionado
                 int index = arg0.getSelectedItemPosition();
-                //Se le da un valor al lenguaje
+                //Se le da un valor al dominio
                 if (index == 0) {
                     dominio = "@esan.edu.pe";
                 }
                 if (index == 1) {
                     dominio = "@ue.edu.pe";
                 }
-                Log.v("dominio", dominio);
             }
 
             @Override
@@ -99,69 +109,82 @@ public class Correo extends ActionBarActivity {
             }
         });
 
+        //Se da valor al cuadro de texto con el id del elemento correspondiente del layout
         etmail = (EditText) findViewById(R.id.etmail);
 
+        //Se crea un dato de tipo calendario
         Calendar diaI = Calendar.getInstance();
+        //Se crea un formato para fecha
         SimpleDateFormat form = new SimpleDateFormat("dd:MM:yyyy");
+        //Se crea una cadena y se le asigna un valor al que se le da un formato
         String date = form.format(diaI.getTime());
 
+        //Se le asigna el valor de la cadena al dato inicial
         fechadia = date;
-        Log.v("fecha", "I: " + date);
 
         //Date diaF = new Date(diaI.getTimeInMillis() + 604800000L); //7*24*60*60*1000
         String f2 = form.format(new Date(diaI.getTimeInMillis() + 604800000L));
-        Log.i("fecha", "F: " + f2);
 
-
+        //Se le da valor al checkbox con el id correspondiente en el layout
         cbTyC = (CheckBox)findViewById(R.id.cbTyC);
+        //Se le da valor al cuadro de texto con el id correspondiente en el layout
         nota = (TextView)findViewById(R.id.nota);
+        //Se le asigna una cadena de texto declarada en Strings al cuadro
         nota.setText(R.string.nota);
-        //Esto es solo para determinar el tipo de fuente
+
+        /*Esto es solo para determinar el tipo de fuente*/
+        //Se les asigna el id correspondiente a los elementos segun el layout
         tvCorreo = (TextView) findViewById(R.id.tvCorreo);
         textCB = (TextView) findViewById(R.id.textCB);
         btEnviar = (Button) findViewById(R.id.btEnviar);
+
+        //Se crean la fuentes dandoles la fuentes que se encuentran en la carpeta assets/font
         Typeface fontBold = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/HelveticaNeue-Bold.ttf");
         Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/HelveticaNeue-Light.ttf");
 
+        //Se les da el tipo de fuente a los elementos
         tvCorreo.setTypeface(fontBold);
         etmail.setTypeface(font);
         nota.setTypeface(font);
         textCB.setTypeface(font);
         btEnviar.setTypeface(font);
+        /* Fin de aplicacion de fuentes*/
 
-
+        //Metodo que se activa cuando se da click al texto de Aceptar terminos y condiciones
         textCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Se llama al metodo que muestra un popup
                 showPopup(Correo.this);
             }
         });
 
+        //Metodo que se activa cuando se da click al boton enviar
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Se llama al metodo que manda el correo al usuario recien creado para luego abrir la otra pantalla
                 new CreateUser3().execute();
             }
         });
-
     }
 
+    //Metodo que permite mostrar el PopUp en pantalla(segun el parametro que le sea dado)
     private void showPopup(final Activity context) {
+        //Variables que permiten obtener las medidas de la pantalla del celular
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
         double width = displaymetrics.widthPixels;
 
-        Log.v("tamano",String.valueOf(height));
-        Log.v("tamano", String.valueOf(width));
-
         double popupHeight = height*0.8;
         double popupWidth = width*0.92;
 
-
+        //Asignacion de la vista de layout
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup3);
+        //Se infla el layout
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //Se da valor a la vista inflada
         View layout = layoutInflater.inflate(R.layout.popup3, viewGroup);
 
         // Creating the PopupWindow
@@ -175,45 +198,49 @@ public class Correo extends ActionBarActivity {
         // Displaying the popup at the specified location, + offsets.
         popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
-        // FUENTE PARA TEXTO EN POPUP Y BOTONES:
-        Typeface TVT = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Bold.ttf" );//llamanos a la CLASS TYPEFACE y la definimos
-        Typeface TPP = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Light.ttf" );//llamanos a la CLASS TYPEFACE y la definimos
-
-        // con un CREATE desde ASSETS con la ruta STRING
+        // Creacion de fuentes
+        Typeface TVT = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Bold.ttf" );
+        Typeface TPP = Typeface.createFromAsset(getAssets(),"font/HelveticaNeue-Light.ttf" );
 
         // Getting a reference to Close button, and close the popup when clicked.
+                //Se crean un cuadro de texto y dos botones y se les asigna su id correspondiente al layout
         TextView tvTCTit = (TextView)layout.findViewById(R.id.tvTCTit);
         Button aceptar = (Button) layout.findViewById(R.id.aceptar);
         Button cancelar = (Button) layout.findViewById(R.id.cancelar);
+
+        //Se les da el tipo de fuente a los textos de los elementos
         tvTCTit.setTypeface(TVT);
         cancelar.setTypeface(TPP);
         aceptar.setTypeface(TPP);
 
-
+        //Se crea y da valor al cuadro de texto que contiene los terminos y condiciones
         final TextView tv1 = (TextView) layout.findViewById(R.id.tvTCT);
+        //Se le asigna el tipo de fuente al cuadro de texto
         tv1.setTypeface(TPP);
+        //Se le da la cadena de texto declarada en Strings al cuadro
         tv1.setText(R.string.terminos);
 
-
+        //Metodo que se activa cuando se da clic al boton aceptar
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Desaparece el PopUp
                 popup.dismiss();
+                //Se da check automatico al checkbox por haber aceptado los terminos y condiciones
                 cbTyC.setChecked(true);
             }
         });
 
+        //Metodo que se activa al dar click al boton cancelar
         cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Se cierra el PopUp (en este caso no se da un check automatico)
                 popup.dismiss();
 
             }
         });
-
-
     }
-
 
 
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
@@ -263,7 +290,6 @@ public class Correo extends ActionBarActivity {
         int id = item.getItemId();
         switch (id)
         {
-
             case R.id.regresar:
                 finish();
                 View view = this.getCurrentFocus();
@@ -279,7 +305,6 @@ public class Correo extends ActionBarActivity {
     }
 
     class CreateUser3 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
-
 
         @Override
         protected void onPreExecute() {
@@ -319,9 +344,7 @@ public class Correo extends ActionBarActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             return null;
-
         }
 
         protected void onPostExecute(String file_url) {
@@ -330,13 +353,10 @@ public class Correo extends ActionBarActivity {
 
             if(success==0){
 
-
-
                 if(cbTyC.isChecked()){
                     Random r = new Random();
 
                     aNumber = 1000 + r.nextInt(9000-1000+1);
-                    Log.v("random", String.valueOf(aNumber));
 
                     String usM = etmail.getText().toString();
 
@@ -377,7 +397,6 @@ public class Correo extends ActionBarActivity {
 
                     }else if(dominio.equals("@esan.edu.pe")){
 
-
                         Intent i = new Intent(getApplicationContext(), Datos.class);
 
                         Bundle b = new Bundle();
@@ -398,32 +417,15 @@ public class Correo extends ActionBarActivity {
                         email.execute();
                         finish();
 
-
-
                     }
-
-
-
-
                 }else{
                     Toast.makeText(Correo.this,R.string.debeAceptarTC , Toast.LENGTH_LONG).show();
                 }
 
             }else{
-                Toast.makeText(Correo.this,"El correo ya existe" , Toast.LENGTH_LONG).show();
+                Toast.makeText(Correo.this, R.string.existe , Toast.LENGTH_LONG).show();
 
             }
-
-
-
-
-
-
         }
     }
-
-
-
-
-
 }
