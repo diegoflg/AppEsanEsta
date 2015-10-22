@@ -25,50 +25,68 @@ import javax.mail.MessagingException;
 
 
 public class Olvido extends ActionBarActivity {
-
+    /*Declaracion de variables generales*/
+    //Se crea una variable boton privada
     private Button b1,b2;
+    //Se crea una variable de cuadro de texto editable
     private EditText et1;
+    //Se crea una variable de cuadro de texto no editable
     private TextView tv1;
+    //Se crea una variablde dialogo de progreso
     private ProgressDialog pDialog;
+    //Se crea una variable de numero entero cuyo valor se le asigna a 3
     int success=3;
+    //Se crea una cadena de texto cuyo valor es el URL del php
     private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_fechas.php";
+    //Se crean varias cadenas de texto
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "registros";
     private static final String TAG_NOMBRE = "password";
     private static final String TAG_MESSAGE = "message";
+    //Se crea una variable de tipo JSONArray cuyo valor inicial es nulo
     JSONArray products = null;
+    //Se crea una variable nueva de JSONParser
     JSONParser jsonParser = new JSONParser();
+    //Se crea una variable de cadena de texto cuyo valor inicial es nulo
     String contra="";
+    /*Fin de declaracion de variables generales*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Se le asigna el layout a la actividad
         setContentView(R.layout.activity_olvido);
+        //Se esconde el Teclado del celular
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        //Se da el valor de id a las variables declaradas anteriormente con el id del layout respectivo
         b1=(Button)findViewById(R.id.button);
         b2=(Button)findViewById(R.id.button2);
         tv1=(TextView)findViewById(R.id.textView2);
         et1=(EditText)findViewById(R.id.et2);
 
-
+        //Metodo que se activa al hacer click en el boton enviar
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Se llama a la accion del mismo nombre
                 new CreateUser3().execute();
             }
         });
 
+        //Metodo que se activa al hacer click en regresar
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Cierra la actividad actual y retorna a la anterior abierta(MainActivity)
                 finish();
-
             }
         });
 
     }
 
 
+    //Clase que se ejecuta
     class CreateUser3 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
 
 
@@ -79,10 +97,16 @@ public class Olvido extends ActionBarActivity {
 
             super.onPreExecute();
 
+            //Se da valores al dialogo de progreso declarado inicialmente
+            //Se le da el contexto
             pDialog = new ProgressDialog(Olvido.this);
+            //Se le da el mensaje
             pDialog.setMessage("Enviando Correo...");
+            //Se le da faso a su valor indeterminado
             pDialog.setIndeterminate(false);
+            //Se le da falso a su valor cancelable
             pDialog.setCancelable(false);
+            //Aparece el dialogo de progreso
             pDialog.show();
 
 
@@ -91,6 +115,10 @@ public class Olvido extends ActionBarActivity {
         @Override
         protected String doInBackground(String... args) {
             //Metodo que se hace en segundo plano
+
+
+            //Este metodo hara que se verifique el correo ingresado en el cuadro de texto y obtendra de la
+            //base de datos la contraseña del usuario
 
             // TODO Auto-generated method stub
             // Check for success tag
@@ -146,9 +174,11 @@ public class Olvido extends ActionBarActivity {
         }
 
         protected void onPostExecute(String file_url) {
-
+        //Despues de ser ejecutada la accion
             if (success == 1) {
-
+                //Este metodo va a  enviar un correo con la contraseña encontrada en la base de datos
+                //al correo dado en el cuadro de texto. El remitente es: educacionadistancia@esan.edu.pe
+                //Esto es a traves de la clase SendEmailAsyncTask que se ejecuta en segundo plano
 
                 Log.v("contra", contra);
                 String correo = et1.getText().toString();
@@ -182,9 +212,11 @@ public class Olvido extends ActionBarActivity {
         }
     }
 
+    //Clase que permite el envio de correo
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
+            //Metodo anterior a la ejecucion de la accion
             super.onPostExecute(aBoolean);
             pDialog.dismiss();
 
@@ -206,6 +238,7 @@ public class Olvido extends ActionBarActivity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
+            //Metodo realizado en segundo plano
             if (BuildConfig.DEBUG)
                 Log.v(SendEmailAsyncTask.class.getName(), "doInBackground()");
             try {

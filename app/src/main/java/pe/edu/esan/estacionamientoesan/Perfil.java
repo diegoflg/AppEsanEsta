@@ -29,18 +29,22 @@ import java.util.List;
  * Created by educacionadistancia on 20/10/2015.
  */
 public class Perfil extends ActionBarActivity {
+    /*Declaracion de variables generales de la actividad(algunas son PRIVATE, es decir solo existen y funcionan para la actividad actual)*/
 
-
-
+    //Creacion de nueva variable del tipo JSONParser
     JSONParser jsonParser = new JSONParser();
+    //Se crea una variable de arreglo de JSON cuyo valor inicial es nulo
     JSONArray products = null;
 
+    //Se crea una cadena de texto cuyo valor es el URL del php para actualizar
     private static final String REGISTER_URL2 = "http://www.estacionamientoesan.net76.net/cas/registroactu.php";
+    //Se crea una cadena de texto cuyo valor es el URL del php para obtener
     private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_datos.php";
+    //Se crean cadenas de textos con valores
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "registros";
     private static final String TAG_MESSAGE = "message";
-
+    //Se crean cadenas de textos cuyos valores son los campos que pertenecen a la base de datos
     private static final String TAG_Placa = "placa1";
     private static final String TAG_Placa2 = "placa2";
     private static final String TAG_Placa3 = "placa3";
@@ -48,21 +52,31 @@ public class Perfil extends ActionBarActivity {
     private static final String TAG_Telf = "telefono";
     int success=3;
 
-
+    //Se crean variables de cuadros de textos no editables
     TextView tvPerfil, tvPlaca, tvGuion, tvGuion2, tvGuion3 , tvContraseña, tvTelefono;
+    //Se crean varialbes de cuadros de textos editables
     EditText etPlaca, etPlacaC, etPlaca2, etPlacaC2,etPlaca3, etPlacaC3, etContraseña, etTelefono;
+    //Se crea una variable para un elemento de tipo Boton
     Button actualizar;
+    //Se crea un dialogo de progreso
     private ProgressDialog pDialog;
 
+    //Se crean cadenas de textos cuyos valores iniciales son numeros
     String varContra="", varPlaca11="", varPlaca12="", varTelf="", varPlaca21="", varPlaca22="", varPlaca31="", varPlaca32="";
 
+    //Se crea una cadena de texto para el correo
     String correo;
+    //Se crea una cadena de texto cuyo valor inicial es nulo
     String mensaje="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Se le asigna el layout respectivo a la actividad
         setContentView(R.layout.lay_perfil);
+
+        //Se asignan los valores de id respectivos en el layout a los cuadros de textos no editables
         tvPerfil = (TextView) findViewById(R.id.tvPerfil);
         tvPlaca = (TextView) findViewById(R.id.tvPlaca);
         tvGuion = (TextView) findViewById(R.id.tvGuion);
@@ -71,6 +85,7 @@ public class Perfil extends ActionBarActivity {
         tvContraseña = (TextView) findViewById(R.id.tvContraseña);
         tvTelefono = (TextView) findViewById(R.id.tvTelefono);
 
+        //Se asignan los valores de id respectivos en el layout a los cuadros de texto editables
         etPlaca = (EditText) findViewById(R.id.etPlaca);
         etPlacaC = (EditText) findViewById(R.id.etPlacaC);
         etPlaca2 = (EditText) findViewById(R.id.etPlaca2);
@@ -80,9 +95,13 @@ public class Perfil extends ActionBarActivity {
         etContraseña = (EditText) findViewById(R.id.etContraseña);
         etTelefono = (EditText) findViewById(R.id.etTelefono);
 
+        //Se da el valor de id al boton segun el id dado en el layout respectivo
         actualizar = (Button) findViewById(R.id.actualizar);
 
+        //Se crea el tipo de fuente dandole como valor de fuente el archivo que se encuentra en Assets/font
         Typeface fuente = Typeface.createFromAsset(getAssets(), "font/HelveticaNeue-Light.ttf");
+
+        //Se les da el tipo de fuente a los cuadros de texto no editables
         tvPerfil.setTypeface(fuente);
         tvPlaca.setTypeface(fuente);
         tvGuion.setTypeface(fuente);
@@ -91,6 +110,7 @@ public class Perfil extends ActionBarActivity {
         tvContraseña.setTypeface(fuente);
         tvTelefono.setTypeface(fuente);
 
+        //Se les da el tipo de fuente a los cuadros de texto editables
         etPlaca.setTypeface(fuente);
         etPlacaC.setTypeface(fuente);
         etPlaca2.setTypeface(fuente);
@@ -100,6 +120,7 @@ public class Perfil extends ActionBarActivity {
         etContraseña.setTypeface(fuente);
         etTelefono.setTypeface(fuente);
 
+        //Se les da filtro a los cuadros de textos editables correspondientes a las placas con un minimo y maximo de 3 valores
         etPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
         etPlacaC.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
         etPlaca2.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
@@ -108,11 +129,12 @@ public class Perfil extends ActionBarActivity {
         etPlacaC3.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(3)});
 
 
-
+        //Metodo que se activa cuando el texto es cambiado o agregado en el cuadro
         etPlaca.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo antes del cambio
                 if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -122,9 +144,12 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo durante el cambio
 
                 if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
                 {
+                    //Cuando el tamaño de la cadena de texto ingresada sea de 3 digitos o valores entonces
+                    //el cursor pasara al segundo cuadro de texto editable para la continuacion de la placa
                     etPlacaC.requestFocus();
                 }
 
@@ -132,6 +157,7 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                //Metodo despues del cambio
                 if (etPlaca.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -140,10 +166,13 @@ public class Perfil extends ActionBarActivity {
             }
         });
 
+
+        //Metodo que se activa cuando el texto es cambiado o agregado en el cuadro
         etPlacaC.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo antes del cambio
                 if (etPlacaC.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -153,9 +182,11 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //Metodo durante el cambio
                 if (etPlacaC.getText().toString().length() == 3)     //size as per your requirement
                 {
+                    //Cuando el tamaño de la cadena de texto ingresada sea de 3 digitos o valores entonces
+                    //el cursor pasara al segundo cuadro de texto editable para la continuacion de la placa
                     etPlaca2.requestFocus();
                 }
 
@@ -163,6 +194,7 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                //Metodo despues del cambio
                 if (etPlacaC.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -171,10 +203,13 @@ public class Perfil extends ActionBarActivity {
             }
         });
 
+
+        //Metodo que se activa cuando el texto es cambiado o agregado en el cuadro
         etPlaca2.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo antes del cambio
                 if (etPlaca2.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -184,9 +219,11 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //Metodo durante el cambio
                 if (etPlaca2.getText().toString().length() == 3)     //size as per your requirement
                 {
+                    //Cuando el tamaño de la cadena de texto ingresada sea de 3 digitos o valores entonces
+                    //el cursor pasara al segundo cuadro de texto editable para la continuacion de la placa
                     etPlacaC2.requestFocus();
                 }
 
@@ -194,6 +231,7 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                //Metodo despues del cambio
                 if (etPlaca2.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -202,10 +240,12 @@ public class Perfil extends ActionBarActivity {
             }
         });
 
+        //Metodo que se activa cuando el texto es cambiado o agregado en el cuadro
         etPlacaC2.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo antes del cambio
                 if (etPlacaC2.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -215,9 +255,11 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //Metodo durante el cambio
                 if (etPlacaC2.getText().toString().length() == 3)     //size as per your requirement
                 {
+                    //Cuando el tamaño de la cadena de texto ingresada sea de 3 digitos o valores entonces
+                    //el cursor pasara al segundo cuadro de texto editable para la continuacion de la placa
                     etPlaca3.requestFocus();
                 }
 
@@ -225,6 +267,7 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                //Metodo despues del cambio
                 if (etPlacaC2.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -233,10 +276,12 @@ public class Perfil extends ActionBarActivity {
             }
         });
 
+        //Metodo que se activa cuando el texto es cambiado o agregado en el cuadro
         etPlaca3.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo antes del cambio
                 if (etPlaca3.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -246,9 +291,12 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo durante el cambio
 
                 if (etPlaca3.getText().toString().length() == 3)     //size as per your requirement
                 {
+                    //Cuando el tamaño de la cadena de texto ingresada sea de 3 digitos o valores entonces
+                    //el cursor pasara al segundo cuadro de texto editable para la continuacion de la placa
                     etPlacaC3.requestFocus();
                 }
 
@@ -256,6 +304,7 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                //Metodo despues del cambio
                 if (etPlaca3.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -264,10 +313,12 @@ public class Perfil extends ActionBarActivity {
             }
         });
 
+        //Metodo que se activa cuando el texto es cambiado o agregado en el cuadro
         etPlacaC3.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo antes del cambio
                 if (etPlacaC3.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -277,9 +328,12 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Metodo durante el cambio
 
                 if (etPlacaC3.getText().toString().length() == 3)     //size as per your requirement
                 {
+                    //Cuando el tamaño de la cadena de texto ingresada sea de 3 digitos o valores entonces
+                    //el cursor pasara al segundo cuadro de texto editable para la continuacion de la placa
                     etContraseña.requestFocus();
                 }
 
@@ -287,6 +341,7 @@ public class Perfil extends ActionBarActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                //Metodo despues del cambio
                 if (etPlacaC3.getText().toString().length() == 3)     //size as per your requirement
                 {
 
@@ -298,28 +353,29 @@ public class Perfil extends ActionBarActivity {
 
 
 
-
-
-
+        //Se crea un intento que se obtiene del cambio de actividad
         Intent p = getIntent();
+        //Se obtiene el paquete de datos
             Bundle b = p.getExtras();
+        //Se da valor a la cadena con el dato obtenido del cambio de actividad
             correo = b.getString("correo");
 
-        Log.v("CORREORECIBIDO", correo);
+        //Se ejecuta la accion del mismo nombre
         new CreateUser3().execute();
 
 
 
-
+        //Metodo que se da al dar click al boton actualizar
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                //Se da valor inicial nulo a la cadena de texto
                 mensaje = "";
 
                 // new CreateUser().execute();
 
+                /*Se verifican datos*/
                 if(etPlaca.length()==0 && etPlacaC.length()==0 && etPlaca2.length()==0 && etPlacaC2.length()==0 && etPlaca3.length()==0 && etPlacaC3.length()==0 )
                 {
                     mensaje = mensaje + "-Debe tener por lo menos 1 placa" + "\n";
@@ -370,12 +426,15 @@ public class Perfil extends ActionBarActivity {
 
 
                 Log.v("qwerty", mensaje);
+                /*Se termina la verificacion de datos*/
 
+                //Se verifica el contenido de la cadena de texto, si es nula entonces
+                //realizara la accion dada
                 if (mensaje.equals("")) {
                     new CreateUser2().execute();
 
                 } else {
-
+                //Caso contrario el usuario vera un mensaje en pantalla sobre los datos faltantes o incorrectos
                     AlertDialog.Builder builder = new AlertDialog.Builder(Perfil.this);
                     builder.setMessage(mensaje)
                             .setCancelable(false)
@@ -396,7 +455,8 @@ public class Perfil extends ActionBarActivity {
 
     }
 
-    class CreateUser3 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
+    //Clase que se ejecuta en segundo plano que permite coger los datos ingresados del usuario a la base de datos
+    class CreateUser3 extends AsyncTask<String, String, String> {
 
 
         @Override
@@ -406,10 +466,15 @@ public class Perfil extends ActionBarActivity {
 
             super.onPreExecute();
 
+            //Se crea un nuevo dialogo de progreso en la actividad
             pDialog = new ProgressDialog(Perfil.this);
+            //Se le asigna un mensaje al dialogo de progreso
             pDialog.setMessage("Cargando datos...");
+            //Se le da valor falso al indeterminado
             pDialog.setIndeterminate(false);
+            //Se le da valor falso al cancelable
             pDialog.setCancelable(false);
+            //Aparece el dialogo de progreso
             pDialog.show();
 
 
@@ -437,9 +502,9 @@ public class Perfil extends ActionBarActivity {
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
 
-
+                    //Intenta...
                     try {
-
+                        //Obtiene los datos
                         products = json.getJSONArray(TAG_PRODUCTS);
                         for (int i = 0; i < products.length(); i++) {
                             JSONObject c = products.getJSONObject(i);
@@ -449,6 +514,7 @@ public class Perfil extends ActionBarActivity {
                             varContra=c.getString(TAG_Contra);
                             varTelf=c.getString(TAG_Telf);
 
+                            //Intenta...(dentro del anterior intenta)
                             try{
                                 varPlaca11=c.getString(TAG_Placa).substring(0, 3);
                                 varPlaca12=c.getString(TAG_Placa).substring(3, 6);
@@ -489,7 +555,8 @@ public class Perfil extends ActionBarActivity {
         }
 
         protected void onPostExecute(String file_url) {
-
+        //Metodo despues de ejecutada la accion
+            //Manda los datos del usuario a los cuadros de textos
             etContraseña.setText(varContra);
             etTelefono.setText(varTelf);
             etPlaca.setText(varPlaca11);
@@ -499,6 +566,7 @@ public class Perfil extends ActionBarActivity {
             etPlaca3.setText(varPlaca31);
             etPlacaC3.setText(varPlaca32);
 
+            //El dialogo de progreso desaparece
             pDialog.dismiss();
 
 
@@ -511,6 +579,7 @@ public class Perfil extends ActionBarActivity {
         }
     }
 
+    //Clase realizada en segundo plano
     class CreateUser2 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
 
 
@@ -520,10 +589,15 @@ public class Perfil extends ActionBarActivity {
 
 
             super.onPreExecute();
+            //Se crea un nuevo dialogo de progreso en la actividad actual
             pDialog = new ProgressDialog(Perfil.this);
+            //Se le da el mensaje al dialogo de progreso
             pDialog.setMessage("Creating User...");
+            //Se le da falso al indeterminado
             pDialog.setIndeterminate(false);
+            //Se le da valor falso al cancelable
             pDialog.setCancelable(true);
+            //Aparece el dialogo de progreso
             pDialog.show();
 
         }
