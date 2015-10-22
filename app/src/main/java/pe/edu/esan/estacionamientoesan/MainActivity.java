@@ -116,6 +116,8 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+
+
         //Declaracion de variable
         SpannableString s = new SpannableString("ESAN");
         s.setSpan(new TypefaceSpan("HelveticaNeue-Roman.ttf"), 0 , s.length(),
@@ -141,11 +143,8 @@ public class MainActivity extends ActionBarActivity {
         botonacceder = (Button) findViewById(R.id.button); //SOLO ES USADO PARA LA FUENTE
 
         //Asingacion de valores de texto a los cuadros de texto
-        et1.setText("prueba@esan.edu.pe");
 
 
-        //Asingacion de valores de texto a los cuadros de texto
-        et2.setText("esan");
 
 
         //ESTO ES PARA LA FUENTE

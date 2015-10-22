@@ -51,7 +51,7 @@ public class Olvido extends ActionBarActivity {
         b2=(Button)findViewById(R.id.button2);
         tv1=(TextView)findViewById(R.id.textView2);
         et1=(EditText)findViewById(R.id.et2);
-        et1.setText("12100250@ue.edu.pe");
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override

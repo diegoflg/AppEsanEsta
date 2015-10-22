@@ -2,7 +2,7 @@
     <string name="app_name">ESAN</string>
 
     <!-- ACTIVITY_MAIN.XML -->
-    <string name="hintUsuario">" Usuario"</string>
+    <string name="hintUsuario">" Correo"</string>
     <string name="hintPassword">" Contraseña"</string>
     <string name="cbRecuerdame">Recuérdame</string>
     <string name="tvOlvido">He olvidado mi contraseña</string>
