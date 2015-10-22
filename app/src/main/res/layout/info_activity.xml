@@ -27,7 +27,8 @@
                     android:text="@string/info"
                     android:id="@+id/textView2"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/iv1"/>
+                    android:layout_below="@id/iv1"
+                    android:layout_marginLeft="5dp"/>
             </RelativeLayout>
         </ScrollView>
 
