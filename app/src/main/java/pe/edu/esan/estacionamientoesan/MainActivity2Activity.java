@@ -356,7 +356,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
     @Override
     public void onConnectionSuspended(int i) {
         Toast.makeText(this, "Connection suspended...", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -426,7 +425,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
                         estado=c.getString(TAG_NOMBRE);
                         estadoalonso=c.getString(TAG_NOMBRE2);
                         estadopolo=c.getString(TAG_NOMBRE3);
-
                     }
                 }
             } catch (JSONException e) {

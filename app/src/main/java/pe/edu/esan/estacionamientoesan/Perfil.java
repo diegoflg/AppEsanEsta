@@ -28,20 +28,32 @@ import java.util.List;
  * Created by educacionadistancia on 20/10/2015.
  */
 public class Perfil extends ActionBarActivity {
-    private static final String LOGIN_URL = "http://www.estacionamientoesan.net76.net/essconnect/get_registros.php";
+
 
 
     JSONParser jsonParser = new JSONParser();
+    JSONArray products = null;
 
     private static final String REGISTER_URL2 = "http://www.estacionamientoesan.net76.net/cas/registroactu.php";
+    private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_datos.php";
     private static final String TAG_SUCCESS = "success";
+    private static final String TAG_PRODUCTS = "registros";
     private static final String TAG_MESSAGE = "message";
+
+    private static final String TAG_Placa = "placa1";
+    private static final String TAG_Placa2 = "placa2";
+    private static final String TAG_Placa3 = "placa3";
+    private static final String TAG_Contra = "password";
+    private static final String TAG_Telf = "telefono";
+    int success=3;
 
 
     TextView tvPerfil, tvPlaca, tvGuion, tvGuion2, tvGuion3 , tvContraseña, tvTelefono;
     EditText etPlaca, etPlacaC, etPlaca2, etPlacaC2,etPlaca3, etPlacaC3, etContraseña, etTelefono;
     Button actualizar;
     private ProgressDialog pDialog;
+
+    String varContra="", varPlaca11="", varPlaca12="", varTelf="", varPlaca21="", varPlaca22="", varPlaca31="", varPlaca32="";
 
     String correo;
     String mensaje="";
@@ -93,6 +105,7 @@ public class Perfil extends ActionBarActivity {
             correo = b.getString("correo");
 
         Log.v("CORREORECIBIDO", correo);
+        new CreateUser3().execute();
 
 
 
@@ -157,6 +170,119 @@ public class Perfil extends ActionBarActivity {
 
     }
 
+    class CreateUser3 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
+
+
+        @Override
+        protected void onPreExecute() {
+            //Metodo antes de ser ejecutada la accion
+
+
+            super.onPreExecute();
+
+            pDialog = new ProgressDialog(Perfil.this);
+            pDialog.setMessage("Cargando datos...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+
+
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+            //Metodo que se hace en segundo plano
+
+            // TODO Auto-generated method stub
+            // Check for success tag
+
+            try {
+                // Building Parameters
+                List params = new ArrayList();
+                params.add(new BasicNameValuePair("correo", correo));
+                //Posting user data to script
+                JSONObject json = jsonParser.makeHttpRequest(
+                        url_all_empresas, "POST", params);
+
+                // full json response
+                Log.d("Registering attempt", json.toString());
+
+                // json success element
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+
+
+                    try {
+
+                        products = json.getJSONArray(TAG_PRODUCTS);
+                        for (int i = 0; i < products.length(); i++) {
+                            JSONObject c = products.getJSONObject(i);
+                            Log.d("asdasd", c.getString(TAG_Placa));
+                            Log.d("asdasd", c.getString(TAG_Placa2));
+                            Log.d("asdasd", c.getString(TAG_Contra));
+                            Log.d("asdasd", c.getString(TAG_Placa3));
+                            Log.d("asdasd", c.getString(TAG_Telf));
+
+                            Log.d("subsub", c.getString(TAG_Placa).substring(0, 3));
+                            Log.d("subsub", c.getString(TAG_Placa).substring(3,6));
+                            //etPlaca2.setText(c.getString(TAG_Placa2));
+                            //etPlaca3.setText(c.getString(TAG_Placa3));
+                            varContra=c.getString(TAG_Contra);
+                            varTelf=c.getString(TAG_Telf);
+                            varPlaca11=c.getString(TAG_Placa).substring(0, 3);
+                            varPlaca12=c.getString(TAG_Placa).substring(3, 6);
+                            varPlaca21=c.getString(TAG_Placa2).substring(0,3);
+                            varPlaca22=c.getString(TAG_Placa2).substring(3,6);
+                            varPlaca31=c.getString(TAG_Placa3).substring(0,3);
+                            varPlaca32=c.getString(TAG_Placa3).substring(3,6);
+
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    Log.d("Correo enviado!", json.toString());
+                    return json.getString(TAG_MESSAGE);
+
+
+                }else{
+                    Log.d("Registering Failure!", json.getString(TAG_MESSAGE));
+                    return json.getString(TAG_MESSAGE);
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+
+        }
+
+        protected void onPostExecute(String file_url) {
+
+            etContraseña.setText(varContra);
+            etTelefono.setText(varTelf);
+            etPlaca.setText(varPlaca11);
+            etPlacaC.setText(varPlaca12);
+            etPlaca2.setText(varPlaca21);
+            etPlacaC2.setText(varPlaca22);
+            etPlaca3.setText(varPlaca31);
+            etPlacaC3.setText(varPlaca32);
+
+            pDialog.dismiss();
+
+
+            if (file_url != null){
+                Toast.makeText(Perfil.this, file_url, Toast.LENGTH_LONG).show();
+            }
+
+
+
+        }
+    }
+
     class CreateUser2 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
 
 
@@ -205,6 +331,7 @@ public class Perfil extends ActionBarActivity {
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     Log.v("actualizacion correcta", json.toString());
+                    finish();
                     return json.getString(TAG_MESSAGE);
                 }else{
                     Log.d("Registering Failure!", json.getString(TAG_MESSAGE));
