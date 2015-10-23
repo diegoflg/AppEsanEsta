@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,6 +23,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -207,49 +211,59 @@ public class Datos extends ActionBarActivity {
 
     //Metodo que se da al hacer click en el boton aceptar
     public void aceptar(View v) {
-        //Se da nulo como valor inicial a la cadena de texto antes declarada
-        mensaje="";
 
-      // new CreateUser().execute();
+        if (isNetworkAvailable() == false) {
+            Toast.makeText(Datos.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+
+        }else{
+
+            //Se da nulo como valor inicial a la cadena de texto antes declarada
+            mensaje="";
+
+            // new CreateUser().execute();
 
         /*Verificacion de datos ingresados por el usuario*/
 
-        if(etPlaca.length()!=3 || etPlaca2.length()!=3){
-            mensaje=mensaje+"-La placa ingresada no es correcta"+ "\n";
-        }
+            if(etPlaca.length()!=3 || etPlaca2.length()!=3){
+                mensaje=mensaje+"-La placa ingresada no es correcta"+ "\n";
+            }
 
-        if(etTelefono.length()!=7 && etTelefono.length()!=9){
-            mensaje=mensaje+"-El telefono ingresado no es correcto"+ "\n";
-        }
+            if(etTelefono.length()!=7 && etTelefono.length()!=9){
+                mensaje=mensaje+"-El teléfono ingresado no es correcto"+ "\n";
+            }
 
-        if(etContrasena.length()==0){
-            mensaje=mensaje+"-Ingrese una contraseña"+ "\n";
-        }
+            if(etContrasena.length()==0){
+                mensaje=mensaje+"-Ingrese una contraseña"+ "\n";
+            }
 
-        if(!etCodigo.getText().toString().equals(codigo)){
-            mensaje=mensaje+"-El código ingresado es incorrecto"+ "\n";
-        }
+            if(!etCodigo.getText().toString().equals(codigo)){
+                mensaje=mensaje+"-El código ingresado es incorrecto"+ "\n";
+            }
 
-        Log.v("qwerty",mensaje);
+            Log.v("qwerty",mensaje);
         /*Fin de verificacion de datos ingresados por el usuario*/
 
-        //Si se validan los datos entonces se crea un nuevo usuario en la base de datos
-        if(mensaje.equals("")){
-            new CreateUser().execute();
+            //Si se validan los datos entonces se crea un nuevo usuario en la base de datos
+            if(mensaje.equals("")){
+                new CreateUser().execute();
 
-        }else{
-            //Caso contrario se mostrara un mensaje en pantalla
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(mensaje)
-                    .setCancelable(false)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            //do things
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
+            }else{
+                //Caso contrario se mostrara un mensaje en pantalla
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(mensaje)
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //do things
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+
         }
+
 
 
        // Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
@@ -389,6 +403,12 @@ public class Datos extends ActionBarActivity {
 
         }
         //noinspection SimplifiableIfStatement
+    }
+    private boolean isNetworkAvailable() {
+        //Verifica la conexion a internet
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }

@@ -29,7 +29,7 @@
         android:layout_alignStart="@+id/tvNom"
         android:layout_toStartOf="@+id/dummy"
         android:layout_toLeftOf="@+id/dummy"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         style="@style/edit"/>
 
     <Space android:id="@+id/dummy"
@@ -68,7 +68,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="30dp"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         style="@style/edit"/>
 
    <TextView

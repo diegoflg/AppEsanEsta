@@ -1,6 +1,9 @@
 package pe.edu.esan.estacionamientoesan;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -70,7 +73,22 @@ public class Olvido extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //Se llama a la accion del mismo nombre
-                new CreateUser3().execute();
+
+
+                if (isNetworkAvailable() == false) {
+                    Toast.makeText(Olvido.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    if(et1.length()<0){
+                        new CreateUser3().execute();
+
+                    }else{
+                        Toast.makeText(Olvido.this, "Ingrese un correo válido", Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
             }
         });
 
@@ -257,6 +275,13 @@ public class Olvido extends ActionBarActivity {
                 return false;
             }
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        //Verifica la conexion a internet
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 
