@@ -37,17 +37,6 @@
         android:paddingLeft="10dp"
         android:ems="8" />
 
-    <TextView
-        android:id="@+id/nota"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etmail"
-        android:textColor="#ff828282"
-        android:layout_alignLeft="@id/etmail"
-        android:layout_alignStart="@id/etmail"
-        android:layout_alignEnd="@id/etmail"
-        android:layout_margin="3dp"
-        android:padding="1dp"/>
 
     <Spinner
         android:id="@+id/spinnermail"
@@ -83,7 +72,6 @@
         <TextView
             android:id="@+id/textCB"
             android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,7 +88,7 @@
         android:layout_alignParentBottom="true"
         android:textColor="#FFFFFF"
         android:background="#C90039"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="20dp" />
 
 </RelativeLayout>
