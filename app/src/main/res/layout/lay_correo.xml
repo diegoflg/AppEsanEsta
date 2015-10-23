@@ -34,6 +34,7 @@
         android:textColorHint="#C90039"
         android:layout_below="@+id/tvCorreo"
         android:background="@drawable/edittexts"
+        android:paddingLeft="10dp"
         android:ems="8" />
 
     <TextView

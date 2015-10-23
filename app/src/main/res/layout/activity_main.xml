@@ -19,7 +19,7 @@
         android:layout_below="@+id/iv1"
         android:layout_centerHorizontal="true"
         android:width="250dp"
-        android:background="@drawable/edittext"
+        style="@style/edit"
         android:inputType="textNoSuggestions"/>
 
     <EditText
@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:width="250dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/edittext"
+        style="@style/edit"
         android:inputType="textPassword"/>
 
     <CheckBox
