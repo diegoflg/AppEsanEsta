@@ -59,7 +59,7 @@ public class Correo extends ActionBarActivity {
     //Fecha actual en la que se registra el usuario
     String fechadia="";
     //Cuadros de texto no editables
-    TextView tvCorreo, textCB, nota;
+    TextView tvCorreo, textCB;
     //Boton enviar
     Button btEnviar;
     //Checkbox de terminos y condiciones
@@ -129,10 +129,6 @@ public class Correo extends ActionBarActivity {
 
         //Se le da valor al checkbox con el id correspondiente en el layout
         cbTyC = (CheckBox)findViewById(R.id.cbTyC);
-        //Se le da valor al cuadro de texto con el id correspondiente en el layout
-        nota = (TextView)findViewById(R.id.nota);
-        //Se le asigna una cadena de texto declarada en Strings al cuadro
-        nota.setText(R.string.nota);
 
         /*Esto es solo para determinar el tipo de fuente*/
         //Se les asigna el id correspondiente a los elementos segun el layout
@@ -147,9 +143,8 @@ public class Correo extends ActionBarActivity {
         //Se les da el tipo de fuente a los elementos
         tvCorreo.setTypeface(fontBold);
         etmail.setTypeface(font);
-        nota.setTypeface(font);
-        textCB.setTypeface(font);
-        btEnviar.setTypeface(font);
+        textCB.setTypeface(fontBold);
+        btEnviar.setTypeface(fontBold);
         /* Fin de aplicacion de fuentes*/
 
         //Metodo que se activa cuando se da click al texto de Aceptar terminos y condiciones
