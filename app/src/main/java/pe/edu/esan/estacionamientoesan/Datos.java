@@ -79,6 +79,19 @@ public class Datos extends ActionBarActivity {
         etContrasena = (EditText) findViewById(R.id.etContraseña);
         etCodigo = (EditText) findViewById(R.id.etCodigo);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Se envio un codigo de confirmacion a el correo ingresado anteriormente")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //do things
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
+
         //Se filtra los cuadros editables para que contengan solo 3 valores como maximo y minimo
         etPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
         etPlaca2.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
@@ -214,7 +227,7 @@ public class Datos extends ActionBarActivity {
         }
 
         if(!etCodigo.getText().toString().equals(codigo)){
-            mensaje=mensaje+"-El codigo ingresado es incorrecto"+ "\n";
+            mensaje=mensaje+"-El código ingresado es incorrecto"+ "\n";
         }
 
         Log.v("qwerty",mensaje);

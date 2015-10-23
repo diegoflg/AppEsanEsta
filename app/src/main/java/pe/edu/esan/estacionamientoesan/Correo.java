@@ -1,8 +1,10 @@
 package pe.edu.esan.estacionamientoesan;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -365,6 +367,8 @@ public class Correo extends ActionBarActivity {
                             try{
                                 int usMN = Integer.parseInt(usM);
 
+
+
                                 Intent i = new Intent(getApplicationContext(), Datos.class);
 
                                 Bundle b = new Bundle();
@@ -415,6 +419,9 @@ public class Correo extends ActionBarActivity {
                         email.m.set_to(recp);
                         email.m.set_subject("Codigo de Verificacion");
                         email.execute();
+
+
+
                         finish();
 
                     }
