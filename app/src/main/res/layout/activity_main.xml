@@ -44,8 +44,7 @@
         android:layout_below="@+id/et2"
         android:layout_alignLeft="@+id/et2"
         android:layout_alignStart="@+id/et2"
-        android:layout_marginLeft="-8dp"
-        />
+        android:layout_marginLeft="-8dp" />
 
     <TextView
         android:layout_width="wrap_content"

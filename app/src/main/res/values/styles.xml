@@ -14,5 +14,4 @@
         <item name="android:layout_marginTop">1dip</item>
         <item name="android:paddingLeft">10dip</item>
     </style>
-
 </resources>
