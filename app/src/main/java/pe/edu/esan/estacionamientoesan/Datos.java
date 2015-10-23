@@ -340,6 +340,19 @@ public class Datos extends ActionBarActivity {
             pDialog.dismiss();
             //La actividad se cierra
             finish();
+
+
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            //Se crea un paquete de datos
+            Bundle b = new Bundle();
+            //Se mete un dato en el paquete
+            b.putInt("registro", 1);
+            b.putString("cor", correo);
+            //
+            //Se manda en el intento el paquete
+            i.putExtras(b);
+            //Se inicia el intento
+            startActivity(i);
         }
     }
 

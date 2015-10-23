@@ -60,9 +60,12 @@ public class MainActivity extends ActionBarActivity {
     CheckBox cb1;
     Button bstart;
     TextView heol;
-    String logestado="";
+    String logestado="asd";
 
-    String correo="";
+    String correo="asd";
+
+    String cor="asd";
+    int reg=0;
 
 
 
@@ -96,6 +99,19 @@ public class MainActivity extends ActionBarActivity {
         }catch (Exception e){
 
         }
+
+
+        try{
+            Intent i2 = getIntent();
+            Bundle b2 = i2.getExtras();
+            reg = b2.getInt("registro");
+            cor = b2.getString("cor");
+        }catch (Exception e){
+
+        }
+
+
+
 
         //Metodo que se activa cuando se da click al checkbox
         cb1.setOnClickListener(new View.OnClickListener() {
@@ -164,11 +180,30 @@ public class MainActivity extends ActionBarActivity {
         loginPrefsEditor = loginPreferences.edit();
 
 
+        if(reg==1){
+
+            Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+            Bundle o=new Bundle();
+
+            loginPrefsEditor.putBoolean("entro", true);
+            loginPrefsEditor.putString("correo", cor);
+            loginPrefsEditor.putString("logged", "yes");
+            loginPrefsEditor.commit();
+
+            o.putString("correo",cor);
+            i.putExtras(o);
+            finish();
+            startActivity(i);
+
+            Log.v("entroo","reg==1"+cor);
+
+
+        }
+
+
         saveLogin = loginPreferences.getBoolean("saveLogin", false);
 
         saveEntro = loginPreferences.getBoolean("entro", false);
-
-
         if (saveLogin == true) {
             correo=loginPreferences.getString("correo", "");
             et1.setText(loginPreferences.getString("username", ""));
@@ -177,10 +212,23 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
-        if(logestado.equals("no")){
-            loginPrefsEditor.putString("logged", logestado);
-            loginPrefsEditor.commit();
-        }
+
+
+
+            try{
+                if(logestado.equals("no")){
+                    loginPrefsEditor.putString("logged", logestado);
+                    loginPrefsEditor.commit();
+                }
+            }catch (Exception e){
+
+            }
+
+
+
+
+
+
 
 
         if (saveEntro == true) {
