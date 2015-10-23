@@ -3,7 +3,15 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">#ffc90039</item>
+
         <!-- Customize your  theme here. -->
+    </style>
+
+    <style name="edit">
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:layout_marginBottom">10dip</item>
+        <item name="android:layout_marginTop">1dip</item>
     </style>
 
 </resources>
