@@ -49,13 +49,15 @@ public class Datos extends ActionBarActivity {
     String correo="";
     String fecha="";
     String codigo="";
+    String nombre="";
+    String apellidos="";
 
     //Cuadros de texto editables
-    EditText etPlaca,etPlaca2, etTelefono, etContrasena, etCodigo;
+    EditText etPlaca,etPlaca2, etTelefono, etContrasena, etCodigo, etApellido, etNombre;
 
     //Para fuentes
         //Cuadros de textos no editables para el usuario
-    TextView tvPlaca, textView13, tvContrasena, tvTelefono, tvCodigo;
+    TextView tvPlaca, textView13, tvContrasena, tvTelefono, tvCodigo, tvApellido, tvNombre;
         //Boton aceptar
     Button aceptar;
 
@@ -68,6 +70,9 @@ public class Datos extends ActionBarActivity {
         setContentView(R.layout.lay_datos);
 
         //Se les da los valores de id a los elementos anteriores segun su layout
+
+        etNombre=(EditText)findViewById(R.id.etNom);
+        etApellido=(EditText)findViewById(R.id.etApe);
         etPlaca = (EditText) findViewById(R.id.etPlaca);
         etPlaca2 = (EditText) findViewById(R.id.editText5);
         etTelefono = (EditText) findViewById(R.id.etTelefono);
@@ -145,6 +150,8 @@ public class Datos extends ActionBarActivity {
         etCodigo.setTypeface(fontTex);
         aceptar =(Button)findViewById(R.id.aceptar);
         aceptar.setTypeface(fontTit);
+
+
 
         //Metodo al escribir texto en el cuadro editable
         etPlaca2.addTextChangedListener(new TextWatcher() {
@@ -266,6 +273,8 @@ public class Datos extends ActionBarActivity {
             String password = String.valueOf(etContrasena.getText());
             String placa1 = String.valueOf(etPlaca.getText())+String.valueOf(etPlaca2.getText());
             String telefono = String.valueOf(etTelefono.getText());
+            String nombre = String.valueOf(etNombre.getText());
+            String apellidos = String.valueOf(etApellido.getText());
 
             //Se crea una cadena de texto y se le asigna valor falso
             String estado = "false";
@@ -281,6 +290,8 @@ public class Datos extends ActionBarActivity {
                 params.add(new BasicNameValuePair("fecha", fecha));
                 params.add(new BasicNameValuePair("codigo", codigo));
                 params.add(new BasicNameValuePair("estado", estado));
+                params.add(new BasicNameValuePair("nombre", nombre));
+                params.add(new BasicNameValuePair("apellidos", apellidos));
 
                 Log.d("request!", "starting");
 
