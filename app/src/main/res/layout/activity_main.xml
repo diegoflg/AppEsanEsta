@@ -19,7 +19,8 @@
         android:layout_below="@+id/iv1"
         android:layout_centerHorizontal="true"
         android:width="250dp"
-        style="@style/edit"
+        android:paddingLeft="10dip"
+        android:background="@drawable/edittext"
         android:inputType="textNoSuggestions"/>
 
     <EditText
@@ -30,9 +31,10 @@
         android:layout_below="@+id/et1"
         android:layout_centerHorizontal="true"
         android:width="250dp"
-        android:layout_marginTop="20dp"
-        style="@style/edit"
-        android:inputType="textPassword"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext"
+        android:inputType="textPassword"
+        android:paddingLeft="10dip"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -72,7 +74,7 @@
     <Space android:id="@+id/dummy"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="15dp"
         android:layout_centerHorizontal="true"
         android:visibility="invisible"
@@ -82,29 +84,30 @@
     <Button
         android:id="@+id/button"
         android:onClick="logstart"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="@string/btAcceder"
         android:background="@drawable/mybutton"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-
         android:layout_toRightOf="@+id/dummy"
         android:layout_toEndOf="@+id/dummy"
         android:layout_alignTop="@+id/dummy"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
         />
 
     <Button
         android:id="@+id/button2"
         android:onClick="register"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="@string/btRegistrarse"
         android:background="@drawable/mybutton"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-
-
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_toLeftOf="@+id/dummy"
         android:layout_alignTop="@+id/dummy"
          />
