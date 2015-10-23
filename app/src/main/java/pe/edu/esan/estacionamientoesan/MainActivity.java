@@ -117,6 +117,7 @@ public class MainActivity extends ActionBarActivity {
         cb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //Si el checkbox es chequeado
                 if (cb1.isChecked()) {
                     loginPrefsEditor.putBoolean("saveLogin", true);
@@ -250,7 +251,14 @@ public class MainActivity extends ActionBarActivity {
         bstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AttemptLogin().execute();
+
+                if (isNetworkAvailable() == false) {
+                    Toast.makeText(MainActivity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+
+                }else{
+                    new AttemptLogin().execute();
+                }
+
             }
         });
 
@@ -259,9 +267,18 @@ public class MainActivity extends ActionBarActivity {
         heol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent u = new Intent(getApplicationContext(), Olvido.class);
-                //finish();
-                startActivity(u);
+
+                if (isNetworkAvailable() == false) {
+                    Toast.makeText(MainActivity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+
+                }else{
+                    Intent u = new Intent(getApplicationContext(), Olvido.class);
+                    //finish();
+                    startActivity(u);
+
+
+                }
+
 
             }
         });
@@ -358,8 +375,17 @@ public class MainActivity extends ActionBarActivity {
     public void register(View v){
         //Metodo que se da al dar click al boton registrar
         //Se intenta ir a la actividad de Correo para ingresar datos de registro
-        Intent o = new Intent(getApplicationContext(), Correo.class);
-        startActivity(o);
+
+        if (isNetworkAvailable() == false) {
+            Toast.makeText(MainActivity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+
+        }else{
+
+            Intent o = new Intent(getApplicationContext(), Correo.class);
+            startActivity(o);
+        }
+
+
     }
 
 

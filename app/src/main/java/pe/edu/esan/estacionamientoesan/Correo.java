@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -161,7 +163,23 @@ public class Correo extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 //Se llama al metodo que manda el correo al usuario recien creado para luego abrir la otra pantalla
-                new CreateUser3().execute();
+
+                if (isNetworkAvailable() == false) {
+                    Toast.makeText(Correo.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+
+                }else{
+                    if(etmail.length()==0){
+
+                        Toast.makeText(Correo.this,"Ingrese un correo valido", Toast.LENGTH_LONG).show();
+
+
+                    }else{
+                        new CreateUser3().execute();
+                    }
+
+
+                }
+
             }
         });
     }
@@ -429,5 +447,11 @@ public class Correo extends ActionBarActivity {
 
             }
         }
+    }
+    private boolean isNetworkAvailable() {
+        //Verifica la conexion a internet
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

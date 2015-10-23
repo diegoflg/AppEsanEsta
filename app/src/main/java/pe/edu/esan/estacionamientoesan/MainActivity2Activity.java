@@ -275,13 +275,17 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     }
                 }
 
-                if (isNetworkAvailable() == false) {
 
-                }
 
                 //Se ejecuta la accion del mismo nombre
-                new LoadAllProducts().execute();
-                //new LoadTIME().execute();
+
+                if (isNetworkAvailable() == false) {
+
+
+                }else{
+                    new LoadAllProducts().execute();
+
+                }
 
                 //Se sigue haciendo el handler cada 5 segundos
                 h.postDelayed(this, delay);

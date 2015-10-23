@@ -2,9 +2,12 @@ package pe.edu.esan.estacionamientoesan;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -370,84 +373,94 @@ public class Perfil extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                //Se da valor inicial nulo a la cadena de texto
-                mensaje = "";
+                if (isNetworkAvailable() == false) {
+                    Toast.makeText(Perfil.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
 
-                // new CreateUser().execute();
-
-                /*Se verifican datos*/
-                if(etPlaca.length()==0 && etPlacaC.length()==0 && etPlaca2.length()==0 && etPlacaC2.length()==0 && etPlaca3.length()==0 && etPlacaC3.length()==0 )
-                {
-                    mensaje = mensaje + "-Debe tener por lo menos 1 placa" + "\n";
                 }else{
 
-                    if(etPlaca.length()!=0 && etPlacaC.length()!=0){
-                        if (etPlaca.length() != 3 || etPlacaC.length() != 3) {
-                            mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+                    //Se da valor inicial nulo a la cadena de texto
+                    mensaje = "";
+
+                    // new CreateUser().execute();
+
+                /*Se verifican datos*/
+                    if(etPlaca.length()==0 && etPlacaC.length()==0 && etPlaca2.length()==0 && etPlacaC2.length()==0 && etPlaca3.length()==0 && etPlacaC3.length()==0 )
+                    {
+                        mensaje = mensaje + "-Debe tener por lo menos 1 placa" + "\n";
+                    }else{
+
+                        if(etPlaca.length()!=0 && etPlacaC.length()!=0){
+                            if (etPlaca.length() != 3 || etPlacaC.length() != 3) {
+                                mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                            }
+
+
+                        }
+
+                        if(etPlaca2.length()!=0 && etPlacaC2.length()!=0){
+
+                            if (etPlaca2.length() != 3 || etPlacaC2.length() != 3) {
+                                mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                            }
+
+                        }
+
+
+                        if(etPlaca3.length()!=0 && etPlacaC3.length()!=0){
+                            if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
+                                mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+
+                            }
+
 
                         }
 
 
                     }
 
-                    if(etPlaca2.length()!=0 && etPlacaC2.length()!=0){
 
-                        if (etPlaca2.length() != 3 || etPlacaC2.length() != 3) {
-                            mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
 
-                        }
+
+                    if (etTelefono.length() != 7 && etTelefono.length() != 9) {
+                        mensaje = mensaje + "-El telefono ingresado no es correcto" + "\n";
+
+                    }
+                    if (etContraseña.length() == 0) {
+                        mensaje = mensaje + "-Ingrese una contraseña" + "\n";
 
                     }
 
 
-                    if(etPlaca3.length()!=0 && etPlacaC3.length()!=0){
-                        if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
-                            mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
-
-                        }
-
-
-                    }
-
-
-                }
-
-
-
-
-                if (etTelefono.length() != 7 && etTelefono.length() != 9) {
-                    mensaje = mensaje + "-El telefono ingresado no es correcto" + "\n";
-
-                }
-                if (etContraseña.length() == 0) {
-                    mensaje = mensaje + "-Ingrese una contraseña" + "\n";
-
-                }
-
-
-                Log.v("qwerty", mensaje);
+                    Log.v("qwerty", mensaje);
                 /*Se termina la verificacion de datos*/
 
-                //Se verifica el contenido de la cadena de texto, si es nula entonces
-                //realizara la accion dada
-                if (mensaje.equals("")) {
-                    new CreateUser2().execute();
+                    //Se verifica el contenido de la cadena de texto, si es nula entonces
+                    //realizara la accion dada
+                    if (mensaje.equals("")) {
+                        new CreateUser2().execute();
 
-                } else {
-                //Caso contrario el usuario vera un mensaje en pantalla sobre los datos faltantes o incorrectos
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Perfil.this);
-                    builder.setMessage(mensaje)
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    //do things
-                                }
-                            });
-                    AlertDialog alert = builder.create();
-                    alert.show();
+                    } else {
+                        //Caso contrario el usuario vera un mensaje en pantalla sobre los datos faltantes o incorrectos
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Perfil.this);
+                        builder.setMessage(mensaje)
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //do things
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+
+
+                    }
 
 
                 }
+
+
 
 
             }
@@ -660,6 +673,13 @@ public class Perfil extends ActionBarActivity {
 
 
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        //Verifica la conexion a internet
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }
