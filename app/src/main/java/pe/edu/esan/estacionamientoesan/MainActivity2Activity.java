@@ -121,9 +121,9 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //Separador 1
 
         //Titulo Esan
-        TextView tvEsan = (TextView) findViewById(R.id.textView);
+        final TextView tvEsan = (TextView) findViewById(R.id.textView);
         //Texto lugar esan
-        TextView tvLEsan = (TextView) findViewById(R.id.textView7);
+        final TextView tvLEsan = (TextView) findViewById(R.id.textView7);
         //Boton Esan
         final Button btEsan = (Button)findViewById(R.id.btEsan);
 
@@ -133,48 +133,134 @@ public class MainActivity2Activity extends ActionBarActivity implements
         sep2.setVisibility(View.VISIBLE);
         //Titulo Polo
         final TextView tvPolo = (TextView) findViewById(R.id.textView3);
-        tvPolo.setVisibility(View.GONE);
+        tvPolo.setVisibility(View.VISIBLE);
         //Texto lugar  Polo
-        TextView tvLPolo = (TextView) findViewById(R.id.textView6);
-        tvLPolo.setVisibility(View.GONE);
+        final TextView tvLPolo = (TextView) findViewById(R.id.textView6);
+        tvLPolo.setVisibility(View.VISIBLE);
         //Boton Polo
         final Button btPolo = (Button)findViewById(R.id.btPolo);
-        btPolo.setVisibility(View.GONE);
+        btPolo.setVisibility(View.VISIBLE);
         //Boton ir Polo
-        Button btIr = (Button)findViewById(R.id.btir);
-        btIr.setVisibility(View.GONE);
+        final Button btIr = (Button)findViewById(R.id.btir);
+        btIr.setVisibility(View.VISIBLE);
 
         //Separador 3
-        View sep3 = (View)findViewById(R.id.sep3);
-        sep3.setVisibility(View.GONE);
+        final View sep3 = (View)findViewById(R.id.sep3);
+        sep3.setVisibility(View.VISIBLE);
         //Titulo Alonso de Molina
-        TextView tvAlonso = (TextView) findViewById(R.id.textView4);
-        tvAlonso.setVisibility(View.GONE);
+        final TextView tvAlonso = (TextView) findViewById(R.id.textView4);
+        tvAlonso.setVisibility(View.VISIBLE);
         //Texto lugar Alonso
-        TextView tvLAlonso= (TextView) findViewById(R.id.textView5);
-        tvLAlonso.setVisibility(View.GONE);
+        final TextView tvLAlonso= (TextView) findViewById(R.id.textView5);
+        tvLAlonso.setVisibility(View.VISIBLE);
         //Boton Alonso
         final Button btAlonso = (Button)findViewById(R.id.btAlonso);
-        btAlonso.setVisibility(View.GONE);
+        btAlonso.setVisibility(View.VISIBLE);
 
         //Separador 4
-        View sep4 = (View)findViewById(R.id.sep4);
-        sep4.setVisibility(View.GONE);
+        final View sep4 = (View)findViewById(R.id.sep4);
+        sep4.setVisibility(View.VISIBLE);
         /*FIN DE CREACION DE VARIABLES Y ASIGNACION DE ID's JUNTO A SU VISIBILIDAD*/
 
         //Se muestra el dialogo de progreso
         dialog.show();
         //Se ejecuta la accion dada en el metodo con el mismo nombre
-        new LoadAllProductsIni().execute();
+
+        if (isNetworkAvailable() == false) {
+
+            tvPolo.setVisibility(View.GONE);
+            tvLPolo.setVisibility(View.GONE);
+            btPolo.setVisibility(View.GONE);
+            btIr.setVisibility(View.GONE);
+            sep3.setVisibility(View.GONE);
+
+            //APARECE ALONSO
+            tvAlonso.setVisibility(View.GONE);
+            tvLAlonso.setVisibility(View.GONE);
+            btAlonso.setVisibility(View.GONE);
+            sep4.setVisibility(View.GONE);
+
+
+            //APARECE ESAN
+            tvEsan.setText("Compruebe su conexión a internet");
+            tvLEsan.setVisibility(View.GONE);
+            btEsan.setVisibility(View.GONE);
+
+
+        }else{
+            tvEsan.setText("ESAN");
+            tvLEsan.setVisibility(View.VISIBLE);
+            btEsan.setVisibility(View.VISIBLE);
+
+            tvPolo.setVisibility(View.VISIBLE);
+            tvLPolo.setVisibility(View.VISIBLE);
+            btPolo.setVisibility(View.VISIBLE);
+            btIr.setVisibility(View.VISIBLE);
+            sep3.setVisibility(View.VISIBLE);
+
+            //APARECE ALONSO
+            tvAlonso.setVisibility(View.VISIBLE);
+            tvLAlonso.setVisibility(View.VISIBLE);
+            btAlonso.setVisibility(View.VISIBLE);
+            sep4.setVisibility(View.VISIBLE);
+
+
+
+            new LoadAllProductsIni().execute();
+
+        }
+
 
         //Handler que ocurre despues de 5 segundos(delay): Verifica si se esta mostrando el dialogo de progreso y si es correcto, desaparece
         //caso contrario no hace nada
         hT.postDelayed(new Runnable() {
             @Override
             public void run() {
-                new LoadTIME2().execute();
-                if (dialog.isShowing()) {
-                    dialog.dismiss();
+
+
+                if (isNetworkAvailable() == false) {
+
+                    tvPolo.setVisibility(View.GONE);
+                    tvLPolo.setVisibility(View.GONE);
+                    btPolo.setVisibility(View.GONE);
+                    btIr.setVisibility(View.GONE);
+                    sep3.setVisibility(View.GONE);
+
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.GONE);
+                    tvLAlonso.setVisibility(View.GONE);
+                    btAlonso.setVisibility(View.GONE);
+                    sep4.setVisibility(View.GONE);
+
+
+                    //APARECE ESAN
+                    tvEsan.setText("Compruebe su conexión a internet");
+                    tvLEsan.setVisibility(View.GONE);
+                    btEsan.setVisibility(View.GONE);
+
+
+                }else {
+                    tvEsan.setText("ESAN");
+                    tvLEsan.setVisibility(View.VISIBLE);
+                    btEsan.setVisibility(View.VISIBLE);
+
+
+                    tvPolo.setVisibility(View.VISIBLE);
+                    tvLPolo.setVisibility(View.VISIBLE);
+                    btPolo.setVisibility(View.VISIBLE);
+                    btIr.setVisibility(View.VISIBLE);
+                    sep3.setVisibility(View.VISIBLE);
+
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.VISIBLE);
+                    tvLAlonso.setVisibility(View.VISIBLE);
+                    btAlonso.setVisibility(View.VISIBLE);
+                    sep4.setVisibility(View.VISIBLE);
+
+                    new LoadTIME2().execute();
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
                 }
             }
         }, delay);
@@ -185,6 +271,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
             //2. Se verifica el cambio de estado para que entonces se reproduzca el sonido
         h.postDelayed(new Runnable() {
             public void run() {
+
                 if (estado.equals("rojo")) {
                     btEsan.setBackgroundResource(R.drawable.brojo);
 
@@ -206,28 +293,65 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
                 }
 
-                if (estadoalonso.equals("amarillo")) {
-                    btAlonso.setBackgroundResource(R.drawable.bamarillo);
+                if(btAlonso.getText().toString().equals("Cerrado")){
+                    btAlonso.setBackgroundResource(R.drawable.brojo);
+
+                }else{
+
+                    if (estadoalonso.equals("amarillo")) {
+                        btAlonso.setBackgroundResource(R.drawable.bamarillo);
+
+                    }
 
                 }
-                if (estadopolo.equals("amarillo")) {
-                    btPolo.setBackgroundResource(R.drawable.bamarillo);
 
+
+                if(btPolo.getText().toString().equals("Cerrado")){
+                    btPolo.setBackgroundResource(R.drawable.brojo);
+
+                }else{
+
+                    if (estadopolo.equals("amarillo")) {
+                        btPolo.setBackgroundResource(R.drawable.bamarillo);
+
+
+                    }
 
                 }
+
+
+
 
                 if (estado.equals("verde")) {
                     btEsan.setBackgroundResource(R.drawable.bverde);
 
                 }
 
-                if (estadoalonso.equals("verde")) {
-                    btAlonso.setBackgroundResource(R.drawable.bverde);
+
+                if(btAlonso.getText().toString().equals("Cerrado")){
+                    btAlonso.setBackgroundResource(R.drawable.brojo);
+
+                }else{
+                    if (estadoalonso.equals("verde")) {
+                        btAlonso.setBackgroundResource(R.drawable.bverde);
+
+                    }
 
                 }
 
-                if (estadopolo.equals("verde")) {
-                    btPolo.setBackgroundResource(R.drawable.bverde);
+
+
+
+
+                if(btPolo.getText().toString().equals("Cerrado")){
+                    btPolo.setBackgroundResource(R.drawable.brojo);
+
+                }else{
+
+                    if (estadopolo.equals("verde")) {
+                        btPolo.setBackgroundResource(R.drawable.bverde);
+
+                    }
 
                 }
 
@@ -281,8 +405,44 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
                 if (isNetworkAvailable() == false) {
 
+                    tvPolo.setVisibility(View.GONE);
+                    tvLPolo.setVisibility(View.GONE);
+                    btPolo.setVisibility(View.GONE);
+                    btIr.setVisibility(View.GONE);
+                    sep3.setVisibility(View.GONE);
+
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.GONE);
+                    tvLAlonso.setVisibility(View.GONE);
+                    btAlonso.setVisibility(View.GONE);
+                    sep4.setVisibility(View.GONE);
+
+
+                    //APARECE ESAN
+                    tvEsan.setText("Compruebe su conexión a internet");
+                    tvLEsan.setVisibility(View.GONE);
+                    btEsan.setVisibility(View.GONE);
+
 
                 }else{
+                    tvEsan.setText("ESAN");
+                    tvLEsan.setVisibility(View.VISIBLE);
+                    btEsan.setVisibility(View.VISIBLE);
+
+
+                    tvPolo.setVisibility(View.VISIBLE);
+                    tvLPolo.setVisibility(View.VISIBLE);
+                    btPolo.setVisibility(View.VISIBLE);
+                    btIr.setVisibility(View.VISIBLE);
+                    sep3.setVisibility(View.VISIBLE);
+
+                    //APARECE ALONSO
+                    tvAlonso.setVisibility(View.VISIBLE);
+                    tvLAlonso.setVisibility(View.VISIBLE);
+                    btAlonso.setVisibility(View.VISIBLE);
+                    sep4.setVisibility(View.VISIBLE);
+
+
                     new LoadAllProducts().execute();
 
                 }
@@ -556,6 +716,10 @@ public class MainActivity2Activity extends ActionBarActivity implements
             //Metodo que ocurre despues de terminada la accion
             // TODO Auto-generated method stub
             super.onPostExecute(result);
+
+            tvEsan.setText("ESAN");
+            tvLEsan.setVisibility(View.VISIBLE);
+            btEsan.setVisibility(View.VISIBLE);
             // Here you can do any UI operations like textview.setText("test");
 
             //Se verifica que el texto contenga los valores dado en parametros:
@@ -566,17 +730,19 @@ public class MainActivity2Activity extends ActionBarActivity implements
                    horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
                 //-----> Entonces:
                     //APARECE EL POLO
-                    tvPolo.setVisibility(View.VISIBLE);
-                    tvLPolo.setVisibility(View.VISIBLE);
-                    btPolo.setVisibility(View.VISIBLE);
-                    btIr.setVisibility(View.VISIBLE);
-                    sep3.setVisibility(View.VISIBLE);
 
-                    //APARECE ALONSO
-                    tvAlonso.setVisibility(View.VISIBLE);
-                    tvLAlonso.setVisibility(View.VISIBLE);
-                    btAlonso.setVisibility(View.VISIBLE);
-                    sep4.setVisibility(View.VISIBLE);
+
+
+
+                    btPolo.setText("");
+
+                        //APARECE ALONSO
+                    btAlonso.setText("");
+
+
+
+
+
 
                 }else {
                     /* Si fuera else if:
@@ -589,17 +755,14 @@ public class MainActivity2Activity extends ActionBarActivity implements
                      */
                 //---->Caso contrario de no contener esas horas
                     //SE VA EL POLO
-                        tvPolo.setVisibility(View.GONE);
-                        tvLPolo.setVisibility(View.GONE);
-                        btPolo.setVisibility(View.GONE);
-                        btIr.setVisibility(View.GONE);
-                        sep3.setVisibility(View.GONE);
+
+
+                    btPolo.setText("Cerrado");
 
                     //SE VA ALONSO
-                    tvAlonso.setVisibility(View.GONE);
-                    tvLAlonso.setVisibility(View.GONE);
-                    btAlonso.setVisibility(View.GONE);
-                    sep4.setVisibility(View.GONE);
+
+                    btAlonso.setText("Cerrado");
+
                 }
             } else if( diac.contains("Saturday")){
                 //Caso contrario de que el dia sea Sabado:
@@ -611,20 +774,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     //Si la hora es de 6:30 AM hasta las 18:59 PM entonces:
 
                     //APARECE EL POLO
-                    tvPolo.setVisibility(View.VISIBLE);
-                    tvLPolo.setVisibility(View.VISIBLE);
-                    btPolo.setVisibility(View.VISIBLE);
-                    btIr.setVisibility(View.VISIBLE);
-                    sep3.setVisibility(View.VISIBLE);
-
+                    btPolo.setText("");
                 }else{
                     //Si no es esa hora el dia sabado entonces:
                     //SE VA EL POLO
-                    tvPolo.setVisibility(View.GONE);
-                    tvLPolo.setVisibility(View.GONE);
-                    btPolo.setVisibility(View.GONE);
-                    btIr.setVisibility(View.GONE);
-                    sep3.setVisibility(View.GONE);
+                    btPolo.setText("Cerrado");
                 }
 
 
@@ -636,36 +790,23 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     //Si la hora es desde 7:30 am hasta las 18:59 PM entonces:
 
                     //APARECE ALONSO
-                    tvAlonso.setVisibility(View.VISIBLE);
-                    tvLAlonso.setVisibility(View.VISIBLE);
-                    btAlonso.setVisibility(View.VISIBLE);
-                    sep4.setVisibility(View.VISIBLE);
+                    btAlonso.setText("");
 
 
                 }else{
                     //Caso que no sea esas horas del dia sabado:
                     //SE VA ALONSO
-                    tvAlonso.setVisibility(View.GONE);
-                    tvLAlonso.setVisibility(View.GONE);
-                    btAlonso.setVisibility(View.GONE);
-                    sep4.setVisibility(View.GONE);
+                    btAlonso.setText("Cerrado");
                 }
 
 
             } else if(diac.contains("Sunday")){
                 //Si el dia es Domingo:
                 //SE VA EL POLO
-                tvPolo.setVisibility(View.GONE);
-                tvLPolo.setVisibility(View.GONE);
-                btPolo.setVisibility(View.GONE);
-                btIr.setVisibility(View.GONE);
-                sep3.setVisibility(View.GONE);
+                btPolo.setText("Cerrado");
 
                 //SE VA ALONSO
-                tvAlonso.setVisibility(View.GONE);
-                tvLAlonso.setVisibility(View.GONE);
-                btAlonso.setVisibility(View.GONE);
-                sep4.setVisibility(View.GONE);
+                btAlonso.setText("Cerrado");
             }
         }
     }
@@ -715,16 +856,23 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
             //Cuando se de click a la opcion Mi perfil del menu:
             case R.id.perfil:
-                //Se crea un intetno de cambio de actividad de esta a Perfil
-                Intent p = new Intent(getApplicationContext(), Perfil.class);
-                //Se crea un paquete de datos
-                Bundle k = new Bundle();
-                //Se mete un valor en el paquete
-                k.putString("correo", correo);
-                //Se manda el paquete al intento
-                p.putExtras(k);
-                //Se inicia el intento o cambio de actividad
-                startActivity(p);
+
+                if (isNetworkAvailable() == false) {
+                    Toast.makeText(MainActivity2Activity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+
+                }else {
+                    //Se crea un intetno de cambio de actividad de esta a Perfil
+                    Intent p = new Intent(getApplicationContext(), Perfil.class);
+                    //Se crea un paquete de datos
+                    Bundle k = new Bundle();
+                    //Se mete un valor en el paquete
+                    k.putString("correo", correo);
+                    //Se manda el paquete al intento
+                    p.putExtras(k);
+                    //Se inicia el intento o cambio de actividad
+                    startActivity(p);
+
+                }
                 return true;
 
             default:return super.onOptionsItemSelected(item);
