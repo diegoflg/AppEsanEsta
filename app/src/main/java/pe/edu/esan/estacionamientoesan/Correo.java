@@ -167,10 +167,20 @@ public class Correo extends ActionBarActivity {
                 if (isNetworkAvailable() == false) {
                     Toast.makeText(Correo.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
 
+
                 }else{
                     if(etmail.length()==0){
 
-                        Toast.makeText(Correo.this,"Ingrese un correo valido", Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
+                        builder.setMessage("Ingrese un correo valido")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //do things
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
 
 
                     }else{
@@ -408,7 +418,17 @@ public class Correo extends ActionBarActivity {
                             }
 
                         }else{
-                            Toast.makeText(Correo.this,R.string.incorrecto, Toast.LENGTH_LONG).show();
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
+                            builder.setMessage(R.string.incorrecto)
+                                    .setCancelable(false)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            //do things
+                                        }
+                                    });
+                            AlertDialog alert = builder.create();
+                            alert.show();
                         }
 
 
@@ -439,11 +459,31 @@ public class Correo extends ActionBarActivity {
 
                     }
                 }else{
-                    Toast.makeText(Correo.this,R.string.debeAceptarTC , Toast.LENGTH_LONG).show();
+
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
+                    builder.setMessage(R.string.debeAceptarTC)
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //do things
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
                 }
 
             }else{
-                Toast.makeText(Correo.this, R.string.existe , Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
+                builder.setMessage(R.string.existe)
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //do things
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
 
             }
         }

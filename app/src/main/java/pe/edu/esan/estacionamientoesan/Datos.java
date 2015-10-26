@@ -84,7 +84,7 @@ public class Datos extends ActionBarActivity {
         etCodigo = (EditText) findViewById(R.id.etCodigo);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Se envio un codigo de confirmacion a el correo ingresado anteriormente")
+        builder.setMessage("Se envió un código de confirmación a el correo ingresado anteriormente")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -238,6 +238,14 @@ public class Datos extends ActionBarActivity {
 
             if(!etCodigo.getText().toString().equals(codigo)){
                 mensaje=mensaje+"-El código ingresado es incorrecto"+ "\n";
+            }
+
+            if(etNombre.length()==0){
+                mensaje=mensaje+"-Ingrese su nombre"+ "\n";
+            }
+
+            if(etApellido.length()==0){
+                mensaje=mensaje+"-Ingrese sus apellidos"+ "\n";
             }
 
             Log.v("qwerty",mensaje);

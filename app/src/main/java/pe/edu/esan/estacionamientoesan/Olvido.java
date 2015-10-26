@@ -80,7 +80,7 @@ public class Olvido extends ActionBarActivity {
 
                 }else{
 
-                    if(et1.length()<0){
+                    if(et1.length()>0){
                         new CreateUser3().execute();
 
                     }else{
