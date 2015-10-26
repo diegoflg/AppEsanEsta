@@ -126,9 +126,6 @@ public class Correo extends ActionBarActivity {
         //Se le asigna el valor de la cadena al dato inicial
         fechadia = date;
 
-        //Date diaF = new Date(diaI.getTimeInMillis() + 604800000L); //7*24*60*60*1000
-        String f2 = form.format(new Date(diaI.getTimeInMillis() + 604800000L));
-
         //Se le da valor al checkbox con el id correspondiente en el layout
         cbTyC = (CheckBox)findViewById(R.id.cbTyC);
 
@@ -162,15 +159,18 @@ public class Correo extends ActionBarActivity {
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Se llama al metodo que manda el correo al usuario recien creado para luego abrir la otra pantalla
 
+                //Se verifica la conexion a internet
                 if (isNetworkAvailable() == false) {
+                    //Si no hay conexion entonces saldra en pantalla un mensaje para que el ususario compruebe la conexion
                     Toast.makeText(Correo.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
 
 
                 }else{
+                    //Caso contrario se verificara el tamaño del dato ingresado en el cuadro de texto editable de correo
                     if(etmail.length()==0){
-
+                        //Si esta vacion entoncesse mostrara un mensaje en pantalla en el que se pide que se ingrese
+                        //un correo valido
                         AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
                         builder.setMessage("Ingrese un correo valido")
                                 .setCancelable(false)
@@ -184,6 +184,7 @@ public class Correo extends ActionBarActivity {
 
 
                     }else{
+                        //Caso contrario: si hay caracteres, se realizara el metodo del mismo nombre
                         new CreateUser3().execute();
                     }
 
@@ -268,6 +269,7 @@ public class Correo extends ActionBarActivity {
     }
 
 
+    //Metodo que se realiza en segundo plano que permite el envio de correo
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
         Mail m;
         public SendEmailAsyncTask() {
@@ -373,52 +375,77 @@ public class Correo extends ActionBarActivity {
         }
 
         protected void onPostExecute(String file_url) {
-
+            //Metodo despues de terminada la ejecucion
+        //El dialogo de progreso desaparece
             pDialog.dismiss();
 
+            //Se verifica el valor de la variable entera success
             if(success==0){
-
+                //Se verifica si el cuadro de terminos y condiciones ha sido chequeado
                 if(cbTyC.isChecked()){
+                    //Se crea un random r
                     Random r = new Random();
-
+                    //Se le asigna valor a la variable numerica aNumber
                     aNumber = 1000 + r.nextInt(9000-1000+1);
 
+                    //Se le da valor a una cadena de texto llamada usM con el dato obtenido del correo  ingresado por el usuario
                     String usM = etmail.getText().toString();
 
+                    //Se verifica el tipo de dominio escogido
                     if(dominio.equals("@ue.edu.pe")){
+                        //Si el dominio es UE (pregrado) se verifica su longitud de texto del correo con 8 digitos
                         if(usM.length()==8){
+                            //Si tiene 8 digitos se intenta
                             try{
+                                //Convertir el dato a numeros para verificar que el correo ingresado solo tenga
+                                //numeros puesto que los estudiantes de pregrado solo tienen 8 digitos numericos como correo esan
                                 int usMN = Integer.parseInt(usM);
 
-
-
+                                //Se intenta entonces pasar a la otra actividad que es el llenado de los otros datos
                                 Intent i = new Intent(getApplicationContext(), Datos.class);
 
+                                //Se crea un paquete de datos
                                 Bundle b = new Bundle();
+                                //Se da valores al paquete: el email del usuario, el codigo de verficiacion enviado a su corre y la fecha en la que se ha registrado
                                 b.putString("email", usM+dominio);
                                 b.putString("codigo", String.valueOf(aNumber));
                                 b.putString("fecha", fechadia);
+                                //Se mandan esos datos al intent
                                 i.putExtras(b);
+                                //se empieza la otra actividad con los datos enviados
                                 startActivity(i);
 
+                                //Se obtiene el correo del usuario junto al dominio escogido y se guarda en la variable cadena CORREO
+                                //Comienzo de pasos para envio automatico de correo:
+                                //Correo del usuario a enviar codigo
                                 String correo = String.valueOf(etmail.getText())+dominio;
                                 String[] recp = {correo};
+                                //Se crea un nuevo asynctask de envio de correo
                                 SendEmailAsyncTask email = new SendEmailAsyncTask();
+                                //Correo y contrasena del correo que envia
                                 email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
+                                //Se le da valor al FROM del mensaje
                                 email.m.set_from("educacionadistancia@esan.edu.pe");
+                                //Se le da valor al mensaje a enviar
                                 email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
+                                //Se le da valor al "PARA" (a quien se le envia)
                                 email.m.set_to(recp);
+                                //Se le da titulo al mensaje
                                 email.m.set_subject("Codigo de Verificacion");
+                                //Se ejecuta el asyncTask
                                 email.execute();
+                                //Se termina la actividad
                                 finish();
 
                             }catch (Exception e){
+                                //Caso en el que el correo ingresado obtenga alguna letra y no un numero
+                                //Se le muestra al usuario un mensaje
                                 e.printStackTrace();
                                 Toast.makeText(Correo.this,R.string.solonum, Toast.LENGTH_LONG).show();
                             }
 
                         }else{
-
+                            //Caso de ingresar correos con menos o mas de 8 digitos se muestra un mensaje al usuario
                             AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
                             builder.setMessage(R.string.incorrecto)
                                     .setCancelable(false)
@@ -430,37 +457,49 @@ public class Correo extends ActionBarActivity {
                             AlertDialog alert = builder.create();
                             alert.show();
                         }
-
-
+                        //Caso en el que el dominio del usuario es ESAN (Postgrado y otros menos pregrado)
                     }else if(dominio.equals("@esan.edu.pe")){
 
+                        //Se crea un intento de paso a otra actividad de llenado de datos
                         Intent i = new Intent(getApplicationContext(), Datos.class);
 
+                        //Se crea un paquete de datos
                         Bundle b = new Bundle();
+                        //Se guardan los datos del correo ingresado, el codigo enviado y la fecha de registro
                         b.putString("email", usM+dominio);
                         b.putString("codigo", String.valueOf(aNumber));
                         b.putString("fecha", fechadia);
+                        //Se manda el paquete con el intent
                         i.putExtras(b);
+                        //Se empieza la actividad
                         startActivity(i);
 
+                        //Se obtiene el correo del usuario
                         String correo = String.valueOf(etmail.getText())+dominio;
+                        //Se crea la cadena tipo matriz con el correo
                         String[] recp = {correo};
+                        //Se crea una nueva ejecucion de envio de mensaje
                         SendEmailAsyncTask email = new SendEmailAsyncTask();
+                        //Se da el correo y contrasena que enviara el correo
                         email.m = new Mail("educacionadistancia@esan.edu.pe", "rthj6724");
+                        //Se da valor al FROM del mensaje
                         email.m.set_from("educacionadistancia@esan.edu.pe");
+                        //Se da valor al mensaje que se envie
                         email.m.setBody("Su codigo de verificacion es: " + String.valueOf(aNumber));
+                        //Se da valor al TO del mensaje
                         email.m.set_to(recp);
+                        //Se da valor al TITULO del mensaje
                         email.m.set_subject("Codigo de Verificacion");
+                        //Se ejecuta el envio
                         email.execute();
 
-
-
+                        //Se termina la actividad
                         finish();
 
                     }
                 }else{
 
-
+                    //Caso en que no este chequeado el terminos y condiciones aparecera en pantalla un mensaje que diga que los acepte
                     AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
                     builder.setMessage(R.string.debeAceptarTC)
                             .setCancelable(false)
@@ -474,6 +513,7 @@ public class Correo extends ActionBarActivity {
                 }
 
             }else{
+                //Caso en el que no se verifique el valor de success
                 AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
                 builder.setMessage(R.string.existe)
                         .setCancelable(false)

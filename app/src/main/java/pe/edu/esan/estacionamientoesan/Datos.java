@@ -20,13 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -53,15 +51,13 @@ public class Datos extends ActionBarActivity {
     String correo="";
     String fecha="";
     String codigo="";
-    String nombre="";
-    String apellidos="";
 
     //Cuadros de texto editables
     EditText etPlaca,etPlaca2, etTelefono, etContrasena, etCodigo, etApellido, etNombre;
 
     //Para fuentes
         //Cuadros de textos no editables para el usuario
-    TextView tvPlaca, textView13, tvContrasena, tvTelefono, tvCodigo, tvApellido, tvNombre;
+    TextView tvPlaca, textView13, tvContrasena, tvTelefono, tvCodigo;
         //Boton aceptar
     Button aceptar;
 

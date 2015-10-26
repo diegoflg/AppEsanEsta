@@ -4,7 +4,6 @@ package pe.edu.esan.estacionamientoesan;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.location.Location;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
@@ -19,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -166,8 +164,9 @@ public class MainActivity2Activity extends ActionBarActivity implements
         dialog.show();
         //Se ejecuta la accion dada en el metodo con el mismo nombre
 
+        //Se verifica la conexion a iternet
         if (isNetworkAvailable() == false) {
-
+        //Si no hay conexion
             tvPolo.setVisibility(View.GONE);
             tvLPolo.setVisibility(View.GONE);
             btPolo.setVisibility(View.GONE);
@@ -188,6 +187,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
         }else{
+            //Si hay conexion
             tvEsan.setText("ESAN");
             tvLEsan.setVisibility(View.VISIBLE);
             btEsan.setVisibility(View.VISIBLE);
@@ -306,7 +306,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 }
 
 
-                if(btPolo.getText().toString().equals("Cerrado")){
+                if (btPolo.getText().toString().equals("Cerrado")){
                     btPolo.setBackgroundResource(R.drawable.brojo);
 
                 }else{
@@ -343,7 +343,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
 
-                if(btPolo.getText().toString().equals("Cerrado")){
+                if (btPolo.getText().toString().equals("Cerrado")){
                     btPolo.setBackgroundResource(R.drawable.brojo);
 
                 }else{
@@ -612,33 +612,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
         //Boton Esan
         Button btEsan = (Button)findViewById(R.id.btEsan);
 
-
-        //Separador 2
-        View sep2 = (View)findViewById(R.id.sep2);
-        //Titulo Polo
-        TextView tvPolo = (TextView) findViewById(R.id.textView3);
-        //Texto lugar  Polo
-        TextView tvLPolo = (TextView) findViewById(R.id.textView6);
         //Boton Polo
         Button btPolo = (Button)findViewById(R.id.btPolo);
-        //Boton ir Polo
-        Button btIr = (Button)findViewById(R.id.btir);
 
-
-        //Separador 3
-        View sep3 = (View)findViewById(R.id.sep3);
-        //Titulo Alonso de Molina
-        TextView tvAlonso = (TextView) findViewById(R.id.textView4);
-        //Texto lugar Alonso
-        TextView tvLAlonso= (TextView) findViewById(R.id.textView5);
         //Boton Alonso
         Button btAlonso = (Button)findViewById(R.id.btAlonso);
-
-
-
-
-        //Separador 4
-        View sep4 = (View)findViewById(R.id.sep4);
 
         //Se crea una cadena de texto cuyo valor es la URL de la pagina web
         String url = "http://www.timeanddate.com/worldclock/peru/lima";
@@ -730,8 +708,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
                    horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
                 //-----> Entonces:
                     //APARECE EL POLO
-
-
 
 
                     btPolo.setText("");
