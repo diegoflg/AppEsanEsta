@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btAlonso"
-            android:visibility="invisible"
+
             android:background="@drawable/bamarillo"
             android:layout_alignTop="@+id/textView4"
             android:layout_alignLeft="@+id/btPolo"
@@ -104,7 +104,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btPolo"
-            android:visibility="invisible"
             android:background="@drawable/brojo"
             android:layout_alignTop="@+id/textView3"
             android:layout_alignLeft="@+id/btEsan"
