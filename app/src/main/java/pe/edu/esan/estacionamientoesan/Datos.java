@@ -70,7 +70,6 @@ public class Datos extends ActionBarActivity {
         setContentView(R.layout.lay_datos);
 
         //Se les da los valores de id a los elementos anteriores segun su layout
-
         etNombre=(EditText)findViewById(R.id.etNom);
         etApellido=(EditText)findViewById(R.id.etApe);
         etPlaca = (EditText) findViewById(R.id.etPlaca);
@@ -79,7 +78,9 @@ public class Datos extends ActionBarActivity {
         etContrasena = (EditText) findViewById(R.id.etContraseña);
         etCodigo = (EditText) findViewById(R.id.etCodigo);
 
+        //Se crea un dialogo de alerta o mensaje en esta actividad
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //Se le da valores a ciertos pedidos: el mensaje a mostrar, si es cancelable, y si se da al boton Ok
         builder.setMessage("Se envió un código de confirmación al correo ingresado anteriormente")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -87,7 +88,9 @@ public class Datos extends ActionBarActivity {
                         //do things
                     }
                 });
+        //Se crea el dialogo
         AlertDialog alert = builder.create();
+        //Se muestra el dialogo
         alert.show();
 
 
@@ -96,7 +99,7 @@ public class Datos extends ActionBarActivity {
         etPlaca.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
         etPlaca2.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(3)});
 
-        //S e crea un Intent para recibir los datos de correo, fecha y codigo obtenidos en la actividad anterior(Correo.java)
+        //Se crea un Intent para recibir los datos de correo, fecha y codigo obtenidos en la actividad anterior(Correo.java)
         Intent i = getIntent();
         Bundle b = i.getExtras();
         correo = b.getString("email");
@@ -396,6 +399,8 @@ public class Datos extends ActionBarActivity {
             case R.id.regresar:
                 //Se termina la actividad principal
                 finish();
+
+                //Se cierrra el teclado en pantalla al pasar de una a otra actividad ya que este no sera necesario que siga abierto
                 View view = this.getCurrentFocus();
                 if (view != null) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

@@ -52,14 +52,19 @@ public class MainActivity extends ActionBarActivity {
     private ProgressDialog pDialog;
     // Clase JSONParser
     JSONParser jsonParser = new JSONParser();
+    //Variable de Cuadro check
     CheckBox cb1;
+    //Variable Boton
     Button bstart;
+    //Variable de cuadro de texto no editable
     TextView heol;
+    //Variable de cadena de textos cuyos valoes iniciales son asd
     String logestado="asd";
 
     String correo="asd";
 
     String cor="asd";
+    //Variable de numero entero cuyo valor inicial es cero
     int reg=0;
 
 
@@ -95,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
-
+        //Se da un intento de obtencion de variables del main
         try{
             Intent i2 = getIntent();
             Bundle b2 = i2.getExtras();
@@ -333,16 +338,23 @@ public class MainActivity extends ActionBarActivity {
                         loginPrefsEditor.commit();
 
 
-
+                    //Se crea un nuevo Inten para pasar de esta a la siguiente actividad
                     Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+                    //Se crea un paquete de datos nuevo
                     Bundle o=new Bundle();
+                    //Se ingresa dato en el paquete
                     o.putString("correo", et1.getText().toString());
+                    //Se pone el paquete de datos junto al intent
                     i.putExtras(o);
+                    //Se termina la actividad actual
                     finish();
+                    //Empieza la segunda actividad
                     startActivity(i);
+                    //Retorna el valor de la cadena de texto
                     return json.getString(TAG_MESSAGE);
                 } else {
                     Log.d("Login Failure!", json.getString(TAG_MESSAGE));
+                    //Retorna el valor de la cadena de texto
                     return json.getString(TAG_MESSAGE);
                 }
             } catch (JSONException e) {
@@ -359,6 +371,7 @@ public class MainActivity extends ActionBarActivity {
             // dismiss the dialog once product deleted
             pDialog.dismiss();
             if (file_url != null) {
+                //Mensaje en pantalla de 3.5 segundos de duracion
                 Toast.makeText(MainActivity.this, file_url, Toast.LENGTH_LONG).show();
             }
         }
@@ -368,6 +381,7 @@ public class MainActivity extends ActionBarActivity {
         //Metodo que se da al dar click al boton registrar
         //Se intenta ir a la actividad de Correo para ingresar datos de registro
 
+        //Se verifica la conexion a internet
         if (isNetworkAvailable() == false) {
             Toast.makeText(MainActivity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
 

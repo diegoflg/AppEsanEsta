@@ -98,7 +98,7 @@ public class Correo extends ActionBarActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 //Declaracion de numero entero que obtiene la posicion del item seleccionado
                 int index = arg0.getSelectedItemPosition();
-                //Se le da un valor al dominio
+                //Se le da un valor al dominio según el indice obtenido
                 if (index == 0) {
                     dominio = "@esan.edu.pe";
                 }
@@ -198,12 +198,19 @@ public class Correo extends ActionBarActivity {
     //Metodo que permite mostrar el PopUp en pantalla(segun el parametro que le sea dado)
     private void showPopup(final Activity context) {
         //Variables que permiten obtener las medidas de la pantalla del celular
+        //Nueva variable de medida
         DisplayMetrics displaymetrics = new DisplayMetrics();
+        //Obtiene la medida general de la pantalla del celular del usuario
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+
+        //Variable entera cuyo valor es el alto de la pantalla
         int height = displaymetrics.heightPixels;
+        //Variable real cuyo valor es el ancho de la pantalla
         double width = displaymetrics.widthPixels;
 
+        //Variable real cuyo valor es el alto por un numero
         double popupHeight = height*0.8;
+        //Variable real cuyo valor es el ancho por un numero
         double popupWidth = width*0.92;
 
         //Asignacion de la vista de layout
@@ -215,10 +222,15 @@ public class Correo extends ActionBarActivity {
 
         // Creating the PopupWindow
         final PopupWindow popup = new PopupWindow(context);
+        //Se le da el layout vista al PopUp
         popup.setContentView(layout);
+        //Se le asigna un ancho
         popup.setWidth((int) Math.round(popupWidth));
+        //Se le asigna un alto
         popup.setHeight((int) Math.round(popupHeight));
+        //Se enfoca el pop up
         popup.setFocusable(true);
+        //Se prohibe el toque fuera del popup
         popup.setOutsideTouchable(false);
 
         // Displaying the popup at the specified location, + offsets.
@@ -269,7 +281,7 @@ public class Correo extends ActionBarActivity {
     }
 
 
-    //Metodo que se realiza en segundo plano que permite el envio de correo
+    //Metodo que se realiza en segundo plano que verifica el envio de correo
     class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
         Mail m;
         public SendEmailAsyncTask() {
@@ -317,8 +329,11 @@ public class Correo extends ActionBarActivity {
         int id = item.getItemId();
         switch (id)
         {
+            //Caso del menu en el que se regresa a la actividad anterior
             case R.id.regresar:
+                //Se finaliza la actividad actual
                 finish();
+                //Sirve para que al cerrar la actividad se cierre tambien el teclado en pantalla
                 View view = this.getCurrentFocus();
                 if (view != null) {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -338,10 +353,15 @@ public class Correo extends ActionBarActivity {
             //Metodo antes de ser ejecutada la accion
             super.onPreExecute();
 
+            //Se crea un nuevo dialogo de progreso en la actividad
             pDialog = new ProgressDialog(Correo.this);
+            //Se le asigna un mensaje
             pDialog.setMessage("Enviando Correo...");
+            //Se le da falso al indeterminado
             pDialog.setIndeterminate(false);
+            //Se le da falso al cancelable
             pDialog.setCancelable(false);
+            //Se muestra el dialogo de progreso
             pDialog.show();
         }
 
@@ -352,6 +372,7 @@ public class Correo extends ActionBarActivity {
             // TODO Auto-generated method stub
             // Check for success tag
 
+            //Obtiene el correo del usuario junto al dominio
             String username3 = etmail.getText().toString()+dominio;
             try {
                 // Building Parameters

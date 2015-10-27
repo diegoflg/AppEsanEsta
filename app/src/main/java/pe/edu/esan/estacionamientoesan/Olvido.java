@@ -144,6 +144,7 @@ public class Olvido extends ActionBarActivity {
             // TODO Auto-generated method stub
             // Check for success tag
 
+            //Cadena de texto cuyo valor es el correo ingresado
             String username3 = et1.getText().toString();
             try {
                 // Building Parameters
