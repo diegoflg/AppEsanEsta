@@ -74,16 +74,19 @@ public class Olvido extends ActionBarActivity {
             public void onClick(View v) {
                 //Se llama a la accion del mismo nombre
 
-
+            //Se verifica la conexion a internet
                 if (isNetworkAvailable() == false) {
+                    //Si no hay conexion saldra un mensaje
                     Toast.makeText(Olvido.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
 
                 }else{
-
+                    //Si hay conexion se verfica que el correo ingresado sea de 1 digito como minimo
                     if(et1.length()>0){
+                        //Se llama a la clase del mismo noombre
                         new CreateUser3().execute();
 
                     }else{
+                        //Caso contrario se muestra un mensaje de correo invalido
                         Toast.makeText(Olvido.this, "Ingrese un correo válido", Toast.LENGTH_LONG).show();
                     }
 

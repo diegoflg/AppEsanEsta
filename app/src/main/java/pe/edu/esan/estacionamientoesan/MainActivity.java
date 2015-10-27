@@ -44,12 +44,7 @@ public class MainActivity extends ActionBarActivity {
 
     //Boton del login para acceder al app
     Button botonacceder; //SOLO SE USA PARA CAMBIAR LA FUENTE
-    //Cadena de texto que dice el resultado del loggin
-    String loggresult="";
-    //Cadena de texto que muestra como mensaje el valor dado
-    String mensaje="Usuario o password invalida";
-    //Entero que manda el tipo de usuario
-    int tipo=1;
+    //Cadena de texto cuyo valor es el url del php para el login
     private static final String LOGIN_URL = "http://www.estacionamientoesan.net76.net/cas2/login.php";
     // La respuesta del JSON es
     private static final String TAG_SUCCESS = "success";
@@ -145,9 +140,6 @@ public class MainActivity extends ActionBarActivity {
 
         //Creacion de variable cuyo valor se le asigna como el soporte de la barra de actividades
         android.support.v7.app.ActionBar abLogin = getSupportActionBar();
-
-        //Texto
-        CharSequence titulo = abLogin.getTitle().toString();
 
         //Declaracion de variables de cuadros de texto con sus elementos determinados en el layout
         et1 = (EditText) findViewById(R.id.et1);
