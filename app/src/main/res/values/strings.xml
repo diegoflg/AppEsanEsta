@@ -99,6 +99,20 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
 \n
 \n3.    Para acceder a este servicio es requisito indispensable mostrar su carnet universitario, carnet de la universidad ESAN u otro documento que los identifique como tal al ingresar a la playa de estacionamiento de Los Portales (capacidad limitada - 155 estacionamientos)</string>
     <string name="btAtr">Atrás</string>
+    <string name="ley">Leyenda</string>
+    <string name="ley2">Rojo: Playa llena</string>
+    <string name="ley3">Amarillo: Pocos estacionamientos disponibles</string>
+    <string name="ley4">Verde: Playa libre</string>
+    <string name="ley5">Informacion Adicional</string>
+    <string name="cor">Correo</string>
+    <string name="ape">Apellidos</string>
+    <string name="gui">-</string>
+    <string name="ggui">-</string>
+    <string name="ghfgh">-</string>
+    <string name="dfh">-</string>
+    <string name="cerr">Cerrado</string>
+    <string name="ceerra">Cerrado</string>
+    <string name="gogogo">ir</string>
 
 
 </resources>
