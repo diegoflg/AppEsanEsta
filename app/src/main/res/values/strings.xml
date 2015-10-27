@@ -14,6 +14,8 @@
     <string name="btEnviar">Enviar</string>
     <string name="btAtras">Regresar</string>
     <string name="tvInfo">Se enviará la contraseña al correo ingresado:</string>
+    <string name="cor">Correo</string>
+    <string name="btAtr">Atrás</string>
 
 
     <!-- LAY_ESTACIONAMIENTO.XML -->
@@ -50,6 +52,8 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
 
 
     <!-- LAY DATOS.XML -->
+    <string name="nombre">"Nombre"</string>
+    <string name="ape">Apellidos</string>
     <string name="placa">"Placa: "</string>
     <string name="telefono">"Teléfono: "</string>
     <string name="contraseña">"Escriba una contraseña: "</string>
@@ -69,6 +73,7 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
     <string name="menu_regresar">Regresar</string>
     <string name="informacion">Información</string>
     <string name="perfil">Editar perfil</string>
+
 
     <!-- LAYOUT_PERFIL-->
     <string name="tvPerfil">Editar mi perfil</string>
@@ -98,14 +103,12 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
 \n2.    Traslado de ESAN a playa: En horas de : 7:30 pm, 8:30 pm, 9:30 pm y 10:30 pm, para el retorno al estacionamiento de Los Portales, también se pondrán a disposición de los alumnos servicios de transporte sucesivo, los cuales estarán ubicados en la playa de estacionamiento 1 (costado izquierdo del ingreso vehicular a la universidad).
 \n
 \n3.    Para acceder a este servicio es requisito indispensable mostrar su carnet universitario, carnet de la universidad ESAN u otro documento que los identifique como tal al ingresar a la playa de estacionamiento de Los Portales (capacidad limitada - 155 estacionamientos)</string>
-    <string name="btAtr">Atrás</string>
+
     <string name="ley">Leyenda</string>
     <string name="ley2">Rojo: Playa llena</string>
     <string name="ley3">Amarillo: Pocos estacionamientos disponibles</string>
     <string name="ley4">Verde: Playa libre</string>
     <string name="ley5">Información Adicional</string>
-    <string name="cor">Correo</string>
-    <string name="ape">Apellidos</string>
     <string name="gui">-</string>
     <string name="ggui">-</string>
     <string name="ghfgh">-</string>
