@@ -80,7 +80,7 @@ public class Datos extends ActionBarActivity {
         etCodigo = (EditText) findViewById(R.id.etCodigo);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Se envió un código de confirmación a el correo ingresado anteriormente")
+        builder.setMessage("Se envió un código de confirmación al correo ingresado anteriormente")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
