@@ -77,7 +77,7 @@ public class Olvido extends ActionBarActivity {
             //Se verifica la conexion a internet
                 if (isNetworkAvailable() == false) {
                     //Si no hay conexion saldra un mensaje
-                    Toast.makeText(Olvido.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Olvido.this, R.string.Comp, Toast.LENGTH_LONG).show();
 
                 }else{
                     //Si hay conexion se verfica que el correo ingresado sea de 1 digito como minimo
@@ -87,7 +87,7 @@ public class Olvido extends ActionBarActivity {
 
                     }else{
                         //Caso contrario se muestra un mensaje de correo invalido
-                        Toast.makeText(Olvido.this, "Ingrese un correo válido", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Olvido.this,R.string.ingCV , Toast.LENGTH_LONG).show();
                     }
 
 
@@ -122,7 +122,7 @@ public class Olvido extends ActionBarActivity {
             //Se le da el contexto
             pDialog = new ProgressDialog(Olvido.this);
             //Se le da el mensaje
-            pDialog.setMessage("Enviando Correo...");
+            pDialog.setMessage("Enviando correo...");
             //Se le da faso a su valor indeterminado
             pDialog.setIndeterminate(false);
             //Se le da falso a su valor cancelable
@@ -217,7 +217,7 @@ public class Olvido extends ActionBarActivity {
                 email.m.set_from("educacionadistancia@esan.edu.pe");
                 email.m.setBody("Su password es: " + contra);
                 email.m.set_to(recp);
-                email.m.set_subject("Recuperacion de password");
+                email.m.set_subject("Recuperación de password");
 
                 email.execute();
 
@@ -242,9 +242,9 @@ public class Olvido extends ActionBarActivity {
             super.onPostExecute(aBoolean);
             pDialog.dismiss();
 
-            tv1.setText("Se envio la contraseña a el correo : " + et1.getText().toString() + "\n" + "Revise su correo para poder recuperar su contraseña");
+            tv1.setText(R.string.envio1+ et1.getText().toString() + "\n" + R.string.envio2);
             b1.setVisibility(View.GONE);
-            b2.setText("Ok");
+            b2.setText(R.string.btOk);
             et1.setVisibility(View.GONE);
 
 

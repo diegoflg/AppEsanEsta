@@ -181,7 +181,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
             //APARECE ESAN
-            tvEsan.setText("Compruebe su conexión a internet");
+            tvEsan.setText(R.string.CompruebeCon);
             tvLEsan.setVisibility(View.GONE);
             btEsan.setVisibility(View.GONE);
 
@@ -234,7 +234,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                     //APARECE ESAN
-                    tvEsan.setText("Compruebe su conexión a internet");
+                    tvEsan.setText(R.string.CompruebeCon);
                     tvLEsan.setVisibility(View.GONE);
                     btEsan.setVisibility(View.GONE);
 
@@ -419,7 +419,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                     //APARECE ESAN
-                    tvEsan.setText("Compruebe su conexión a internet");
+                    tvEsan.setText(R.string.CompruebeCon);
                     tvLEsan.setVisibility(View.GONE);
                     btEsan.setVisibility(View.GONE);
 
@@ -834,7 +834,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
             case R.id.perfil:
 
                 if (isNetworkAvailable() == false) {
-                    Toast.makeText(MainActivity2Activity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity2Activity.this, R.string.CompruebeCon, Toast.LENGTH_LONG).show();
 
                 }else {
                     //Se crea un intetno de cambio de actividad de esta a Perfil

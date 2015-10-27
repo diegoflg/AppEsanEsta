@@ -250,7 +250,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 if (isNetworkAvailable() == false) {
-                    Toast.makeText(MainActivity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.compruebeM, Toast.LENGTH_LONG).show();
 
                 }else{
                     new AttemptLogin().execute();
@@ -266,7 +266,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 if (isNetworkAvailable() == false) {
-                    Toast.makeText(MainActivity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.compruebeM, Toast.LENGTH_LONG).show();
 
                 }else{
                     Intent u = new Intent(getApplicationContext(), Olvido.class);
@@ -383,7 +383,7 @@ public class MainActivity extends ActionBarActivity {
 
         //Se verifica la conexion a internet
         if (isNetworkAvailable() == false) {
-            Toast.makeText(MainActivity.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, R.string.compruebeM, Toast.LENGTH_LONG).show();
 
         }else{
 

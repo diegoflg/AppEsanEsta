@@ -1,6 +1,62 @@
 <resources>
     <string name="app_name">ESAN</string>
 
+    <!-- CORREO.JAVA -->
+    <string name="existe">El correo ya existe</string>
+    <string name="compruebe">Compruebe su conexión a internet</string>
+    <string name="cova">Ingrese un correo válido</string>
+    <string name="terminos">"Lorem ipsum dolor sit amet, et per viris iriure alienum. Cum soluta facilisi neglegentur et, iisque oporteat mediocrem ad quo. Tempor ornatus ut eum, hinc atomorum ocurreret has cu, pri ludus lucilius sapientem an. Eleifend expetendis eam in.
+
+Nec labore delenit minimum in, euismod platonem argumentum at ius. Pro laudem pertinacia in, qui ei vidit scribentur. Quo ut viderer aperiri. Id mazim albucius sit, tractatos adipiscing duo no, id option definiebas usu. Mel nisl dissentiunt ut, ad illum viris deseruisse qui.
+
+Sed munere mediocrem pertinacia ex, veniam commodo tacimates duo eu. Ei eum commodo tibique, eam ex atqui vulputate. Everti alienum mei ex. Vix in aperiam delicata accusamus, laoreet abhorreant ne nec, ad vel tempor verear.
+
+Facer movet voluptaria ad qui, mea exerci apeirian facilisi ex. Quot dissentias cum ex. Sea id consul qualisque accusamus, eu iriure tractatos accommodare nec, solet voluptua rationibus ad vis. Inani delicata disputando his ei, id viris aperiam sea, ei ius eros numquam. Congue quodsi in sea, sed te animal tibique. Sed no facete aliquando intellegebat, ei sed erant dicit philosophia, eum ne aeterno fuisset adipisci. Quem oblique ad nam, ei mea novum volutpat.
+
+Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theophrastus no, quis aperiri et eos. An pri mundi praesent maiestatis. Voluptaria moderatius te sit."</string>
+    <string name="solonum">El correo sólo debe contener números</string>
+    <string name="incorrecto">El correo ingresado es incorrecto</string>
+    <string name="solosiete">El correo sólo debe contener 7 dígitos</string>
+    <string name="debeAceptarTC">Debe aceptar los términos y condiciones</string>
+
+
+    <!-- DATOS.JAVA -->
+    <string name="codenviado">Se envió un código de confirmación al correo ingresado anteriormente</string>
+    <string name="compruebeC">Compruebe su conexión a internet</string>
+    <string name="placaInc">"-La placa ingresada no es correcta"</string>
+    <string name="teleInc">"-El teléfono ingresado no es correcto"</string>
+    <string name="ingCon">"-Ingrese una contraseña"</string>
+    <string name="codInc">"-El código ingresado es incorrecto"</string>
+    <string name="ingNom">"-Ingrese su nombre"</string>
+    <string name="ingApe">"-Ingrese sus apellidos"</string>
+
+
+    <!-- MAINACTIVITY.JAVA -->
+    <string name="compruebeM">"Compruebe su conexión a internet"</string>
+
+
+    <!-- MAINACTIVITY2ACTIVITY.JAVA -->
+    <string name="CompruebeCon">"Compruebe su conexión a internet"</string>
+
+
+    <!-- OLVIDO.JAVA -->
+    <string name="Comp">"Compruebe su conexión a internet"</string>
+    <string name="ingCV">"Ingrese un correo válido"</string>
+    <string name="envio1">"Se envió la contraseña al correo : "</string>
+    <string name="envio2">"Revise su correo para poder recuperar su contraseña"</string>
+    <string name="btOk">"Ok"</string>
+
+
+    <!-- PERFIL.JAVA -->
+    <string name="compP">"Compruebe su conexión a internet"</string>
+    <string name="debePlaca">"-Debe tener por lo menos 1 placa"</string>
+    <string name="placaInc">"-La placa ingresada no es correcta"</string>
+    <string name="telInc">"-El telefono ingresado no es correcto"</string>
+    <string name="ingContra">"-Ingrese una contraseña"</string>
+
+
+
+
     <!-- ACTIVITY_MAIN.XML -->
     <string name="hintUsuario">" Correo"</string>
     <string name="hintPassword">" Contraseña"</string>
@@ -17,84 +73,6 @@
     <string name="cor">Correo</string>
     <string name="btAtr">Atrás</string>
 
-
-    <!-- LAY_ESTACIONAMIENTO.XML -->
-    <string name="ESAN">ESAN</string>
-    <string name="LugESAN">Av. Alonso de Molina 1652</string>
-    <string name="Alonso">Alonso de Molina</string>
-    <string name="LugAlonso">Av. Alonso de Molina 1520 </string>
-    <string name="Polo">El Polo</string>
-    <string name="LugPolo">Av. El Polo cdra. 9</string>
-
-
-    <!-- LAY CORREO.XML -->
-    <string name="correo">Ingrese su correo</string>
-    <string name="nota">"*Su correo será usado con el fin de validar la cuenta"</string>
-    <string name="textoCB">"Acepto los términos y condiciones de uso"</string>
-    <string name="enviarCod">Enviar \n código</string>
-
-    <!-- CORREO.JAVA -->
-    <string name="existe">El correo ya existe</string>
-
-    <string name="terminos">"Lorem ipsum dolor sit amet, et per viris iriure alienum. Cum soluta facilisi neglegentur et, iisque oporteat mediocrem ad quo. Tempor ornatus ut eum, hinc atomorum ocurreret has cu, pri ludus lucilius sapientem an. Eleifend expetendis eam in.
-
-Nec labore delenit minimum in, euismod platonem argumentum at ius. Pro laudem pertinacia in, qui ei vidit scribentur. Quo ut viderer aperiri. Id mazim albucius sit, tractatos adipiscing duo no, id option definiebas usu. Mel nisl dissentiunt ut, ad illum viris deseruisse qui.
-
-Sed munere mediocrem pertinacia ex, veniam commodo tacimates duo eu. Ei eum commodo tibique, eam ex atqui vulputate. Everti alienum mei ex. Vix in aperiam delicata accusamus, laoreet abhorreant ne nec, ad vel tempor verear.
-
-Facer movet voluptaria ad qui, mea exerci apeirian facilisi ex. Quot dissentias cum ex. Sea id consul qualisque accusamus, eu iriure tractatos accommodare nec, solet voluptua rationibus ad vis. Inani delicata disputando his ei, id viris aperiam sea, ei ius eros numquam. Congue quodsi in sea, sed te animal tibique. Sed no facete aliquando intellegebat, ei sed erant dicit philosophia, eum ne aeterno fuisset adipisci. Quem oblique ad nam, ei mea novum volutpat.
-
-Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theophrastus no, quis aperiri et eos. An pri mundi praesent maiestatis. Voluptaria moderatius te sit."</string>
-    <string name="solonum">El correo sólo debe contener números</string>
-    <string name="incorrecto">El correo ingresado es incorrecto</string>
-    <string name="solosiete">El correo sólo debe contener 7 dígitos</string>
-    <string name="debeAceptarTC">Debe aceptar los términos y condiciones</string>
-
-
-    <!-- LAY DATOS.XML -->
-    <string name="nombre">"Nombre"</string>
-    <string name="ape">Apellidos</string>
-    <string name="placa">"Placa: "</string>
-    <string name="telefono">"Teléfono: "</string>
-    <string name="contraseña">"Escriba una contraseña: "</string>
-    <string name="codigo">"Digite el código de verificación: "</string>
-    <string name="aceptar">"Aceptar"</string>
-
-
-    <!-- POPUP3.XML -->
-    <string name="tvTC">Términos y Condiciones</string>
-    <string name="btAcep">Aceptar</string>
-    <string name="btCan">Cancelar</string>
-
-
-    <!-- MENÚS DE SALIDA-->
-    <string name="menu_salir">Salir</string>
-    <string name="menu_cerrar">Cerrar sesión</string>
-    <string name="menu_regresar">Regresar</string>
-    <string name="informacion">Información</string>
-    <string name="perfil">Editar perfil</string>
-
-
-    <!-- LAYOUT_PERFIL-->
-    <string name="tvPerfil">Editar mi perfil</string>
-    <string name="Nplaca">Ingrese sus otras placas: </string>
-    <string name="Ncontraseña">Ingrese una nueva contraseña: </string>
-    <string name="Ntelefono">Ingrese su nuevo teléfono: </string>
-    <string name="actualizar">"Actualizar datos"</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_world">Hello world!</string>
-
-
-    <string-array name="correos">
-        <item>"@esan.edu.pe"</item>
-        <item>"@ue.edu.pe"</item>
-
-    </string-array>
-    <string name="title_activity_olvido">Olvido</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_info">Info</string>
 
     <!-- info_activity-->
     <string name="info">
@@ -116,6 +94,66 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
     <string name="cerr">Cerrado</string>
     <string name="ceerra">Cerrado</string>
     <string name="gogogo">ir</string>
+
+
+    <!-- LAY CORREO.XML -->
+    <string name="correo">Ingrese su correo</string>
+    <string name="nota">"*Su correo será usado con el fin de validar la cuenta"</string>
+    <string name="textoCB">"Acepto los términos y condiciones de uso"</string>
+    <string name="enviarCod">Enviar \n código</string>
+
+
+    <!-- LAY DATOS.XML -->
+    <string name="nombre">"Nombre"</string>
+    <string name="ape">Apellidos</string>
+    <string name="placa">"Placa: "</string>
+    <string name="telefono">"Teléfono: "</string>
+    <string name="contraseña">"Escriba una contraseña: "</string>
+    <string name="codigo">"Digite el código de verificación: "</string>
+    <string name="aceptar">"Aceptar"</string>
+
+
+    <!-- LAY_ESTACIONAMIENTO.XML -->
+    <string name="ESAN">ESAN</string>
+    <string name="LugESAN">Av. Alonso de Molina 1652</string>
+    <string name="Alonso">Alonso de Molina</string>
+    <string name="LugAlonso">Av. Alonso de Molina 1520 </string>
+    <string name="Polo">El Polo</string>
+    <string name="LugPolo">Av. El Polo cdra. 9</string>
+
+
+    <!-- LAYOUT_PERFIL-->
+    <string name="tvPerfil">Editar mi perfil</string>
+    <string name="Nplaca">Ingrese sus otras placas: </string>
+    <string name="Ncontraseña">Ingrese una nueva contraseña: </string>
+    <string name="Ntelefono">Ingrese su nuevo teléfono: </string>
+    <string name="actualizar">"Actualizar datos"</string>
+
+
+    <!-- POPUP3.XML -->
+    <string name="tvTC">Términos y Condiciones</string>
+    <string name="btAcep">Aceptar</string>
+    <string name="btCan">Cancelar</string>
+
+
+    <!-- MENÚS DE SALIDA-->
+    <string name="menu_salir">Salir</string>
+    <string name="menu_cerrar">Cerrar sesión</string>
+    <string name="menu_regresar">Regresar</string>
+    <string name="informacion">Información</string>
+    <string name="perfil">Editar perfil</string>
+
+
+    <string-array name="correos">
+        <item>"@esan.edu.pe"</item>
+        <item>"@ue.edu.pe"</item>
+
+    </string-array>
+
+    <string name="title_activity_olvido">Olvido</string>
+    <string name="title_activity_info">Info</string>
+
+
 
 
 </resources>

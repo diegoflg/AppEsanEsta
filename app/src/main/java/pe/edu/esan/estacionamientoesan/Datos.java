@@ -81,7 +81,7 @@ public class Datos extends ActionBarActivity {
         //Se crea un dialogo de alerta o mensaje en esta actividad
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //Se le da valores a ciertos pedidos: el mensaje a mostrar, si es cancelable, y si se da al boton Ok
-        builder.setMessage("Se envió un código de confirmación al correo ingresado anteriormente")
+        builder.setMessage(R.string.codenviado)
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -212,7 +212,7 @@ public class Datos extends ActionBarActivity {
     public void aceptar(View v) {
 
         if (isNetworkAvailable() == false) {
-            Toast.makeText(Datos.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(Datos.this, R.string.compruebeC, Toast.LENGTH_LONG).show();
 
         }else{
 
@@ -224,27 +224,27 @@ public class Datos extends ActionBarActivity {
         /*Verificacion de datos ingresados por el usuario*/
 
             if(etPlaca.length()!=3 || etPlaca2.length()!=3){
-                mensaje=mensaje+"-La placa ingresada no es correcta"+ "\n";
+                mensaje=mensaje+R.string.placaInc+ "\n";
             }
 
             if(etTelefono.length()!=7 && etTelefono.length()!=9){
-                mensaje=mensaje+"-El teléfono ingresado no es correcto"+ "\n";
+                mensaje=mensaje+R.string.teleInc+ "\n";
             }
 
             if(etContrasena.length()==0){
-                mensaje=mensaje+"-Ingrese una contraseña"+ "\n";
+                mensaje=mensaje+R.string.ingCon+ "\n";
             }
 
             if(!etCodigo.getText().toString().equals(codigo)){
-                mensaje=mensaje+"-El código ingresado es incorrecto"+ "\n";
+                mensaje=mensaje+R.string.codInc+ "\n";
             }
 
             if(etNombre.length()==0){
-                mensaje=mensaje+"-Ingrese su nombre"+ "\n";
+                mensaje=mensaje+R.string.ingNom+ "\n";
             }
 
             if(etApellido.length()==0){
-                mensaje=mensaje+"-Ingrese sus apellidos"+ "\n";
+                mensaje=mensaje+R.string.ingApe+ "\n";
             }
 
             Log.v("qwerty",mensaje);
