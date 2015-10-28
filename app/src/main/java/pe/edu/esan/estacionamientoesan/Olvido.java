@@ -242,7 +242,7 @@ public class Olvido extends ActionBarActivity {
             super.onPostExecute(aBoolean);
             pDialog.dismiss();
 
-            tv1.setText(R.string.envio1+ et1.getText().toString() + "\n" + R.string.envio2);
+            tv1.setText("Se envió la contraseña al correo : "+ et1.getText().toString() + "\n" + "Revise su correo para poder recuperar su contraseña");
             b1.setVisibility(View.GONE);
             b2.setText(R.string.btOk);
             et1.setVisibility(View.GONE);

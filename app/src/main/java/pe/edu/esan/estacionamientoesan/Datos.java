@@ -308,7 +308,7 @@ public class Datos extends ActionBarActivity {
             String placa1 = String.valueOf(etPlaca.getText())+String.valueOf(etPlaca2.getText());
             String telefono = String.valueOf(etTelefono.getText());
             String nombre = String.valueOf(etNombre.getText());
-            String apellidos = String.valueOf(etApellido.getText());
+            String apellido = String.valueOf(etApellido.getText());
 
             //Se crea una cadena de texto y se le asigna valor falso
             String estado = "false";
@@ -325,7 +325,7 @@ public class Datos extends ActionBarActivity {
                 params.add(new BasicNameValuePair("codigo", codigo));
                 params.add(new BasicNameValuePair("estado", estado));
                 params.add(new BasicNameValuePair("nombre", nombre));
-                params.add(new BasicNameValuePair("apellidos", apellidos));
+                params.add(new BasicNameValuePair("apellido", apellido));
 
                 Log.d("request!", "starting");
 
