@@ -386,12 +386,12 @@ public class Perfil extends ActionBarActivity {
                 /*Se verifican datos*/
                     if(etPlaca.length()==0 && etPlacaC.length()==0 && etPlaca2.length()==0 && etPlacaC2.length()==0 && etPlaca3.length()==0 && etPlacaC3.length()==0 )
                     {
-                        mensaje = mensaje + R.string.debePlaca + "\n";
+                        mensaje = mensaje + "-Debe tener por lo menos 1 placa" + "\n";
                     }else{
 
                         if(etPlaca.length()!=0 && etPlacaC.length()!=0){
                             if (etPlaca.length() != 3 || etPlacaC.length() != 3) {
-                                mensaje = mensaje + R.string.placaInc + "\n";
+                                mensaje = mensaje + "-La placa ingresada no es correcta"+ "\n";
 
                             }
 
@@ -401,7 +401,7 @@ public class Perfil extends ActionBarActivity {
                         if(etPlaca2.length()!=0 && etPlacaC2.length()!=0){
 
                             if (etPlaca2.length() != 3 || etPlacaC2.length() != 3) {
-                                mensaje = mensaje + R.string.placaInc + "\n";
+                                mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
 
                             }
 
@@ -410,7 +410,7 @@ public class Perfil extends ActionBarActivity {
 
                         if(etPlaca3.length()!=0 && etPlacaC3.length()!=0){
                             if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
-                                mensaje = mensaje + R.string.placaIncP + "\n";
+                                mensaje = mensaje +"-La placa ingresada no es correcta" + "\n";
 
                             }
 
@@ -424,11 +424,11 @@ public class Perfil extends ActionBarActivity {
 
 
                     if (etTelefono.length() != 7 && etTelefono.length() != 9) {
-                        mensaje = mensaje + R.string.telInc + "\n";
+                        mensaje = mensaje + "-El telefono ingresado no es correcto" + "\n";
 
                     }
                     if (etContraseña.length() == 0) {
-                        mensaje = mensaje + R.string.ingContra + "\n";
+                        mensaje = mensaje + "-Ingrese una contraseña" + "\n";
 
                     }
 

@@ -224,27 +224,27 @@ public class Datos extends ActionBarActivity {
         /*Verificacion de datos ingresados por el usuario*/
 
             if(etPlaca.length()!=3 || etPlaca2.length()!=3){
-                mensaje=mensaje+R.string.placaInc+ "\n";
+                mensaje=mensaje+"-La placa ingresada no es correcta"+ "\n";
             }
 
             if(etTelefono.length()!=7 && etTelefono.length()!=9){
-                mensaje=mensaje+R.string.teleInc+ "\n";
+                mensaje=mensaje+"-El teléfono ingresado no es correcto"+ "\n";
             }
 
             if(etContrasena.length()==0){
-                mensaje=mensaje+R.string.ingCon+ "\n";
+                mensaje=mensaje+"-Ingrese una contraseña"+ "\n";
             }
 
             if(!etCodigo.getText().toString().equals(codigo)){
-                mensaje=mensaje+R.string.codInc+ "\n";
+                mensaje=mensaje+"-El código ingresado es incorrecto"+ "\n";
             }
 
             if(etNombre.length()==0){
-                mensaje=mensaje+R.string.ingNom+ "\n";
+                mensaje=mensaje+"-Ingrese su nombre"+ "\n";
             }
 
             if(etApellido.length()==0){
-                mensaje=mensaje+R.string.ingApe+ "\n";
+                mensaje=mensaje+"-Ingrese sus apellidos"+ "\n";
             }
 
             Log.v("qwerty",mensaje);

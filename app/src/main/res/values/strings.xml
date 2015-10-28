@@ -23,12 +23,6 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
     <!-- DATOS.JAVA -->
     <string name="codenviado">Se envió un código de confirmación al correo ingresado anteriormente</string>
     <string name="compruebeC">Compruebe su conexión a internet</string>
-    <string name="placaInc">"-La placa ingresada no es correcta"</string>
-    <string name="teleInc">"-El teléfono ingresado no es correcto"</string>
-    <string name="ingCon">"-Ingrese una contraseña"</string>
-    <string name="codInc">"-El código ingresado es incorrecto"</string>
-    <string name="ingNom">"-Ingrese su nombre"</string>
-    <string name="ingApe">"-Ingrese sus apellidos"</string>
 
 
     <!-- MAINACTIVITY.JAVA -->
@@ -49,12 +43,6 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
 
     <!-- PERFIL.JAVA -->
     <string name="compP">"Compruebe su conexión a internet"</string>
-    <string name="debePlaca">"-Debe tener por lo menos 1 placa"</string>
-    <string name="placaIncP">"-La placa ingresada no es correcta"</string>
-    <string name="telInc">"-El telefono ingresado no es correcto"</string>
-    <string name="ingContra">"-Ingrese una contraseña"</string>
-
-
 
 
     <!-- ACTIVITY_MAIN.XML -->
