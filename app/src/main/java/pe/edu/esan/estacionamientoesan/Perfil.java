@@ -374,7 +374,7 @@ public class Perfil extends ActionBarActivity {
             public void onClick(View v) {
 
                 if (isNetworkAvailable() == false) {
-                    Toast.makeText(Perfil.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Perfil.this, R.string.compP, Toast.LENGTH_LONG).show();
 
                 }else{
 
@@ -386,12 +386,12 @@ public class Perfil extends ActionBarActivity {
                 /*Se verifican datos*/
                     if(etPlaca.length()==0 && etPlacaC.length()==0 && etPlaca2.length()==0 && etPlacaC2.length()==0 && etPlaca3.length()==0 && etPlacaC3.length()==0 )
                     {
-                        mensaje = mensaje + "-Debe tener por lo menos 1 placa" + "\n";
+                        mensaje = mensaje + R.string.debePlaca + "\n";
                     }else{
 
                         if(etPlaca.length()!=0 && etPlacaC.length()!=0){
                             if (etPlaca.length() != 3 || etPlacaC.length() != 3) {
-                                mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+                                mensaje = mensaje + R.string.placaInc + "\n";
 
                             }
 
@@ -401,7 +401,7 @@ public class Perfil extends ActionBarActivity {
                         if(etPlaca2.length()!=0 && etPlacaC2.length()!=0){
 
                             if (etPlaca2.length() != 3 || etPlacaC2.length() != 3) {
-                                mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+                                mensaje = mensaje + R.string.placaInc + "\n";
 
                             }
 
@@ -410,7 +410,7 @@ public class Perfil extends ActionBarActivity {
 
                         if(etPlaca3.length()!=0 && etPlacaC3.length()!=0){
                             if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
-                                mensaje = mensaje + "-La placa ingresada no es correcta" + "\n";
+                                mensaje = mensaje + R.string.placaInc + "\n";
 
                             }
 
@@ -424,11 +424,11 @@ public class Perfil extends ActionBarActivity {
 
 
                     if (etTelefono.length() != 7 && etTelefono.length() != 9) {
-                        mensaje = mensaje + "-El telefono ingresado no es correcto" + "\n";
+                        mensaje = mensaje + R.string.telInc + "\n";
 
                     }
                     if (etContraseña.length() == 0) {
-                        mensaje = mensaje + "-Ingrese una contraseña" + "\n";
+                        mensaje = mensaje + R.string.ingContra + "\n";
 
                     }
 

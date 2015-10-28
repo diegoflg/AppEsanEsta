@@ -163,7 +163,7 @@ public class Correo extends ActionBarActivity {
                 //Se verifica la conexion a internet
                 if (isNetworkAvailable() == false) {
                     //Si no hay conexion entonces saldra en pantalla un mensaje para que el ususario compruebe la conexion
-                    Toast.makeText(Correo.this, "Compruebe su conexión a internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Correo.this, R.string.compruebe, Toast.LENGTH_LONG).show();
 
 
                 }else{
@@ -172,7 +172,7 @@ public class Correo extends ActionBarActivity {
                         //Si esta vacion entoncesse mostrara un mensaje en pantalla en el que se pide que se ingrese
                         //un correo valido
                         AlertDialog.Builder builder = new AlertDialog.Builder(Correo.this);
-                        builder.setMessage("Ingrese un correo valido")
+                        builder.setMessage(R.string.cova)
                                 .setCancelable(false)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
