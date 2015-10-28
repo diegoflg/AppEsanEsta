@@ -39,7 +39,7 @@ public class Datos extends ActionBarActivity {
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
     //Cadena de texto cuyo valor es el url del php correspondiente
-    private static final String REGISTER_URL = "http://www.estacionamientoesan.net76.net/cas2/registroesan.php";
+    private static final String REGISTER_URL = "http://estacionamientoesan.pe.hu/cas2/registroesan.php";
     //Cadena de texto cuyo valor es success
     private static final String TAG_SUCCESS = "success";
     //Cadena de texto cuyo valor es message

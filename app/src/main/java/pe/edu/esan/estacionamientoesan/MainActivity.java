@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
     //Boton del login para acceder al app
     Button botonacceder; //SOLO SE USA PARA CAMBIAR LA FUENTE
     //Cadena de texto cuyo valor es el url del php para el login
-    private static final String LOGIN_URL = "http://www.estacionamientoesan.net76.net/cas2/login.php";
+    private static final String LOGIN_URL = "http://estacionamientoesan.pe.hu/cas2/login.php";
     // La respuesta del JSON es
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";

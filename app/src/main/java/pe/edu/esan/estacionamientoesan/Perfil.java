@@ -40,9 +40,9 @@ public class Perfil extends ActionBarActivity {
     JSONArray products = null;
 
     //Se crea una cadena de texto cuyo valor es el URL del php para actualizar
-    private static final String REGISTER_URL2 = "http://www.estacionamientoesan.net76.net/cas/registroactu.php";
+    private static final String REGISTER_URL2 = "http://estacionamientoesan.pe.hu/cas/registroactu.php";
     //Se crea una cadena de texto cuyo valor es el URL del php para obtener
-    private static String url_all_empresas = "http://www.estacionamientoesan.net76.net/essconnect/get_datos.php";
+    private static String url_all_empresas = "http://estacionamientoesan.pe.hu/essconnect/get_datos.php";
     //Se crean cadenas de textos con valores
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "registros";
