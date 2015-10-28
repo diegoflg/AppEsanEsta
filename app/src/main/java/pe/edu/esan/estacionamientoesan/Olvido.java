@@ -40,7 +40,7 @@ public class Olvido extends ActionBarActivity {
     //Se crea una variable de numero entero cuyo valor se le asigna a 3
     int success=3;
     //Se crea una cadena de texto cuyo valor es el URL del php
-    private static String url_all_empresas = "http://estacionamientoesan.pe.hu/essconnect/get_fechas.php";
+    private static String url_all_empresas = "http://estacionamientoesan.pe.hu/esconnect/get_fechas.php";
     //Se crean varias cadenas de texto
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "registros";

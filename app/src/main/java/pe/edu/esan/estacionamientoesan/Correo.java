@@ -69,7 +69,7 @@ public class Correo extends ActionBarActivity {
     //Creacion de variable de tipo JSON
     JSONParser jsonParser = new JSONParser();
     //Cadena de texto cuyo valor asignado es el url del php
-    private static String url_all_empresas = "http://estacionamientoesan.pe.hu/essconnect/get_fechas.php";
+    private static String url_all_empresas = "http://estacionamientoesan.pe.hu/esconnect/get_fechas.php";
     //Cadena de texto que verifica si ha sido correcto el login
     private static final String TAG_SUCCESS = "success";
     //Numero entero con valor inicial 3

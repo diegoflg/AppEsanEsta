@@ -43,7 +43,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
     //Se crea una cadena de texto privada... : (sus valores son dados de esa manera ya que asi estan definidos tambien en la base de datos y sus php)
     //cuyo valor es la URL del php
-    private static String url_all_empresas = "http://estacionamientoesan.pe.hu/essconnect/get_all_empresas.php";
+    private static String url_all_empresas = "http://estacionamientoesan.pe.hu/esconnect/get_all_empresas.php";
     //cuyo valor es success
     private static final String TAG_SUCCESS = "success";
     //cuyo valor es users
