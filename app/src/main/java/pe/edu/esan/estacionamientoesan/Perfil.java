@@ -410,7 +410,7 @@ public class Perfil extends ActionBarActivity {
 
                         if(etPlaca3.length()!=0 && etPlacaC3.length()!=0){
                             if (etPlaca3.length() != 3 || etPlacaC3.length() != 3) {
-                                mensaje = mensaje + R.string.placaInc + "\n";
+                                mensaje = mensaje + R.string.placaIncP + "\n";
 
                             }
 

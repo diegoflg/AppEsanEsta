@@ -50,7 +50,7 @@ Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theop
     <!-- PERFIL.JAVA -->
     <string name="compP">"Compruebe su conexión a internet"</string>
     <string name="debePlaca">"-Debe tener por lo menos 1 placa"</string>
-    <string name="placaInc">"-La placa ingresada no es correcta"</string>
+    <string name="placaIncP">"-La placa ingresada no es correcta"</string>
     <string name="telInc">"-El telefono ingresado no es correcto"</string>
     <string name="ingContra">"-Ingrese una contraseña"</string>
 
