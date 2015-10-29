@@ -5,15 +5,26 @@
     <string name="existe">El correo ya existe</string>
     <string name="compruebe">Compruebe su conexión a internet</string>
     <string name="cova">Ingrese un correo válido</string>
-    <string name="terminos">"Lorem ipsum dolor sit amet, et per viris iriure alienum. Cum soluta facilisi neglegentur et, iisque oporteat mediocrem ad quo. Tempor ornatus ut eum, hinc atomorum ocurreret has cu, pri ludus lucilius sapientem an. Eleifend expetendis eam in.
 
-Nec labore delenit minimum in, euismod platonem argumentum at ius. Pro laudem pertinacia in, qui ei vidit scribentur. Quo ut viderer aperiri. Id mazim albucius sit, tractatos adipiscing duo no, id option definiebas usu. Mel nisl dissentiunt ut, ad illum viris deseruisse qui.
+    <string name="terminos">"\n Lea los términos y condiciones e indique que los acepta para continuar con el proceso de registro. Al hacer clic a Aceptar, usted afirma conocer los términos y condiciones, la política de la aplicación y la política de privacidad.
+                             \n1. TÉRMINOS Y CONDICIONES
+                             \n*. ESAN no se responsabiliza por el cambio repentino de la cantidad disponible en cualquiera de los estacionamientos.
+                             \n*. El usuario deberá tomar en cuenta las horas en las que existe un exceso en la cantidad de demanda del servicio.
+                             \n*. Para más información el usuario debeerá ver la Información desde el menú de la aplicación
 
-Sed munere mediocrem pertinacia ex, veniam commodo tacimates duo eu. Ei eum commodo tibique, eam ex atqui vulputate. Everti alienum mei ex. Vix in aperiam delicata accusamus, laoreet abhorreant ne nec, ad vel tempor verear.
+                             \n2. POLÍTICA DE LA APLICACIÓN
+                             \n*. La aplicación le mostrará una vista general de cada disponibilidad aproximada de cada estacionamiento.
+                             \n*. La aplicación permitirá al usuario agregar dos placas más a su cuenta.
 
-Facer movet voluptaria ad qui, mea exerci apeirian facilisi ex. Quot dissentias cum ex. Sea id consul qualisque accusamus, eu iriure tractatos accommodare nec, solet voluptua rationibus ad vis. Inani delicata disputando his ei, id viris aperiam sea, ei ius eros numquam. Congue quodsi in sea, sed te animal tibique. Sed no facete aliquando intellegebat, ei sed erant dicit philosophia, eum ne aeterno fuisset adipisci. Quem oblique ad nam, ei mea novum volutpat.
+                             \n3. POLÍTICA DE PRIVACIDAD
+                             \n*. El usuario deberá dar correctamente sus datos, caso contrario se analizará el cierre temporal de su cuenta.
+                             \n*. Los datos ingresados por el usuario no serán revelados con el fin de mantener la confidencialidad con el mismo.
+                             \n*. Es obligación del usuario cambiar su contraseña con el fin de no generar inconvenientes.
+                             \n*. La aplicación permitirá al usuario agregar dos placas más a su cuenta.
 
-Ex mei platonem ocurreret voluptaria. Id vix dico legendos. Vix scribentur theophrastus no, quis aperiri et eos. An pri mundi praesent maiestatis. Voluptaria moderatius te sit."</string>
+                             \n. Al aceptar los términos y condiciones queda determinado que el usuario declara conocer expresamente que no podrá dar reclamación alguna sobre los puntos anteriormente tratados.
+
+        "</string>
     <string name="solonum">El correo sólo debe contener números</string>
     <string name="incorrecto">El correo ingresado es incorrecto</string>
     <string name="solosiete">El correo sólo debe contener 7 dígitos</string>
