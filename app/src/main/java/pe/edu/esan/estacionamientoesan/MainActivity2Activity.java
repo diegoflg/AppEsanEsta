@@ -188,7 +188,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         }else{
             //Si hay conexion
-            tvEsan.setText("ESAN");
+            tvEsan.setText("CAMPUS Esan");
             tvLEsan.setVisibility(View.VISIBLE);
             btEsan.setVisibility(View.VISIBLE);
 
@@ -240,7 +240,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                 }else {
-                    tvEsan.setText("ESAN");
+                    tvEsan.setText("Campus Esan");
                     tvLEsan.setVisibility(View.VISIBLE);
                     btEsan.setVisibility(View.VISIBLE);
 
@@ -425,7 +425,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                 }else{
-                    tvEsan.setText("ESAN");
+                    tvEsan.setText("Campus Esan");
                     tvLEsan.setVisibility(View.VISIBLE);
                     btEsan.setVisibility(View.VISIBLE);
 
@@ -695,7 +695,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            tvEsan.setText("ESAN");
+            tvEsan.setText("Campus Esan");
             tvLEsan.setVisibility(View.VISIBLE);
             btEsan.setVisibility(View.VISIBLE);
             // Here you can do any UI operations like textview.setText("test");
