@@ -1,14 +1,17 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pe.edu.esan.estacionamientoesan.MainActivity2Activity">
 
-    <item android:id="@+id/info"
-        android:title="@string/informacion" />
 
-    <item android:id="@+id/perfil"
-        android:title="@string/perfil" />
+        <item android:id="@+id/info"
+            android:title="@string/informacion" />
 
-    <item android:id="@+id/cerrars"
-        android:title="@string/menu_cerrar" />
+        <item android:id="@+id/cerrars"
+            android:title="@string/menu_cerrar" />
+
+
+
 </menu>
+
+

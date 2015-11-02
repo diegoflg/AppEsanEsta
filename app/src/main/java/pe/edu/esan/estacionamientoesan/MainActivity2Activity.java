@@ -1,40 +1,40 @@
 package pe.edu.esan.estacionamientoesan;
 
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.location.Location;
-import android.media.MediaPlayer;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+        import android.app.ProgressDialog;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.location.Location;
+        import android.media.MediaPlayer;
+        import android.net.ConnectivityManager;
+        import android.net.NetworkInfo;
+        import android.net.Uri;
+        import android.os.AsyncTask;
+        import android.os.Bundle;
+        import android.os.Handler;
+        import android.support.v7.app.ActionBarActivity;
+        import android.util.Log;
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
+        import com.google.android.gms.common.ConnectionResult;
+        import com.google.android.gms.common.api.GoogleApiClient;
+        import com.google.android.gms.location.LocationServices;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+        import org.json.JSONArray;
+        import org.json.JSONException;
+        import org.json.JSONObject;
+        import org.jsoup.Jsoup;
+        import org.jsoup.nodes.Document;
+        import org.jsoup.select.Elements;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+        import java.io.IOException;
+        import java.util.ArrayList;
+        import java.util.List;
 
 
 public class MainActivity2Activity extends ActionBarActivity implements
@@ -101,11 +101,8 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         //Se crea y da valor a un reproductor de sonido
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
+        final MediaPlayer mp2 = MediaPlayer.create(this, R.raw.inter2);
 
-        //Se hace un intent para obtener los datos de la otra actividad
-        Intent p = getIntent();
-        Bundle b = p.getExtras();
-        correo = b.getString("correo");
 
         //Se crea una variable handler nueva
         final Handler h = new Handler();
@@ -166,7 +163,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         //Se verifica la conexion a iternet
         if (isNetworkAvailable() == false) {
-        //Si no hay conexion
+            //Si no hay conexion
             tvPolo.setVisibility(View.GONE);
             tvLPolo.setVisibility(View.GONE);
             btPolo.setVisibility(View.GONE);
@@ -185,10 +182,12 @@ public class MainActivity2Activity extends ActionBarActivity implements
             tvLEsan.setVisibility(View.GONE);
             btEsan.setVisibility(View.GONE);
 
+            Log.v("asdasd3", "asdasd3");
+
 
         }else{
             //Si hay conexion
-            tvEsan.setText("ESAN");
+            tvEsan.setText("CAMPUS Esan");
             tvLEsan.setVisibility(View.VISIBLE);
             btEsan.setVisibility(View.VISIBLE);
 
@@ -204,9 +203,17 @@ public class MainActivity2Activity extends ActionBarActivity implements
             btAlonso.setVisibility(View.VISIBLE);
             sep4.setVisibility(View.VISIBLE);
 
+            try{
+
+                new LoadAllProductsIni().execute();
+
+            }catch (Exception e){
+
+            }
 
 
-            new LoadAllProductsIni().execute();
+
+
 
         }
 
@@ -238,9 +245,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     tvLEsan.setVisibility(View.GONE);
                     btEsan.setVisibility(View.GONE);
 
+                    Log.v("asdasd","asdasd");
+
 
                 }else {
-                    tvEsan.setText("ESAN");
+                    tvEsan.setText("Campus Esan");
                     tvLEsan.setVisibility(View.VISIBLE);
                     btEsan.setVisibility(View.VISIBLE);
 
@@ -257,7 +266,15 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     btAlonso.setVisibility(View.VISIBLE);
                     sep4.setVisibility(View.VISIBLE);
 
-                    new LoadTIME2().execute();
+                    try{
+                        new LoadTIME2().execute();
+
+                    }catch (Exception e){
+
+                    }
+
+
+
                     if (dialog.isShowing()) {
                         dialog.dismiss();
                     }
@@ -267,8 +284,8 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
         //Handler que ocurre cada 5 segundos(delay):
-            //1. Se verifica los estados para asignar una imagen a los botones
-            //2. Se verifica el cambio de estado para que entonces se reproduzca el sonido
+        //1. Se verifica los estados para asignar una imagen a los botones
+        //2. Se verifica el cambio de estado para que entonces se reproduzca el sonido
         h.postDelayed(new Runnable() {
             public void run() {
 
@@ -423,9 +440,13 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     tvLEsan.setVisibility(View.GONE);
                     btEsan.setVisibility(View.GONE);
 
+                    mp2.start();
+
+                    Log.v("asdasd2", "asdasd2");
+
 
                 }else{
-                    tvEsan.setText("ESAN");
+                    tvEsan.setText("Campus Esan");
                     tvLEsan.setVisibility(View.VISIBLE);
                     btEsan.setVisibility(View.VISIBLE);
 
@@ -442,8 +463,15 @@ public class MainActivity2Activity extends ActionBarActivity implements
                     btAlonso.setVisibility(View.VISIBLE);
                     sep4.setVisibility(View.VISIBLE);
 
+                    try{
+                        new LoadAllProducts().execute();
 
-                    new LoadAllProducts().execute();
+                    }catch (Exception e){
+
+                    }
+
+
+
 
                 }
 
@@ -548,7 +576,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
             return null;
         }
         protected void onPostExecute(String file_url) {
-        //Metodo despues de terminar la accion
+            //Metodo despues de terminar la accion
         }
     }
 
@@ -635,14 +663,12 @@ public class MainActivity2Activity extends ActionBarActivity implements
             tvAlonso.setVisibility(View.GONE);
             tvLAlonso.setVisibility(View.GONE);
             btAlonso.setVisibility(View.GONE);
-
             //SE VA EL POLO
             sep3.setVisibility(View.GONE);
             tvPolo.setVisibility(View.GONE);
             tvLPolo.setVisibility(View.GONE);
             btPolo.setVisibility(View.GONE);
             btIr.setVisibility(View.GONE);
-
             sep4.setVisibility(View.GONE);
              */
         }
@@ -695,24 +721,24 @@ public class MainActivity2Activity extends ActionBarActivity implements
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            tvEsan.setText("ESAN");
+            tvEsan.setText("Campus Esan");
             tvLEsan.setVisibility(View.VISIBLE);
             btEsan.setVisibility(View.VISIBLE);
             // Here you can do any UI operations like textview.setText("test");
 
             //Se verifica que el texto contenga los valores dado en parametros:
-                //(Si contiene Lunes, Martes, Miercoles, Jueves o Viernes)
+            //(Si contiene Lunes, Martes, Miercoles, Jueves o Viernes)
             if((diac.contains("Monday") || diac.contains("Tuesday") || diac.contains("Wednesday") || diac.contains("Thursday") || diac.contains("Friday"))){
                 //Si la hora contiene 18, 19, 20, 21, 22 o 23 (se le pone dos puntos para que coja la hora y no lo confunda con los minutos)
                 if(horac.contains("18:") || horac.contains("19:") || horac.contains("20:")||
-                   horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
-                //-----> Entonces:
+                        horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
+                    //-----> Entonces:
                     //APARECE EL POLO
 
 
                     btPolo.setText("");
 
-                        //APARECE ALONSO
+                    //APARECE ALONSO
                     btAlonso.setText("");
 
 
@@ -729,7 +755,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                          horac.contains("12:") || horac.contains("13:") || horac.contains("14:") ||
                          horac.contains("15:") || horac.contains("16:") || horac.contains("17:") )
                      */
-                //---->Caso contrario de no contener esas horas
+                    //---->Caso contrario de no contener esas horas
                     //SE VA EL POLO
 
 
@@ -806,18 +832,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         {
             //Cuando se de click a la opcion Cerrar del menu:
             case R.id.cerrars:
-                //Se crea un intento de cambio de actividad de la actual a la principal
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                //Se crea un paquete de datos
-                Bundle b = new Bundle();
-                //Se mete un dato en el paquete
-                b.putString("log", "no");
-                //Se manda en el intento el paquete
-                i.putExtras(b);
-                //Se inicia el intento
-                startActivity(i);
-                //finish();
-                //Se termina esta actividad
+
                 this.finish();
 
                 return true;
@@ -831,25 +846,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 return true;
 
             //Cuando se de click a la opcion Mi perfil del menu:
-            case R.id.perfil:
 
-                if (isNetworkAvailable() == false) {
-                    Toast.makeText(MainActivity2Activity.this, R.string.CompruebeCon, Toast.LENGTH_LONG).show();
-
-                }else {
-                    //Se crea un intetno de cambio de actividad de esta a Perfil
-                    Intent p = new Intent(getApplicationContext(), Perfil.class);
-                    //Se crea un paquete de datos
-                    Bundle k = new Bundle();
-                    //Se mete un valor en el paquete
-                    k.putString("correo", correo);
-                    //Se manda el paquete al intento
-                    p.putExtras(k);
-                    //Se inicia el intento o cambio de actividad
-                    startActivity(p);
-
-                }
-                return true;
 
             default:return super.onOptionsItemSelected(item);
         }
