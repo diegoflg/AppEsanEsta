@@ -249,7 +249,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                 }else {
-                    tvEsan.setText("Campus Esan");
+                    tvEsan.setText("Campus ESAN");
                     tvLEsan.setVisibility(View.VISIBLE);
                     btEsan.setVisibility(View.VISIBLE);
 
@@ -291,6 +291,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
                 if (estado.equals("rojo")) {
                     btEsan.setBackgroundResource(R.drawable.brojo);
+                    btEsan.setText("Solo \n Profesores");
 
                 }
 
@@ -307,6 +308,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
                 if (estado.equals("amarillo")) {
                     btEsan.setBackgroundResource(R.drawable.bamarillo);
+                    btEsan.setText("");
 
                 }
 
@@ -341,6 +343,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
                 if (estado.equals("verde")) {
                     btEsan.setBackgroundResource(R.drawable.bverde);
+                    btEsan.setText("");
 
                 }
 
@@ -389,11 +392,18 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 } else {
                     if(tvPolo.getVisibility()==View.VISIBLE){
                         if(estadoalonso.equals("verde")){
-                            mp.start();
+                            if(btAlonso.getText().equals("")){
+                                mp.start();
+                            }
                         }else if(estadoalonso.equals("rojo")){
-                            mp.start();
+                            if(btAlonso.getText().equals("")){
+                                mp.start();
+                            }
+
                         }else if(estadoalonso.equals("amarillo")){
-                            mp.start();
+                            if(btAlonso.getText().equals("")){
+                                mp.start();
+                            }
                         }
 
                     }else{
@@ -405,11 +415,17 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 } else {
                     if(tvPolo.getVisibility()==View.VISIBLE){
                         if(estadopolo.equals("verde")){
-                            mp.start();
+                            if(btPolo.getText().equals("")){
+                                mp.start();
+                            }
                         }else if(estadopolo.equals("rojo")){
-                            mp.start();
+                            if(btPolo.getText().equals("")){
+                                mp.start();
+                            }
                         }else if(estadopolo.equals("amarillo")){
-                            mp.start();
+                            if(btPolo.getText().equals("")){
+                                mp.start();
+                            }
                         }
 
                     }else{
@@ -446,7 +462,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
                 }else{
-                    tvEsan.setText("Campus Esan");
+                    tvEsan.setText("Campus ESAN");
                     tvLEsan.setVisibility(View.VISIBLE);
                     btEsan.setVisibility(View.VISIBLE);
 
@@ -721,7 +737,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            tvEsan.setText("Campus Esan");
+            tvEsan.setText("Campus ESAN");
             tvLEsan.setVisibility(View.VISIBLE);
             btEsan.setVisibility(View.VISIBLE);
             // Here you can do any UI operations like textview.setText("test");

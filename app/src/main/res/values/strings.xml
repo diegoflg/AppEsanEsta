@@ -114,9 +114,9 @@
 
     <!-- LAY_ESTACIONAMIENTO.XML -->
     <string name="ESAN">ESAN</string>
-    <string name="LugESAN">Av. Alonso de Molina 1652</string>
+    <string name="LugESAN">Av. Alonso \n de Molina 1652</string>
     <string name="Alonso">Playa "Alonso \n de Molina"</string>
-    <string name="LugAlonso">Av. Alonso de Molina 1520 </string>
+    <string name="LugAlonso">Av. Alonso \n de Molina 1520 </string>
     <string name="Polo">Playa "El Polo"</string>
     <string name="LugPolo">Av. El Polo cdra. 9</string>
 
@@ -141,6 +141,8 @@
     <string name="menu_regresar">Regresar</string>
     <string name="informacion">Información</string>
     <string name="perfil">Editar perfil</string>
+
+    <string name="esan">Campus ESAN</string>
 
 
     <string-array name="correos">

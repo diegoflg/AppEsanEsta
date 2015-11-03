@@ -1,3 +1,4 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#FFFFFF"
     android:layout_width="fill_parent"
@@ -30,7 +31,8 @@
                     android:orientation="horizontal"
                     android:id="@+id/lil"
                     android:layout_below="@+id/leyenda"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    android:baselineAligned="false">
 
                     <RelativeLayout
                         android:id="@+id/RLRojo"
@@ -60,7 +62,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
 
-                        android:layout_toRightOf="@id/RLRojo"
                         android:layout_toEndOf="@id/RLRojo"
                         android:layout_margin="5dp"
                         android:padding="2dp"
@@ -195,6 +196,151 @@
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"/>
 </RelativeLayout>
+
+    <!--
+
+    Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @diegoflg
+ Unwatch 2
+  Star 0
+  Fork 0 diegoflg/AppEsanEsta
+ Branch: master  AppEsanEsta/app/src/main/res/layout/info_activity.xml
+e5e2c6e  6 days ago
+@FiorelaDelPilar FiorelaDelPilar strings
+1 contributor
+RawBlameHistory     125 lines (106 sloc)  4.8 KB
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scv"
+            android:layout_above="@+id/button2"
+            android:layout_marginLeft="10dp" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ley"
+                    android:id="@+id/ley"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ley2"
+                    android:id="@+id/ley2"
+                    android:layout_below="@id/ley"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:id="@+id/bver"
+                    android:background="@drawable/brojo"
+                    android:singleLine="true"
+                    android:textColor="#ffffffff"
+                    android:layout_below="@+id/ley2"
+                    android:layout_marginBottom="10dp"
+
+                    android:layout_alignRight="@+id/bver2"
+                    android:layout_alignEnd="@+id/bver2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ley3"
+                    android:id="@+id/ley3"
+                    android:layout_below="@id/bver"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:id="@+id/bver2"
+                    android:background="@drawable/bamarillo"
+                    android:singleLine="true"
+                    android:textColor="#ffffffff"
+                    android:layout_below="@+id/ley3"
+                    android:layout_marginBottom="10dp"
+
+                    android:layout_alignRight="@+id/ley4"
+                    android:layout_alignEnd="@+id/ley4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ley4"
+                    android:id="@+id/ley4"
+                    android:layout_below="@id/bver2"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:id="@+id/bver3"
+                    android:background="@drawable/bverde"
+                    android:singleLine="true"
+                    android:textColor="#ffffffff"
+                    android:layout_below="@+id/ley4"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ley5"
+                    android:id="@+id/ley5"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/bver3"
+                    android:layout_marginTop="10dp"/>
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/info"
+                    android:id="@+id/textView2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/ley5"
+                    android:layout_marginLeft="5dp"/>
+            </RelativeLayout>
+        </ScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="register"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btAtr"
+        android:background="@drawable/mybutton"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"/>
+</RelativeLayout>
+
+
+
+
+    -->
 
 
 
