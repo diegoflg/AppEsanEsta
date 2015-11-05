@@ -98,11 +98,13 @@ public class MainActivity2Activity extends ActionBarActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        System.setProperty("http.keepAlive", "false");
+
         //Se le asigna el layout a la actividad
         setContentView(R.layout.lay_estacionamiento);
 
         //Se crea y da valores a un dialogo de progreso
-       final ProgressDialog dialog = ProgressDialog.show(this, "", "Please wait, Loading Page...", true);
+
 
         //Se crea y da valor a un reproductor de sonido
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
@@ -163,7 +165,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
         /*FIN DE CREACION DE VARIABLES Y ASIGNACION DE ID's JUNTO A SU VISIBILIDAD*/
 
         //Se muestra el dialogo de progreso
-        dialog.show();
+
         //Se ejecuta la accion dada en el metodo con el mismo nombre
 
 
@@ -217,7 +219,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
             try{
 
-                new LoadAllProductsIni().execute();
+               // new LoadAllProductsIni().execute();
 
 
             }catch (Exception e){
@@ -234,221 +236,6 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
         }
 
-
-
-        //Handler que ocurre cada 5 segundos(delay):
-        //1. Se verifica los estados para asignar una imagen a los botones
-        //2. Se verifica el cambio de estado para que entonces se reproduzca el sonido
-        h.postDelayed(new Runnable() {
-            public void run() {
-
-                if (isNetworkAvailable() == false) {
-
-                    tvPolo.setVisibility(View.GONE);
-                    tvLPolo.setVisibility(View.GONE);
-                    btPolo.setVisibility(View.GONE);
-                    btIr.setVisibility(View.GONE);
-                    sep3.setVisibility(View.GONE);
-
-                    //APARECE ALONSO
-                    tvAlonso.setVisibility(View.GONE);
-                    tvLAlonso.setVisibility(View.GONE);
-                    btAlonso.setVisibility(View.GONE);
-                    sep4.setVisibility(View.GONE);
-
-
-                    //APARECE ESAN
-                    tvEsan.setText(R.string.CompruebeCon);
-                    tvLEsan.setVisibility(View.GONE);
-                    btEsan.setVisibility(View.GONE);
-
-                    mp2.start();
-
-                    Log.v("asdasd2", "asdasd2");
-
-
-                }else{
-                    tvEsan.setText("ESAN-Campus");
-                    tvLEsan.setVisibility(View.VISIBLE);
-                    btEsan.setVisibility(View.VISIBLE);
-
-
-                    tvPolo.setVisibility(View.VISIBLE);
-                    tvLPolo.setVisibility(View.VISIBLE);
-                    btPolo.setVisibility(View.VISIBLE);
-                    btIr.setVisibility(View.VISIBLE);
-                    sep3.setVisibility(View.VISIBLE);
-
-                    //APARECE ALONSO
-                    tvAlonso.setVisibility(View.VISIBLE);
-                    tvLAlonso.setVisibility(View.VISIBLE);
-                    btAlonso.setVisibility(View.VISIBLE);
-                    sep4.setVisibility(View.VISIBLE);
-
-                    try{
-                        new LoadAllProducts().execute();
-
-                    }catch (Exception e){
-
-                    }
-
-                    try{
-
-                        new LoadTIME().execute();
-
-                    }catch (Exception e){
-
-                    }
-
-
-
-
-
-
-
-
-
-
-                if (estado.equals("rojo")) {
-                    btEsan.setBackgroundResource(R.drawable.brojo);
-                    btEsan.setText("Cerrado");
-                }
-                if (estado.equals("amarillo")) {
-                    btEsan.setBackgroundResource(R.drawable.bamarillo);
-                    btEsan.setText("");
-
-                }
-
-                if (estado.equals("verde")) {
-                    btEsan.setBackgroundResource(R.drawable.bverde);
-                    btEsan.setText("Abierto");
-
-                }
-
-                if(cerradoalonso==1){
-                    btAlonso.setBackgroundResource(R.drawable.brojo);
-                    btAlonso.setText("Cerrado");
-
-                }else{
-
-                    if (estadoalonso.equals("amarillo")) {
-                        btAlonso.setBackgroundResource(R.drawable.bamarillo);
-                        btAlonso.setText("");
-
-                    }
-                    if (estadoalonso.equals("rojo")) {
-                        btAlonso.setBackgroundResource(R.drawable.brojo);
-                        btAlonso.setText("Cerrado");
-                    }
-                    if (estadoalonso.equals("verde")) {
-                        btAlonso.setBackgroundResource(R.drawable.bverde);
-                        btAlonso.setText("Abierto");
-
-
-                    }
-
-                }
-
-
-
-                if (cerradopolo==1){
-                    btPolo.setBackgroundResource(R.drawable.brojo);
-                    btPolo.setText("Cerrado");
-
-                }else{
-
-                    if (estadopolo.equals("amarillo")) {
-                        btPolo.setBackgroundResource(R.drawable.bamarillo);
-                        btPolo.setText("");
-                    }
-                    if (estadopolo.equals("rojo")) {
-                        btPolo.setBackgroundResource(R.drawable.brojo);
-                        btPolo.setText("Cerrado");
-                    }
-                    if (estadopolo.equals("verde")) {
-                        btPolo.setBackgroundResource(R.drawable.bverde);
-                        btPolo.setText("Abierto");
-                    }
-
-                }
-
-
-
-                if (estado.equals(estado2)) {
-                } else {
-                    if(estado.equals("verde")){
-                        mp.start();
-                    }else if(estado.equals("rojo")){
-                        mp.start();
-                    }else if(estado.equals("amarillo")){
-                        mp.start();
-                    }
-
-                }
-
-
-                if (estadoalonso.equals(estado22)) {
-                } else {
-                    if(tvPolo.getVisibility()==View.VISIBLE){
-                        if(estadoalonso.equals("verde")){
-                            if(cerradoalonso==0){
-                                mp.start();
-                            }
-                        }else if(estadoalonso.equals("rojo")){
-                            if(cerradoalonso==0){
-                                mp.start();
-                            }
-
-                        }else if(estadoalonso.equals("amarillo")){
-                            if(cerradoalonso==0){
-                                mp.start();
-                            }
-                        }
-
-                    }else{
-
-                    }
-                }
-
-                if (estadopolo.equals(estado23)) {
-                } else {
-                    if(tvPolo.getVisibility()==View.VISIBLE){
-                        if(estadopolo.equals("verde")){
-                            if(cerradopolo==0){
-                                mp.start();
-                            }
-                        }else if(estadopolo.equals("rojo")){
-                            if(cerradopolo==0){
-                                mp.start();
-                            }
-                        }else if(estadopolo.equals("amarillo")){
-                            if(cerradopolo==0){
-                                mp.start();
-                            }
-                        }
-
-                    }else{
-                    }
-                }
-
-
-
-                if (prueba>0 && prueba2>0){
-
-
-                    if (dialog.isShowing()) {
-                        dialog.dismiss();
-                    }
-
-                }
-
-                }
-
-                //Se sigue haciendo el handler cada 5 segundos
-                h.postDelayed(this, delay);
-
-            }
-        }, delay);
 
 
         //Metodo que se activa cuando se da click al boton ir
