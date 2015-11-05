@@ -61,7 +61,7 @@
             android:layout_alignLeft="@+id/textView3"
             android:layout_alignStart="@+id/textView3"
             android:layout_marginTop="30dp"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"/>
 
         <Button
@@ -75,7 +75,6 @@
             android:layout_alignStart="@+id/btPolo"
             android:layout_alignRight="@+id/btPolo"
             android:layout_alignEnd="@+id/btPolo"
-            android:text="@string/cerr"
             android:textColor="#ffffffff"/>
 
 
@@ -110,10 +109,6 @@
             android:id="@+id/btPolo"
             android:background="@drawable/brojo"
             android:layout_alignTop="@+id/textView3"
-
-
-
-            android:text="@string/ceerra"
             android:singleLine="true"
             android:textColor="#ffffffff"
             android:layout_alignRight="@+id/btEsan"

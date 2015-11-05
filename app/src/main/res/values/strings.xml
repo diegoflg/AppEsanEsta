@@ -6,7 +6,7 @@
     <string name="compruebe">Compruebe su conexión a internet</string>
     <string name="cova">Ingrese un correo válido</string>
 
-    <string name="terminos">"\n Lea los términos y condiciones e indique que los acepta para continuar con el proceso de registro. Al hacer clic a Aceptar, usted afirma conocer los términos y condiciones, la política de la aplicación y la política de privacidad.
+    <string name="terminos">"
                              \n1. TÉRMINOS Y CONDICIONES
                              \n*. ESAN no se responsabiliza por el cambio repentino de la cantidad disponible en cualquiera de los estacionamientos.
                              \n*. El usuario deberá tomar en cuenta las horas en las que existe un exceso en la cantidad de demanda del servicio.
@@ -82,9 +82,9 @@
 \n3.    Para acceder a este servicio es requisito indispensable mostrar su carnet universitario, carnet de la universidad ESAN u otro documento que los identifique como tal al ingresar a la playa de estacionamiento de Los Portales (capacidad limitada - 155 estacionamientos)</string>
 
     <string name="ley">Leyenda</string>
-    <string name="ley2">Rojo: Playa \n llena</string>
-    <string name="ley3">Amarillo: Pocos estacionamientos disponibles</string>
-    <string name="ley4">Verde: Playa \n libre</string>
+    <string name="ley2">Rojo: lleno</string>
+    <string name="ley3">Amarillo: \n casi lleno</string>
+    <string name="ley4">Verde: libre</string>
     <string name="ley5">Información Adicional</string>
     <string name="gui">-</string>
     <string name="ggui">-</string>
@@ -140,6 +140,7 @@
     <string name="menu_cerrar">Cerrar sesión</string>
     <string name="menu_regresar">Regresar</string>
     <string name="informacion">Información</string>
+    <string name="suge">Sugerencias y Comentarios</string>
     <string name="perfil">Editar perfil</string>
 
     <string name="esan">Campus ESAN</string>
@@ -153,6 +154,10 @@
 
     <string name="title_activity_olvido">Olvido</string>
     <string name="title_activity_info">Info</string>
+    <string name="title_activity_feedback">Feedback</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 
 

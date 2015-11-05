@@ -6,6 +6,8 @@
 
         <item android:id="@+id/info"
             android:title="@string/informacion" />
+    <item android:id="@+id/sug"
+        android:title="@string/suge" />
 
         <item android:id="@+id/cerrars"
             android:title="@string/menu_cerrar" />
