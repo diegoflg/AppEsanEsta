@@ -1,28 +1,24 @@
 <resources>
-    <string name="app_name">ESAN</string>
+    <string name="app_name">Parking ESAN Beta</string>
 
     <!-- CORREO.JAVA -->
     <string name="existe">El correo ya existe</string>
     <string name="compruebe">Compruebe su conexión a internet</string>
     <string name="cova">Ingrese un correo válido</string>
 
-    <string name="terminos">"
-                             \n1. TÉRMINOS Y CONDICIONES
-                             \n*. ESAN no se responsabiliza por el cambio repentino de la cantidad disponible en cualquiera de los estacionamientos.
-                             \n*. El usuario deberá tomar en cuenta las horas en las que existe un exceso en la cantidad de demanda del servicio.
-                             \n*. Para más información el usuario debeerá ver la Información desde el menú de la aplicación
+    <string name="terminos">"La versión actual es una versión Beta la cual está propensa a que se puedan presentar fallas en el aplicativo, de igual manera se le pide que por favor toda observación o falla observada la comuniquen a través de la opción “sugerencias y comentarios” de la aplicación, o a través del correo estacionamiento@ue.edu.pe
 
-                             \n2. POLÍTICA DE LA APLICACIÓN
-                             \n*. La aplicación le mostrará una vista general de cada disponibilidad aproximada de cada estacionamiento.
-                             \n*. La aplicación permitirá al usuario agregar dos placas más a su cuenta.
 
-                             \n3. POLÍTICA DE PRIVACIDAD
-                             \n*. El usuario deberá dar correctamente sus datos, caso contrario se analizará el cierre temporal de su cuenta.
-                             \n*. Los datos ingresados por el usuario no serán revelados con el fin de mantener la confidencialidad con el mismo.
-                             \n*. Es obligación del usuario cambiar su contraseña con el fin de no generar inconvenientes.
-                             \n*. La aplicación permitirá al usuario agregar dos placas más a su cuenta.
+\nTÉRMINOS Y CONDICIONES
+\nESAN no se responsabiliza por el cambio repentino de la cantidad de estacionamientos disponibles en cualquiera de los estacionamientos.
+El usuario deberá tomar en cuenta las horas en las que existe un exceso en la cantidad de demanda del servicio.
+Para más información el usuario deberá ver la Información desde el menú de la aplicación.
+\n
+\nPOLÍTICA DE LA APLICACIÓN
+La aplicación le mostrará una vista general de la disponibilidad aproximada de cada playa de estacionamiento.
+Al aceptar los términos y condiciones queda determinado que el usuario declara conocer expresamente que no podrá dar reclamación alguna sobre los puntos anteriormente tratados.
+\n
 
-                             \n. Al aceptar los términos y condiciones queda determinado que el usuario declara conocer expresamente que no podrá dar reclamación alguna sobre los puntos anteriormente tratados.
 
         "</string>
     <string name="solonum">El correo sólo debe contener números</string>
@@ -49,8 +45,8 @@
     <string name="ingCV">"Ingrese un correo válido"</string>
     <string name="envio1">"Se envió la contraseña al correo : "</string>
     <string name="envio2">"Revise su correo para poder recuperar su contraseña"</string>
-    <string name="btOk">"Ok"</string>
 
+    <string name="btOk">"Ok"</string>
 
     <!-- PERFIL.JAVA -->
     <string name="compP">"Compruebe su conexión a internet"</string>
@@ -74,12 +70,32 @@
 
 
     <!-- info_activity-->
-    <string name="info">
-\n1.    Traslado de playa a ESAN: A partir de las 4:30 pm, se pondrá a disposición de los alumnos servicios de transporte sucesivo (contratados por la Universidad, sin costo para el alumno) que los trasladarán desde la playa de estacionamiento hasta el campus.
+    <string name="info"><b>\n
+\nSe han reservado las siguientes playas de estacionamiento hasta nuevo aviso:
+\nAv. El Polo cdra. 9 s/n (a media cuadra del cruce con Av. El Derby).
+\nHorario de atención:\n
+•	lunes a viernes, de 6:00 pm. a 11:30 pm.
+\n\nPara acceder a esta playa es requisito indispensable, al momento del ingreso al recinto, mostrar su carnet universitario, carnet de la Universidad ESAN u otro documento que los identifique como tal. \nDe no contar con dichos documentos, por favor, ingresar al siguiente link \n http://tinyurl.com/PaseESANPlayaElPolo\n e imprimir el pase, llenar sus datos y colocarlo en una parte visible de su vehículo.
+\n\nTraslado desde la playa de la Av. El Polo a ESAN:
+\nA partir de las 6:00 pm, se pondrá a disposición de los alumnos, un servicio de taxi (contratado por la Universidad, sin costo para el alumno) que los trasladarán hasta el campus.
+\n\nRetorno de ESAN a la playa de la Av. El Polo: A partir de la 7:30 pm, se pondrá el servicio de taxi, los cuales estarán ubicados en la playa de estacionamiento 1 (costado izquierdo del ingreso vehicular a la universidad).
 \n
-\n2.    Traslado de ESAN a playa: En horas de : 7:30 pm, 8:30 pm, 9:30 pm y 10:30 pm, para el retorno al estacionamiento de Los Portales, también se pondrán a disposición de los alumnos servicios de transporte sucesivo, los cuales estarán ubicados en la playa de estacionamiento 1 (costado izquierdo del ingreso vehicular a la universidad).
-\n
-\n3.    Para acceder a este servicio es requisito indispensable mostrar su carnet universitario, carnet de la universidad ESAN u otro documento que los identifique como tal al ingresar a la playa de estacionamiento de Los Portales (capacidad limitada - 155 estacionamientos)</string>
+\nJr. Alonso de Molina 1520 (a media cuadra del Campus).Capacidad limitada.
+\nHorario de atención:
+\n•	lunes a viernes, de 6:00 pm. a 11:30 pm.
+\n•	sábados, de 7:30 am. a 11:30 pm.
+        \n
+\nAl ingresar a esta playa, se les entregará un ticket, que deberán hacerlo sellar a la salida de clases en la oficina de Seguridad, ubicada en la puerta de ingreso al campus universitario.
+\nEl costo de ambas playas es asumido por la Universidad ESAN, siempre que se cumpla con los requisitos mencionados en los párrafos anteriores.
+\nTeniendo en consideración que la capacidad de la playa de estacionamiento del campus y de las que han sido contratadas por la Universidad es limitada, se les invita a tomar las medidas oportunas para que puedan llegar a tiempo a sus clases. Por cuestiones de seguridad, una vez completado el aforo de los recintos mencionados, no se permitirá el acceso.
+\nLes recordamos que la Universidad ESAN no se responsabiliza por los perjuicios o multas a los vehículos estacionados fuera del campus universitario.
+ \n
+\nVERSION
+        \n
+        Beta 1.1
+
+
+</b></string>
 
     <string name="ley">Leyenda</string>
     <string name="ley2">Rojo: lleno</string>
@@ -158,8 +174,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
-
+    <string name="rtty">Cargando</string>
+    <string name="ytr">Cargando</string>
+    <string name="ert">Cargando</string>
 
 
 </resources>

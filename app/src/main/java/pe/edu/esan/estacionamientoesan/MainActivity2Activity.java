@@ -1,58 +1,38 @@
 package pe.edu.esan.estacionamientoesan;
-
-
         import android.app.ProgressDialog;
-        import android.content.Context;
         import android.content.Intent;
         import android.location.Location;
         import android.media.MediaPlayer;
-        import android.net.ConnectivityManager;
-        import android.net.NetworkInfo;
         import android.net.Uri;
         import android.os.AsyncTask;
         import android.os.Bundle;
         import android.os.Handler;
         import android.support.v7.app.ActionBarActivity;
-        import android.util.Log;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
         import android.widget.Button;
         import android.widget.TextView;
         import android.widget.Toast;
-
         import com.google.android.gms.common.ConnectionResult;
         import com.google.android.gms.common.api.GoogleApiClient;
         import com.google.android.gms.location.LocationServices;
-
         import org.json.JSONArray;
-        import org.json.JSONException;
         import org.json.JSONObject;
-        import org.jsoup.Jsoup;
-        import org.jsoup.nodes.Document;
-        import org.jsoup.select.Elements;
-
         import java.io.IOException;
+        import java.net.HttpURLConnection;
+        import java.net.URL;
         import java.util.ArrayList;
         import java.util.List;
 
 
 public class MainActivity2Activity extends ActionBarActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    /*Declaracion de variables generales a usar en la actividad*/
-
-    //Se crea una cadena de texto privada... : (sus valores son dados de esa manera ya que asi estan definidos tambien en la base de datos y sus php)
-    //cuyo valor es la URL del php
     private static String url_all_empresas = "http://estacionamientos.esan.edu.pe/esconnect/get_all_empresas.php";
-    //cuyo valor es success
     private static final String TAG_SUCCESS = "success";
-    //cuyo valor es users
     private static final String TAG_PRODUCTS = "users";
-    //cuyo valor es username
     private static final String TAG_NOMBRE = "username";
-    //cuyo valor es username2
     private static final String TAG_NOMBRE2 = "username2";
-    //cuyo valor es username3
     private static final String TAG_NOMBRE3 = "username3";
 
     //Se crean cadenas de texto para los estados de cada semaforo
@@ -79,10 +59,15 @@ public class MainActivity2Activity extends ActionBarActivity implements
     //Se crea una cadena para el correo con valor inicial nulo
     String correo="";
     int prueba=0;
-    int prueba2=0;
+    int inter=204;
 
-    int cerradopolo=0;
-    int cerradoalonso=0;
+    private ProgressDialog dialog;
+
+
+
+
+
+
 
     //Constructor que sirve para el API de Google
     protected synchronized void buildGoogleApiClient() {
@@ -94,20 +79,16 @@ public class MainActivity2Activity extends ActionBarActivity implements
     }
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        System.setProperty("http.keepAlive", "false");
-
         //Se le asigna el layout a la actividad
         setContentView(R.layout.lay_estacionamiento);
 
-        //Se crea y da valores a un dialogo de progreso
-
-
         //Se crea y da valor a un reproductor de sonido
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.hifi);
+
         final MediaPlayer mp2 = MediaPlayer.create(this, R.raw.inter2);
 
 
@@ -172,34 +153,11 @@ public class MainActivity2Activity extends ActionBarActivity implements
 
 
 
+        dialog = new ProgressDialog(MainActivity2Activity.this);
+        dialog.setMessage("Cargando...");
+        dialog.setCancelable(false);
+        dialog.show();
 
-
-        //Se verifica la conexion a iternet
-        if (isNetworkAvailable() == false) {
-            //Si no hay conexion
-            tvPolo.setVisibility(View.GONE);
-            tvLPolo.setVisibility(View.GONE);
-            btPolo.setVisibility(View.GONE);
-            btIr.setVisibility(View.GONE);
-            sep3.setVisibility(View.GONE);
-
-            //APARECE ALONSO
-            tvAlonso.setVisibility(View.GONE);
-            tvLAlonso.setVisibility(View.GONE);
-            btAlonso.setVisibility(View.GONE);
-            sep4.setVisibility(View.GONE);
-
-
-            //APARECE ESAN
-            tvEsan.setText(R.string.CompruebeCon);
-            tvLEsan.setVisibility(View.GONE);
-            btEsan.setVisibility(View.GONE);
-
-            Log.v("asdasd3", "asdasd3");
-
-
-
-        }else{
             //Si hay conexion
             tvEsan.setText("ESAN-Campus");
             tvLEsan.setVisibility(View.VISIBLE);
@@ -217,25 +175,145 @@ public class MainActivity2Activity extends ActionBarActivity implements
             btAlonso.setVisibility(View.VISIBLE);
             sep4.setVisibility(View.VISIBLE);
 
+
             try{
 
-               // new LoadAllProductsIni().execute();
+                new LoadAllProductsIni().execute();
 
 
             }catch (Exception e){
 
             }
 
-            try{
 
-                new LoadTIME2().execute();
 
-            }catch (Exception e){
+
+
+
+
+        //Handler que ocurre cada 5 segundos(delay):
+        //1. Se verifica los estados para asignar una imagen a los botones
+        //2. Se verifica el cambio de estado para que entonces se reproduzca el sonido
+        h.postDelayed(new Runnable() {
+            public void run() {
+
+
+
+
+
+                if(prueba>0){
+
+                    if (inter != 204) {
+                        tvPolo.setVisibility(View.GONE);
+                        tvLPolo.setVisibility(View.GONE);
+                        btPolo.setVisibility(View.GONE);
+                        btIr.setVisibility(View.GONE);
+                        sep3.setVisibility(View.GONE);
+
+                        //APARECE ALONSO
+                        tvAlonso.setVisibility(View.GONE);
+                        tvLAlonso.setVisibility(View.GONE);
+                        btAlonso.setVisibility(View.GONE);
+                        sep4.setVisibility(View.GONE);
+
+
+                        //APARECE ESAN
+                        tvEsan.setText(R.string.CompruebeCon);
+                        tvLEsan.setVisibility(View.GONE);
+                        btEsan.setVisibility(View.GONE);
+                        mp2.start();
+
+                    } else {
+
+
+                        tvEsan.setText("ESAN-Campus");
+                        tvLEsan.setVisibility(View.VISIBLE);
+                        btEsan.setVisibility(View.VISIBLE);
+
+
+                        tvPolo.setVisibility(View.VISIBLE);
+                        tvLPolo.setVisibility(View.VISIBLE);
+                        btPolo.setVisibility(View.VISIBLE);
+                        btIr.setVisibility(View.VISIBLE);
+                        sep3.setVisibility(View.VISIBLE);
+
+                        //APARECE ALONSO
+                        tvAlonso.setVisibility(View.VISIBLE);
+                        tvLAlonso.setVisibility(View.VISIBLE);
+                        btAlonso.setVisibility(View.VISIBLE);
+                        sep4.setVisibility(View.VISIBLE);
+
+                    }
+
+
+
+                    try {
+                        new LoadAllProducts().execute();
+
+                    } catch (Exception e) {
+
+                    }
+
+                    if (estado.equals("rojo")) {
+                        btEsan.setBackgroundResource(R.drawable.brojo);
+                        btEsan.setText("Solo \n profesores");
+                    }
+                    if (estado.equals("amarillo")) {
+                        btEsan.setBackgroundResource(R.drawable.bamarillo);
+                        btEsan.setText("");
+
+                    }
+
+                    if (estado.equals("verde")) {
+                        btEsan.setBackgroundResource(R.drawable.bverde);
+                        btEsan.setText("Abierto");
+
+                    }
+
+
+                    if (estadoalonso.equals("amarillo")) {
+                        btAlonso.setBackgroundResource(R.drawable.bamarillo);
+                        btAlonso.setText("");
+
+                    }
+                    if (estadoalonso.equals("rojo")) {
+                        btAlonso.setBackgroundResource(R.drawable.brojo);
+                        btAlonso.setText("Cerrado");
+                    }
+                    if (estadoalonso.equals("verde")) {
+                        btAlonso.setBackgroundResource(R.drawable.bverde);
+                        btAlonso.setText("Abierto");
+
+
+                    }
+
+
+                    if (estadopolo.equals("amarillo")) {
+                        btPolo.setBackgroundResource(R.drawable.bamarillo);
+                        btPolo.setText("");
+                    }
+                    if (estadopolo.equals("rojo")) {
+                        btPolo.setBackgroundResource(R.drawable.brojo);
+                        btPolo.setText("Cerrado");
+                    }
+                    if (estadopolo.equals("verde")) {
+                        btPolo.setBackgroundResource(R.drawable.bverde);
+                        btPolo.setText("Abierto");
+                    }
+
+                    if(dialog.isShowing()){
+                        dialog.dismiss();
+
+                    }
+                }
+
+                    //Se sigue haciendo el handler cada 5 segundos
+                    h.postDelayed(this, delay);
+
+
 
             }
-
-        }
-
+        }, delay);
 
 
         //Metodo que se activa cuando se da click al boton ir
@@ -251,8 +329,8 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 // fragmentManager.beginTransaction().add(R.id.container, fragment, "Map1").commit();
 
                 //Se les da valores reales a las variables
-                latitude = -12.098581;
-                longitude = -76.970599;
+                latitude = -12.097523;
+                longitude = -76.970253;
                 //Se llama al metodo
                 buildGoogleApiClient();
 
@@ -264,6 +342,9 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 }
             }
         });
+
+
+
     }
 
 
@@ -276,14 +357,17 @@ public class MainActivity2Activity extends ActionBarActivity implements
         if (mLastLocation != null) {
             tt = "Latitude: " + String.valueOf(mLastLocation.getLatitude()) + "Longitude: " +
                     String.valueOf(mLastLocation.getLongitude());
-            Log.v("location", tt);
 
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + String.valueOf(mLastLocation.getLatitude()) + "," + String.valueOf(mLastLocation.getLongitude()) + "&daddr=" + String.valueOf(latitude) + "," + String.valueOf(longitude)));
             startActivity(intent);
+        }else{
+            Toast.makeText(this, "Active los servicios de ubicación con redes movilies y/o Wi-Fi", Toast.LENGTH_SHORT).show();
         }
 
 
     }
+
+
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -306,34 +390,76 @@ public class MainActivity2Activity extends ActionBarActivity implements
          * */
         @Override
         protected void onPreExecute() {
+
         }
 
         protected String doInBackground(String... args) {
-            List params = new ArrayList();
-            JSONObject json = jParser.makeHttpRequest(url_all_empresas, "GET", params);
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-                    products = json.getJSONArray(TAG_PRODUCTS);
-                    for (int i = 0; i < products.length(); i++) {
-                        JSONObject c = products.getJSONObject(i);
-                        estado2=estado;
-                        estado22=estadoalonso;
-                        estado23=estadopolo;
-                        estado=c.getString(TAG_NOMBRE);
-                        estadoalonso=c.getString(TAG_NOMBRE2);
-                        estadopolo=c.getString(TAG_NOMBRE3);
-                        prueba=prueba + 1;
 
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+
+//Se comprueba la conexion a internet, si hay conexion kk tendra el valor de 204
+            int kk=0;
+
+            try {
+                HttpURLConnection urlc = (HttpURLConnection)
+                        (new URL("http://clients3.google.com/generate_204")
+                                .openConnection());
+                urlc.setRequestProperty("User-Agent", "Android");
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(1500);
+                urlc.connect();
+                kk= urlc.getResponseCode();
+            } catch (IOException e) {
+
             }
+
+
+            if(kk==204){
+//Si hay conexion se obtiene el estado de los estacionamientos
+                List params = new ArrayList();
+
+                try {
+
+                    JSONObject json = jParser.makeHttpRequest(url_all_empresas, "GET", params);
+                    int success = json.getInt(TAG_SUCCESS);
+
+
+
+
+                    if (success == 1) {
+                        products = json.getJSONArray(TAG_PRODUCTS);
+                        for (int i = 0; i < products.length(); i++) {
+                            JSONObject c = products.getJSONObject(i);
+                            estado2=estado;
+                            estado22=estadoalonso;
+                            estado23=estadopolo;
+                            estado=c.getString(TAG_NOMBRE);
+                            estadoalonso=c.getString(TAG_NOMBRE2);
+                            estadopolo=c.getString(TAG_NOMBRE3);
+                            prueba=prueba + 1;
+
+
+
+
+                        }
+                    }
+
+
+
+
+                }catch(Exception e){
+
+                }
+
+
+            }
+
+
+          inter=kk;
+
             return null;
         }
         protected void onPostExecute(String file_url) {
-            //Metodo despues de terminar la accion
+
         }
     }
 
@@ -345,480 +471,88 @@ public class MainActivity2Activity extends ActionBarActivity implements
          * */
         @Override
         protected void onPreExecute() {
+
+            //Se crea y da valores a un dialogo de progreso
+
+
         }
 
         protected String doInBackground(String... args) {
 
+//Se comprueba la conexion a internet, si hay conexion kk tendra el valor de 204
+            int kk=0;
 
-            while (prueba==0) {
-
-
-            List params = new ArrayList();
-            JSONObject json = jParser.makeHttpRequest(url_all_empresas, "GET", params);
             try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-                    products = json.getJSONArray(TAG_PRODUCTS);
-                    for (int i = 0; i < products.length(); i++) {
-                        JSONObject c = products.getJSONObject(i);
-                        estado2=c.getString(TAG_NOMBRE);
-                        estado22=c.getString(TAG_NOMBRE2);
-                        estado23=c.getString(TAG_NOMBRE3);
-                        estado=c.getString(TAG_NOMBRE);
-                        estadoalonso=c.getString(TAG_NOMBRE2);
-                        estadopolo=c.getString(TAG_NOMBRE3);
-                        prueba=prueba + 1;
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+                HttpURLConnection urlc = (HttpURLConnection)
+                        (new URL("http://clients3.google.com/generate_204")
+                                .openConnection());
+                urlc.setRequestProperty("User-Agent", "Android");
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(1500);
+                urlc.connect();
+                kk= urlc.getResponseCode();
+            } catch (IOException e) {
 
             }
+
+
+            if(kk==204){
+                // si hay internet se obtienen los estados del estacionamiento
+
+                List params = new ArrayList();
+
+                try {
+
+                    JSONObject json = jParser.makeHttpRequest(url_all_empresas, "GET", params);
+                    int success = json.getInt(TAG_SUCCESS);
+
+
+
+
+                    if (success == 1) {
+                        products = json.getJSONArray(TAG_PRODUCTS);
+                        for (int i = 0; i < products.length(); i++) {
+                            JSONObject c = products.getJSONObject(i);
+                            estado2=estado;
+                            estado22=estadoalonso;
+                            estado23=estadopolo;
+                            estado=c.getString(TAG_NOMBRE);
+                            estadoalonso=c.getString(TAG_NOMBRE2);
+                            estadopolo=c.getString(TAG_NOMBRE3);
+
+
+                        }
+                    }
+
+
+
+
+                }catch(Exception e){
+
+                }
+
+
+            }
+
+            inter=kk;
+
+
             return null;
         }
         protected void onPostExecute(String file_url) {
-
-        }
-    }
-
-    //Metodo que verifica si hay conexion a internet
-    private boolean isNetworkAvailable() {
-        ConnectivityManager cm = (ConnectivityManager) MainActivity2Activity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-    //Metodo de segundo plano que obtiene la hora a traves de una pagina web de las zonas horarias mundiales
-    private class LoadTIME2 extends AsyncTask<Void, Void, Void> {
-        //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
-        //Pagina web real: http://www.timeanddate.com/worldclock/peru/lima
-        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/peru/lima
-
-        //Separador 1
-
-
-        //Titulo Esan
-        TextView tvEsan = (TextView) findViewById(R.id.textView);
-        //Texto lugar esan
-        TextView tvLEsan = (TextView) findViewById(R.id.textView7);
-        //Boton Esan
-        Button btEsan = (Button)findViewById(R.id.btEsan);
-
-        //Boton Polo
-        Button btPolo = (Button)findViewById(R.id.btPolo);
-
-        //Boton Alonso
-        Button btAlonso = (Button)findViewById(R.id.btAlonso);
-
-        //Se crea una cadena de texto cuyo valor es la URL de la pagina web
-        String url = "http://www.timeanddate.com/worldclock/peru/lima";
-        //Se crea una variable de tipo Documento y se le da como valor inicial nulo
-        Document doc = null;
-        //Se crean dos cadenas de texto para la hora y el dia
-        String horac;
-        String diac;
-
-        @Override
-        protected void onPreExecute() {
-            //Metodo antes de ejecutar la accion
-            super.onPreExecute();
-            /*
-            sep2.setVisibility(View.GONE);
-            tvAlonso.setVisibility(View.GONE);
-            tvLAlonso.setVisibility(View.GONE);
-            btAlonso.setVisibility(View.GONE);
-            //SE VA EL POLO
-            sep3.setVisibility(View.GONE);
-            tvPolo.setVisibility(View.GONE);
-            tvLPolo.setVisibility(View.GONE);
-            btPolo.setVisibility(View.GONE);
-            btIr.setVisibility(View.GONE);
-            sep4.setVisibility(View.GONE);
-             */
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            //Metodo que ocurre en segundo plano
-            // TODO Auto-generated method stub
-
-            //Intenta
-
-            while (prueba2==0) {
-                try {
-                    // obtener el documento de la pagina conectandose con el Jsoup
-                    //TIEMPO HH:MM
-                    doc = Jsoup.connect(url).get();
-                    //Se crea un elemento llamado hora cuyo valor sera el dato(hora y minutos) dentro del parametro dado
-                    Elements hora = doc.select("span[id=fshrmin]");
-                    //Se le da valor a la cadena de texto convirtiendo el dato encontrado a texto
-                    horac = hora.text();
-
-                    //Se crea un elemento cuyo valor sera el dato (fecha en ingles) dentro del parametro dado
-                    Elements dia = doc.select("span[id=ctdat]");
-                    //Se le da valor a la cadena de texto convirtiendo el dato encontrado a texto
-                    diac = dia.text();
-                    prueba2=prueba2 + 1;
-
-                /*
-                Elements topicList = doc.select("h2.topic");
-                Log.i("TIEMPO", "META: " + metaElem);
-                Log.i("TIEMPO", "TOPICLIST : " + topicList);
-                Elements links = doc.select("a[href]"); // a with href
-                Element masthead = doc.select("div.masthead").first();
-                // div with class=masthead
-                Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
-                Log.i("TIEMPO", "AHREF: " + links);
-                Log.i("TIEMPO", "MASTHEAD: " + masthead);
-                Log.i("TIEMPO", "ResultLinks : " + resultLinks);
-                */
-
-
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                    Log.i("TIEMPO", "ERROR");
-                }
-
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            //Metodo que ocurre despues de terminada la accion
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            if(prueba==1){
-
-                try{
-
-                    tvEsan.setText("ESAN-Campus");
-                    tvLEsan.setVisibility(View.VISIBLE);
-                    btEsan.setVisibility(View.VISIBLE);
-                    // Here you can do any UI operations like textview.setText("test");
-
-                    //Se verifica que el texto contenga los valores dado en parametros:
-                    //(Si contiene Lunes, Martes, Miercoles, Jueves o Viernes)
-                    if((diac.contains("Monday") || diac.contains("Tuesday") || diac.contains("Wednesday") || diac.contains("Thursday") || diac.contains("Friday"))){
-                        //Si la hora contiene 18, 19, 20, 21, 22 o 23 (se le pone dos puntos para que coja la hora y no lo confunda con los minutos)
-                        if(horac.contains("18:") || horac.contains("19:") || horac.contains("20:")||
-                                horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
-                            //-----> Entonces:
-                            //APARECE EL POLO
-
-
-                            btPolo.setText("");
-                            cerradopolo=0;
-
-                            //APARECE ALONSO
-                            btAlonso.setText("");
-                            cerradoalonso=0;
-
-
-
-
-
-
-                        }else {
-                    /* Si fuera else if:
-                    if(horac.contains("00:") || horac.contains("01:") || horac.contains("02:") ||
-                         horac.contains("03:") || horac.contains("04:") || horac.contains("05:") ||
-                         horac.contains("06:") || horac.contains("07:") || horac.contains("08:") ||
-                         horac.contains("09:") || horac.contains("10:") || horac.contains("11:") ||
-                         horac.contains("12:") || horac.contains("13:") || horac.contains("14:") ||
-                         horac.contains("15:") || horac.contains("16:") || horac.contains("17:") )
-                     */
-                            //---->Caso contrario de no contener esas horas
-                            //SE VA EL POLO
-
-
-                            //btPolo.setText("Cerrado");
-                             cerradopolo=1;
-
-                            //SE VA ALONSO
-
-                            // btAlonso.setText("Cerrado");
-                             cerradoalonso=1;
-
-                        }
-                    } else if( diac.contains("Saturday")){
-                        //Caso contrario de que el dia sea Sabado:
-                        if( horac.contains("06:3")|| horac.contains("06:4")|| horac.contains("06:5")||
-                                horac.contains("07:") || horac.contains("08:") || horac.contains("09:") ||
-                                horac.contains("10:") || horac.contains("11:") || horac.contains("12:") ||
-                                horac.contains("13:") || horac.contains("14:") || horac.contains("15:") ||
-                                horac.contains("16:") || horac.contains("17:") || horac.contains("18:")){
-                            //Si la hora es de 6:30 AM hasta las 18:59 PM entonces:
-
-                            //APARECE EL POLO
-                            //  btPolo.setText("");
-                            cerradopolo=0;
-                        }else{
-                            //Si no es esa hora el dia sabado entonces:
-                            //SE VA EL POLO
-                            // btPolo.setText("Cerrado");
-                             cerradopolo=1;
-                        }
-
-
-                        if( horac.contains("07:3")|| horac.contains("07:4")|| horac.contains("07:5")||
-                                horac.contains("08:") || horac.contains("09:") || horac.contains("10:") ||
-                                horac.contains("11:") || horac.contains("12:") || horac.contains("13:") ||
-                                horac.contains("14:") || horac.contains("15:") || horac.contains("16:") ||
-                                horac.contains("17:") || horac.contains("18:")){
-                            //Si la hora es desde 7:30 am hasta las 18:59 PM entonces:
-
-                            //APARECE ALONSO
-                            //   btAlonso.setText("");
-                            cerradoalonso=0;
-
-
-                        }else{
-                            //Caso que no sea esas horas del dia sabado:
-                            //SE VA ALONSO
-                            //  btAlonso.setText("Cerrado");
-                            cerradoalonso=1;
-                        }
-
-
-                    } else if(diac.contains("Sunday")){
-                        //Si el dia es Domingo:
-                        //SE VA EL POLO
-                        //    btPolo.setText("Cerrado");
-                         cerradopolo=1;
-
-                        //SE VA ALONSO
-                        // btAlonso.setText("Cerrado");
-                        cerradoalonso=1;
-                    }
-
-                }catch (Exception e){
-
-                }
-
-
-
-
-            }
-
-
+            prueba=prueba + 1;
 
 
 
         }
     }
-    private class LoadTIME extends AsyncTask<Void, Void, Void> {
-        //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
-        //Pagina web real: http://www.timeanddate.com/worldclock/peru/lima
-        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/peru/lima
-
-        //Separador 1
-
-
-        //Titulo Esan
-        TextView tvEsan = (TextView) findViewById(R.id.textView);
-        //Texto lugar esan
-        TextView tvLEsan = (TextView) findViewById(R.id.textView7);
-        //Boton Esan
-        Button btEsan = (Button)findViewById(R.id.btEsan);
-
-        //Boton Polo
-        Button btPolo = (Button)findViewById(R.id.btPolo);
-
-        //Boton Alonso
-        Button btAlonso = (Button)findViewById(R.id.btAlonso);
-
-        //Se crea una cadena de texto cuyo valor es la URL de la pagina web
-        String url = "http://www.timeanddate.com/worldclock/peru/lima";
-        //Se crea una variable de tipo Documento y se le da como valor inicial nulo
-        Document doc = null;
-        //Se crean dos cadenas de texto para la hora y el dia
-        String horac;
-        String diac;
-
-        @Override
-        protected void onPreExecute() {
-            //Metodo antes de ejecutar la accion
-            super.onPreExecute();
-            /*
-            sep2.setVisibility(View.GONE);
-            tvAlonso.setVisibility(View.GONE);
-            tvLAlonso.setVisibility(View.GONE);
-            btAlonso.setVisibility(View.GONE);
-            //SE VA EL POLO
-            sep3.setVisibility(View.GONE);
-            tvPolo.setVisibility(View.GONE);
-            tvLPolo.setVisibility(View.GONE);
-            btPolo.setVisibility(View.GONE);
-            btIr.setVisibility(View.GONE);
-            sep4.setVisibility(View.GONE);
-             */
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            //Metodo que ocurre en segundo plano
-            // TODO Auto-generated method stub
-
-            //Intenta
-
-
-                try {
-                    // obtener el documento de la pagina conectandose con el Jsoup
-                    //TIEMPO HH:MM
-                    doc = Jsoup.connect(url).get();
-                    //Se crea un elemento llamado hora cuyo valor sera el dato(hora y minutos) dentro del parametro dado
-                    Elements hora = doc.select("span[id=fshrmin]");
-                    //Se le da valor a la cadena de texto convirtiendo el dato encontrado a texto
-                    horac = hora.text();
-
-                    //Se crea un elemento cuyo valor sera el dato (fecha en ingles) dentro del parametro dado
-                    Elements dia = doc.select("span[id=ctdat]");
-                    //Se le da valor a la cadena de texto convirtiendo el dato encontrado a texto
-                    diac = dia.text();
-                    prueba2=prueba2 + 1;
-
-                /*
-                Elements topicList = doc.select("h2.topic");
-                Log.i("TIEMPO", "META: " + metaElem);
-                Log.i("TIEMPO", "TOPICLIST : " + topicList);
-                Elements links = doc.select("a[href]"); // a with href
-                Element masthead = doc.select("div.masthead").first();
-                // div with class=masthead
-                Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
-                Log.i("TIEMPO", "AHREF: " + links);
-                Log.i("TIEMPO", "MASTHEAD: " + masthead);
-                Log.i("TIEMPO", "ResultLinks : " + resultLinks);
-                */
-
-
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                    Log.i("TIEMPO", "ERROR");
-                }
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            //Metodo que ocurre despues de terminada la accion
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-
-            try{}catch (Exception e){
-
-
-
-                tvEsan.setText("ESAN-Campus");
-                tvLEsan.setVisibility(View.VISIBLE);
-                btEsan.setVisibility(View.VISIBLE);
-                // Here you can do any UI operations like textview.setText("test");
-
-                //Se verifica que el texto contenga los valores dado en parametros:
-                //(Si contiene Lunes, Martes, Miercoles, Jueves o Viernes)
-                if((diac.contains("Monday") || diac.contains("Tuesday") || diac.contains("Wednesday") || diac.contains("Thursday") || diac.contains("Friday"))){
-                    //Si la hora contiene 18, 19, 20, 21, 22 o 23 (se le pone dos puntos para que coja la hora y no lo confunda con los minutos)
-                    if(horac.contains("18:") || horac.contains("19:") || horac.contains("20:")||
-                            horac.contains("21:") || horac.contains("22:") || horac.contains("23:")){
-                        //-----> Entonces:
-                        //APARECE EL POLO
-
-
-                        btPolo.setText("");
-                        cerradopolo=0;
-
-                        //APARECE ALONSO
-                        btAlonso.setText("");
-                        cerradoalonso=0;
 
 
 
 
 
 
-                    }else {
-                    /* Si fuera else if:
-                    if(horac.contains("00:") || horac.contains("01:") || horac.contains("02:") ||
-                         horac.contains("03:") || horac.contains("04:") || horac.contains("05:") ||
-                         horac.contains("06:") || horac.contains("07:") || horac.contains("08:") ||
-                         horac.contains("09:") || horac.contains("10:") || horac.contains("11:") ||
-                         horac.contains("12:") || horac.contains("13:") || horac.contains("14:") ||
-                         horac.contains("15:") || horac.contains("16:") || horac.contains("17:") )
-                     */
-                        //---->Caso contrario de no contener esas horas
-                        //SE VA EL POLO
 
-
-                        //btPolo.setText("Cerrado");
-                         cerradopolo=1;
-
-                        //SE VA ALONSO
-
-                        // btAlonso.setText("Cerrado");
-                         cerradoalonso=1;
-
-                    }
-                } else if( diac.contains("Saturday")){
-                    //Caso contrario de que el dia sea Sabado:
-                    if( horac.contains("06:3")|| horac.contains("06:4")|| horac.contains("06:5")||
-                            horac.contains("07:") || horac.contains("08:") || horac.contains("09:") ||
-                            horac.contains("10:") || horac.contains("11:") || horac.contains("12:") ||
-                            horac.contains("13:") || horac.contains("14:") || horac.contains("15:") ||
-                            horac.contains("16:") || horac.contains("17:") || horac.contains("18:")){
-                        //Si la hora es de 6:30 AM hasta las 18:59 PM entonces:
-
-                        //APARECE EL POLO
-                        //  btPolo.setText("");
-                        cerradopolo=0;
-                    }else{
-                        //Si no es esa hora el dia sabado entonces:
-                        //SE VA EL POLO
-                        // btPolo.setText("Cerrado");
-                         cerradopolo=1;
-                    }
-
-
-                    if( horac.contains("07:3")|| horac.contains("07:4")|| horac.contains("07:5")||
-                            horac.contains("08:") || horac.contains("09:") || horac.contains("10:") ||
-                            horac.contains("11:") || horac.contains("12:") || horac.contains("13:") ||
-                            horac.contains("14:") || horac.contains("15:") || horac.contains("16:") ||
-                            horac.contains("17:") || horac.contains("18:")){
-                        //Si la hora es desde 7:30 am hasta las 18:59 PM entonces:
-
-                        //APARECE ALONSO
-                        //   btAlonso.setText("");
-                        cerradoalonso=0;
-
-
-                    }else{
-                        //Caso que no sea esas horas del dia sabado:
-                        //SE VA ALONSO
-                        //  btAlonso.setText("Cerrado");
-                          cerradoalonso=1;
-                    }
-
-
-                } else if(diac.contains("Sunday")){
-                    //Si el dia es Domingo:
-                    //SE VA EL POLO
-                        btPolo.setText("Cerrado");
-                    cerradopolo=1;
-
-                    //SE VA ALONSO
-                    // btAlonso.setText("Cerrado");
-                       cerradoalonso=1;
-                }
-
-            }
-
-
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -841,6 +575,7 @@ public class MainActivity2Activity extends ActionBarActivity implements
             case R.id.cerrars:
 
                 this.finish();
+
                 return true;
 
             //Cuando se de click a la opcion Informacion del menu:
@@ -858,12 +593,17 @@ public class MainActivity2Activity extends ActionBarActivity implements
                 startActivity(k);
                 return true;
 
-            //Cuando se de click a la opcion Mi perfil del menu:
 
 
             default:return super.onOptionsItemSelected(item);
         }
         //noinspection SimplifiableIfStatement
     }
+
+
+
+
+
+
 
 }

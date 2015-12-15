@@ -9,17 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
-
-
 public class Feedback extends ActionBarActivity {
-
-
     EditText et1;
     Button b1, b2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +24,10 @@ public class Feedback extends ActionBarActivity {
         et1=(EditText)findViewById(R.id.etsug);
         b1=(Button)findViewById(R.id.button2);
         b2=(Button)findViewById(R.id.button3);
-
-
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               finish();
-
 
             }
         });
@@ -43,26 +35,23 @@ public class Feedback extends ActionBarActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] recp = {"estacionamientos@esan.edu.pe"};
-
+                String[] recp = {"estacionamiento@ue.edu.pe"};
 
                 SendEmailAsyncTask email = new SendEmailAsyncTask();
                 //Correo y contrasena del correo que envia
-                email.m = new Mail("estacionamientos@esan.edu.pe", "2345wertSDFG61");
+                email.m = new Mail("estacionamiento@ue.edu.pe", "pr6Yd2Ha");
                 //Se le da valor al FROM del mensaje
-                email.m.set_from("estacionamientos@esan.edu.pe");
+                email.m.set_from("estacionamiento@ue.edu.pe");
                 //Se le da valor al mensaje a enviar
                 email.m.setBody(et1.getText().toString());
                 //Se le da valor al "PARA" (a quien se le envia)
                 email.m.set_to(recp);
                 //Se le da titulo al mensaje
-                email.m.set_subject("FeedBack");
+                email.m.set_subject("FeedBack v1.1");
                 //Se ejecuta el asyncTask
                 email.execute();
-
+                Toast.makeText(Feedback.this, "Mensaje enviado", Toast.LENGTH_SHORT).show();
                 finish();
-
-
             }
         });
 

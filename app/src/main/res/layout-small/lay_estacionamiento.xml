@@ -16,7 +16,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/esan"
             android:id="@+id/textView"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -26,9 +26,9 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/btEsan"
-            android:background="@drawable/bverde"
+
             android:layout_alignTop="@+id/textView"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -37,7 +37,9 @@
             android:layout_marginEnd="26dp"
             android:layout_toEndOf="@+id/textView7"
             android:layout_toRightOf="@+id/textView"
-            android:textColor="#ffffffff"/>
+            android:textColor="#ffffffff"
+            android:text="@string/ytr"
+             />
 
 
     <View
@@ -61,21 +63,23 @@
             android:layout_alignLeft="@+id/textView3"
             android:layout_alignStart="@+id/textView3"
             android:layout_marginTop="30dp"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"/>
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/btAlonso"
 
-            android:background="@drawable/bamarillo"
+
             android:layout_alignTop="@+id/textView4"
             android:layout_alignLeft="@+id/btPolo"
             android:layout_alignStart="@+id/btPolo"
             android:layout_alignRight="@+id/btPolo"
             android:layout_alignEnd="@+id/btPolo"
-            android:textColor="#ffffffff"/>
+            android:textColor="#ffffffff"
+            android:text="@string/ytr"
+             />
 
 
 
@@ -100,21 +104,23 @@
             android:layout_below="@+id/sep2"
             android:layout_alignLeft="@+id/textView"
             android:layout_alignStart="@+id/textView"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"/>
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/btPolo"
-            android:background="@drawable/brojo"
+
             android:layout_alignTop="@+id/textView3"
             android:singleLine="true"
             android:textColor="#ffffffff"
             android:layout_alignRight="@+id/btEsan"
             android:layout_alignEnd="@+id/btEsan"
             android:layout_alignLeft="@+id/btEsan"
-            android:layout_alignStart="@+id/btEsan" />
+            android:layout_alignStart="@+id/btEsan"
+            android:text="@string/ytr"
+             />
 
 
 
@@ -128,7 +134,7 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
         android:layout_marginRight="20dp"
-        android:textSize="14sp"
+        android:textSize="10sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -140,7 +146,7 @@
         android:layout_below="@+id/textView4"
         android:layout_alignLeft="@+id/textView4"
         android:layout_alignStart="@+id/textView4"
-        android:textSize="14sp"
+        android:textSize="10sp"
         android:textStyle="bold"
         />
 
@@ -153,7 +159,7 @@
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView"
-        android:textSize="14sp"
+        android:textSize="10sp"
         android:textStyle="bold"/>
 
     <View
@@ -172,10 +178,10 @@
         android:layout_height="wrap_content"
         android:text="@string/gogogo"
         android:id="@+id/btir"
+        android:textStyle="bold"
         android:layout_below="@+id/textView6"
-        android:layout_alignRight="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5"
-        android:textStyle="bold"/>
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
 
 
 </RelativeLayout>

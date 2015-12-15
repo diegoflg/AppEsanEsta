@@ -187,7 +187,8 @@
                     android:id="@+id/textView2"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/ley5"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="5dp"
+                    android:autoLink="all"/>
             </RelativeLayout>
         </ScrollView>
 

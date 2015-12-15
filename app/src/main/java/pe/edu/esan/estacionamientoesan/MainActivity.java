@@ -33,29 +33,23 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Se guarda el estado del fragmento actual
         super.onCreate(savedInstanceState);
-
         //Se obtiene la pantalla del movil y se oculta el teclado de la pantalla
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         //Manda el contenido al fragmento con la vista del layout correspondiente
         setContentView(R.layout.activity_main);
         start = (Button) findViewById(R.id.button);
-
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
-
         saveLogin = loginPreferences.getBoolean("saveLogin", false);
         if (saveLogin == true) {
             Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
             startActivity(i);
             this.finish();
-
         }
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage(R.string.terminos)
                         .setCancelable(false)
@@ -78,9 +72,6 @@ public class MainActivity extends ActionBarActivity {
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
-
-
-
             }
         });
 

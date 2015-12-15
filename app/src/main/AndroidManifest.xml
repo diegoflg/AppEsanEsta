@@ -17,19 +17,20 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="Parking ESAN"
-            android:screenOrientation="portrait" >
-
-        </activity>
-        <activity
-            android:name=".MainActivity2Activity"
-            android:label="Estado del Estacionamiento"
+            android:label="Parking ESAN Beta"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".MainActivity2Activity"
+            android:label="Estado del Estacionamiento"
+            android:screenOrientation="portrait" >
+
         </activity>
         <activity
             android:name=".Info"
